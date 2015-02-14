@@ -1,0 +1,8 @@
+.DS_Store
+.classpath
+.html_cache
+.project
+.settings
+output
+target
+/src/main/resources/application-dev.properties

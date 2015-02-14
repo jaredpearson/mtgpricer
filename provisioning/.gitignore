@@ -1,0 +1,4 @@
+.DS_Store
+/chef/tmp
+/chef/cookbooks
+/chef/Cheffile.lock

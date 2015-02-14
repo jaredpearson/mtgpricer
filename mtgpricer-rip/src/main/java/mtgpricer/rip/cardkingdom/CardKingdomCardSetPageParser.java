@@ -1,0 +1,185 @@
+package mtgpricer.rip.cardkingdom;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import mtgpricer.catalog.Card;
+import mtgpricer.catalog.CardSet;
+import mtgpricer.rip.CardPriceInfo;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+/**
+ * Parser for card set pages from Card Kingdom
+ * @author jared.pearson
+ */
+class CardKingdomCardSetPageParser {
+	private static final Logger logger = Logger.getLogger(CardKingdomCardSetPageParser.class.getName());
+	
+	/**
+	 * Parses the page of cards
+	 * @param url the URL of the page
+	 * @param html the HTML of the page to parse
+	 * @param cardSet the card set corresponding to the page. this will be null when no card set is mapped to the page. this usually
+	 * occurs when the cards are on the page but not in the catalog yet. 
+	 * @param parserRule
+	 * @return
+	 */
+	public CardKindgomCardSetPage parseHtml(final String url, final String html, final CardSet cardSet, final CardParserRules parserRule) {
+		final Document doc = Jsoup.parse(html);
+		final String nextPageUrl = getNextPageUrl(doc);
+		
+		final Set<String> unknownCardNames = new HashSet<String>(); 
+		
+		final List<CardPriceInfo> cards = new ArrayList<CardPriceInfo>();
+		final Elements tableRowElements = doc.select("table.grid").eq(1).select("tr:gt(0)");
+		for (final Element tableRowElement : tableRowElements) {
+			final Elements rowCellElements = new Elements(tableRowElement).select("td");
+			if (rowCellElements.size() == 10) {
+				
+				final Element cardNameEl = rowCellElements.get(0);
+				final String rawCardName = Strings.nullToEmpty(cardNameEl.text()).trim();
+				if (rawCardName.length() == 0) {
+					logger.finest("Skipping a card with no name");
+					continue;
+				}
+				
+				final Element conditionEl = rowCellElements.get(6);
+				final String conditionValue = conditionEl.text();
+				
+				final Element priceEl = rowCellElements.get(8);
+				
+				if (parserRule.isIgnored(rawCardName)) {
+					logger.finer("Skipping \"" + rawCardName + "\" since it's in the skip list.");
+					continue;
+				}
+
+				Card card = null;
+				if (cardSet != null) {
+					card = attemptToFindCard(cardSet, parserRule, rawCardName);
+				}
+				if (card == null) {
+					unknownCardNames.add(rawCardName);
+				}
+				
+				final String cardNumber = card != null ? card.getNumber() : null;
+				final String cardName = card != null ? card.getName() : null;
+				final Integer multiverseId = card != null ? card.getMultiverseId() : null;
+				final String rawPrice = Strings.nullToEmpty(priceEl.text()).trim();
+				final Double price = parsePriceValue(rawPrice);
+				if (price == null && rawPrice != null) {
+					logger.warning("Unable to parse price for " + rawCardName + ": " + rawPrice);
+				}
+				
+				cards.add(new CardPriceInfo(cardName, rawCardName, cardNumber, multiverseId, url, price, rawPrice, conditionValue));
+			}
+		}
+		
+		logUnknownCards(url, cardSet, unknownCardNames);
+		
+		return new CardKindgomCardSetPage(nextPageUrl, cards);
+	}
+
+	private void logUnknownCards(final String url, final CardSet cardSet, final Set<String> unknownCardNames) {
+		if (unknownCardNames == null || unknownCardNames.isEmpty()) {
+			return;
+		}
+		
+		final StringBuilder sb = new StringBuilder();
+		sb.append("Unknown card names found on set page: ");
+		sb.append(url);
+		sb.append("\n");
+		if (cardSet != null) {
+			sb.append(cardSet.getCode() + " - " + cardSet.getName());
+			sb.append("\n");
+		}
+		for (String cardName : unknownCardNames) {
+			sb.append("\t");
+			sb.append(cardName);
+			sb.append("\n");
+		}
+
+		logger.warning(sb.toString());
+	}
+
+	private Card attemptToFindCard(final CardSet cardSet, final CardParserRules parserRule, final String rawCardName) {
+		Card card = null;
+		
+		// if there is a card number override for the card, lookup the card from catalog using it instead
+		if (card == null) {
+			final String cardNumberOverride = parserRule.getCardNumberOverrideForName(rawCardName);
+			if (cardNumberOverride != null) {
+				card = cardSet.getCardWithNumber(cardNumberOverride);
+				if (card == null) {
+					throw new IllegalStateException("Card number in card override is not found within set: " + rawCardName + " = " + cardNumberOverride);
+				}
+			}
+		}
+		
+		// attempt to retrieve the card with the overridden name
+		if (card == null) {
+			final String cardNameOverride = parserRule.getCardNameOverrideForName(rawCardName);
+			if (cardNameOverride != null) {
+				card = cardSet.getCardWithName(cardNameOverride);
+			}
+		}
+		
+		// attempt to retrieve the card with the overridden multiverse ID
+		if (card == null) {
+			final Integer multiverseId = parserRule.getMultiverseIdForName(rawCardName);
+			if (multiverseId != null) {
+				card = cardSet.getCardWithMultiverseId(multiverseId);
+			}
+		}
+
+		// attempt to retrieve the card using the raw name
+		if (card == null) {
+			card = cardSet.getCardWithName(rawCardName);
+		}
+		
+		return card;
+	}
+	
+	private String getNextPageUrl(Document doc) {
+		assert doc != null;
+		final Elements nextPageElements = doc.select("table.grid").eq(0).select("td").eq(1).select("a:matchesOwn(next)");
+		if (!nextPageElements.isEmpty()) {
+			return nextPageElements.get(0).attr("href");
+		} else {
+			return null;
+		}
+	}
+	
+	private static Double parsePriceValue(String rawValue) {
+		if (rawValue == null) {
+			return null;
+		}
+		
+		try {
+			double valueAsDouble = Double.parseDouble(rawValue);
+			return valueAsDouble;
+		} catch(NumberFormatException exc) {
+			// silently skip
+		}
+
+		// check for the sale pattern
+		final Pattern salePattern = Pattern.compile("Sale ([0-9,]*(\\.[0-9]{2})?)");
+		Matcher m = salePattern.matcher(rawValue);
+		if (m.find()) {
+			try {
+				return Double.parseDouble(m.group(1).replace(",", ""));
+			} catch(NumberFormatException exc) {
+				// silently skip
+			}
+		}
+		return null;
+	}
+}
