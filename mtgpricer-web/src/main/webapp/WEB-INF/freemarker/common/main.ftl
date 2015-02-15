@@ -12,6 +12,9 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="/">MTG Pricer</a>
 				</div>
+				<form action="/search" class="navbar-form navbar-right" role="search">
+					<input name="q" type="text" class="form-control" placeholder="Search">
+				</form>
 			</div>
 		</nav>
 		<#nested>

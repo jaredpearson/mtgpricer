@@ -1,0 +1,1 @@
+default['mtgpricer-solr']['port']     = '8984'

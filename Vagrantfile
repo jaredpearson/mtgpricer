@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.cookbooks_path = ["provisioning/chef/site-cookbooks", "provisioning/chef/cookbooks"]
       chef.roles_path = "provisioning/chef/roles"
       chef.add_role "web"
+      chef.add_role "solr"
     end
   end
 

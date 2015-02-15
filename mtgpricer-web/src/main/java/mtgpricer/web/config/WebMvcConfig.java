@@ -1,5 +1,7 @@
 package mtgpricer.web.config;
 
+import java.util.Properties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,9 +22,13 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
 	@Bean
 	public FreeMarkerConfigurer freeMarkerConfigurer() {
+		final Properties settings = new Properties();
+		settings.setProperty("url_escaping_charset", "UTF-8");
+		
 		final FreeMarkerConfigurer configurer = new FreeMarkerConfigurer();
 		configurer.setTemplateLoaderPath("/WEB-INF/freemarker/");
 		configurer.setDefaultEncoding("UTF-8");
+		configurer.setFreemarkerSettings(settings);
 		return configurer;
 	}
 	
