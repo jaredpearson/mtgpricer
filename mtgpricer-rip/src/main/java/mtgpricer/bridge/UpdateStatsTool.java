@@ -128,6 +128,7 @@ public class UpdateStatsTool implements BridgeOperation {
 				for (Integer multiverseId : multiverseIdsWithoutData) {
 					diffPipeline.del(cardKingdomCardPriceDiff7(multiverseId));
 				}
+				processedCount += multiverseIdsWithoutData.size();
 				
 				for (Map.Entry<Integer, UpdateStatsTool.RangeResponse> responseEntry : multiverseIdToPriceRangeResponses.entrySet()) {
 					final Integer multiverseId = responseEntry.getKey();
