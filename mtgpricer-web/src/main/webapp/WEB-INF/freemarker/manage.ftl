@@ -1,4 +1,5 @@
 <#include "common/main.ftl">
+<#assign updateInProgressLabel = "Update in progress">
 
 <@page title="Manage">
 	<div class="container-fluid">
@@ -10,6 +11,8 @@
 				<div id="ripRequestStatus" class="text-muted">
 					<#if latestRipDate??>
 						Last updated ${latestRipDate}
+					<#elseif latestRipStartDate??>
+						${updateInProgressLabel}
 					</#if>
 				</div>
 			</div>
@@ -19,8 +22,11 @@
 <script type="text/javascript">
 
 var executeRipEl = document.getElementById('executeRip');
+var ripRequestStatusEl = document.getElementById('ripRequestStatus');
+
 executeRipEl.addEventListener('click', function() {
 	executeRipEl.setAttribute('disabled', 'disabled');
+	ripRequestStatusEl.innerHTML = '${updateInProgressLabel?js_string}';
 	
 	// create the rip request
 	var xhr = new XMLHttpRequest();
@@ -43,9 +49,12 @@ executeRipEl.addEventListener('click', function() {
 	xhr.send();
 });
 
+<#if ripInProgress!false>
+pollRipRequest(${ripInProgressId}, updateRipRequestStatus);
+</#if>
+
 function updateRipRequestStatus(ripRequest) {
 	if (ripRequest.finishDate) {
-		var ripRequestStatusEl = document.getElementById('ripRequestStatus');
 		ripRequestStatusEl.innerHTML = 'Rip Successful';
 		
 		executeRipEl.removeAttribute('disabled');

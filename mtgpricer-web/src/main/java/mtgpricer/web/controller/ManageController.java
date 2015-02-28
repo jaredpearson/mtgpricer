@@ -26,9 +26,14 @@ public class ManageController {
 		
 		final RipRequest ripRequest = ripRequestQueue.getLatestRipRequest();
 		
+		final TimeZone timeZone = TimeZone.getTimeZone("PST");
+		
 		final ModelAndView modelAndView = new ModelAndView("manage");
-		modelAndView.addObject("canCreateNewRipRequest", ripRequest.getFinishDate() != null);
-		modelAndView.addObject("latestRipDate", ripRequest.getFinishDate() != null ? formatTimestampAsNaturalLanguage(ripRequest.getFinishDate(), TimeZone.getTimeZone("PST")) : null);
+		modelAndView.addObject("canCreateNewRipRequest", ripRequest == null || ripRequest.getFinishDate() != null);
+		modelAndView.addObject("ripInProgress", ripRequest != null && ripRequest.getFinishDate() == null);
+		modelAndView.addObject("ripInProgressId", ripRequest != null ? ripRequest.getId() : null);
+		modelAndView.addObject("latestRipStartDate", ripRequest != null && ripRequest.getStartDate() != null ? formatTimestampAsNaturalLanguage(ripRequest.getStartDate(), timeZone) : null);
+		modelAndView.addObject("latestRipDate", ripRequest != null && ripRequest.getFinishDate() != null ? formatTimestampAsNaturalLanguage(ripRequest.getFinishDate(), timeZone) : null);
 		return modelAndView;
 	}
 	
