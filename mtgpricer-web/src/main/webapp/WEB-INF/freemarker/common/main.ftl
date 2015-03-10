@@ -12,6 +12,13 @@
 				<div class="navbar-header">
 					<a class="navbar-brand" href="/">MTG Pricer</a>
 				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<#if (_auth?? && _auth.isAuthenticated)>
+						<li><a href="/logout">Logout</a></li>
+					<#else>
+						<li><a href="/login">Login</a></li>
+					</#if>
+				</ul>
 				<form action="/search" class="navbar-form navbar-right" role="search">
 					<input name="q" type="text" class="form-control" placeholder="Search">
 				</form>
