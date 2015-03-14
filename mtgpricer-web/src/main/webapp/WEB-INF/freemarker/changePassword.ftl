@@ -2,22 +2,6 @@
 <#assign updateInProgressLabel = "Update in progress">
 
 <@page title="Change Password">
-	<style>
-		.callout {
-			padding: 20px;
-			margin: 20px 0;
-			border: 1px solid #eee;
-			border-radius: 3px;
-		}
-		.callout-error {
-			border-left-width: 5px;
-			border-left-color: #a94442;
-		}
-		.callout-success {
-			border-left-width: 5px;
-			border-left-color: #3c763d;
-		}
-	</style>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">

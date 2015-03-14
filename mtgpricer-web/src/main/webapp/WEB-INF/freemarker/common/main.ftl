@@ -5,6 +5,7 @@
 	<head>
 		<#include "head.ftl">
 		<title>MTG Pricer - ${title}</title>
+		<link href="/css/main.css" media="all" rel="stylesheet" /> 
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
