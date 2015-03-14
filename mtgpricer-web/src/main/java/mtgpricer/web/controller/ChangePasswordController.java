@@ -1,6 +1,7 @@
 package mtgpricer.web.controller;
 
 import java.security.Principal;
+import java.util.Set;
 
 import mtgpricer.web.services.PasswordChangeResult;
 import mtgpricer.web.services.UserService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.base.Strings;
+import com.google.common.collect.Sets;
 
 @Controller
 public class ChangePasswordController {
@@ -35,23 +37,22 @@ public class ChangePasswordController {
 			@RequestParam(value="newPassword", required=false) String newPassword, 
 			@RequestParam(value="confirmNewPassword", required=false) String confirmPassword) throws Exception {
 		
-		// TODO: validation of the form should return all messages back at once, instead of one at a time
+		final Set<String> missingRequiredFields = Sets.newHashSet(); 
 		if (Strings.isNullOrEmpty(password)) {
-			final ModelAndView modelAndView = createChangePasswordFormModelAndView();
-			modelAndView.addObject("formError", "Not all required fields are specified");
-			modelAndView.addObject("missingPassword", true);
-			return modelAndView;
+			missingRequiredFields.add("missingPassword");
 		}
 		if (Strings.isNullOrEmpty(newPassword)) {
-			final ModelAndView modelAndView = createChangePasswordFormModelAndView();
-			modelAndView.addObject("formError", "Not all required fields are specified");
-			modelAndView.addObject("missingNewPassword", true);
-			return modelAndView;
+			missingRequiredFields.add("missingNewPassword");
 		}
 		if (Strings.isNullOrEmpty(confirmPassword)) {
+			missingRequiredFields.add("missingConfirmPassword");
+		}
+		if (!missingRequiredFields.isEmpty()) {
 			final ModelAndView modelAndView = createChangePasswordFormModelAndView();
 			modelAndView.addObject("formError", "Not all required fields are specified");
-			modelAndView.addObject("missingConfirmPassword", true);
+			for (String errorCode : missingRequiredFields) {
+				modelAndView.addObject(errorCode, true);
+			}
 			return modelAndView;
 		}
 		
