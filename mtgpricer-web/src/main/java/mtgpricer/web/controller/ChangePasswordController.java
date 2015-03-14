@@ -23,12 +23,12 @@ public class ChangePasswordController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping(value="/changePassword", method=RequestMethod.GET)
+	@RequestMapping(value={"/settings", "/settings/changePassword"}, method=RequestMethod.GET)
 	public ModelAndView showForm() throws Exception {
 		return createChangePasswordFormModelAndView();
 	}
 	
-	@RequestMapping(value="/changePassword", method=RequestMethod.POST)
+	@RequestMapping(value="/settings/changePassword", method=RequestMethod.POST)
 	public ModelAndView postForm(
 			Principal userPrincipal,
 			@RequestParam(value="currentPassword", required=false) String password, 
@@ -58,7 +58,7 @@ public class ChangePasswordController {
 		final PasswordChangeResult changeResult = userService.changePassword(userPrincipal.getName(), password, newPassword, confirmPassword);
 		
 		if (changeResult.isSuccessful()) {
-			final ModelAndView modelAndView = new ModelAndView("changePassword");
+			final ModelAndView modelAndView = createChangePasswordFormModelAndView();
 			modelAndView.addObject("success", true);
 			return modelAndView;
 		} else {
@@ -69,8 +69,8 @@ public class ChangePasswordController {
 	}
 	
 	private ModelAndView createChangePasswordFormModelAndView() {
-		final ModelAndView modelAndView = new ModelAndView("changePassword");
-		modelAndView.addObject("postUrl", "/changePassword");
+		final ModelAndView modelAndView = new ModelAndView("settings/changePassword");
+		modelAndView.addObject("postUrl", "/settings/changePassword");
 		return modelAndView;
 	}
 	

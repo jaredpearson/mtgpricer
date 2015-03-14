@@ -1,10 +1,12 @@
-<#include "common/main.ftl">
-<#assign updateInProgressLabel = "Update in progress">
+<#include "../common/main.ftl">
 
 <@page title="Change Password">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-2">
+				<#include "menu.ftl">
+			</div>
+			<div class="col-md-10">
 				<h2>Change Password</h2>
 				<#if success!false>
 					<div class="callout callout-success">Password changed successfully.</div>

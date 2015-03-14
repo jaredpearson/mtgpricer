@@ -1,20 +1,23 @@
-<#include "common/main.ftl">
+<#include "../common/main.ftl">
 <#assign updateInProgressLabel = "Update in progress">
 
 <@page title="Manage">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-2">
+				<#include "menu.ftl">
+			</div>
+			<div class="col-md-10">
 				<h2>Rip</h2>
 				<p>Crawls the price sites for price information.</p>
-				<button id="executeRip" class="btn btn-default" <#if !canCreateNewRipRequest!false>disabled="disabled"</#if>>Execute Now</button>
-				<div id="ripRequestStatus" class="text-muted">
+				<div id="ripRequestStatus">
 					<#if latestRipDate??>
 						Last updated ${latestRipDate}
 					<#elseif latestRipStartDate??>
 						${updateInProgressLabel}
 					</#if>
 				</div>
+				<button id="executeRip" class="btn btn-default" <#if !canCreateNewRipRequest!false>disabled="disabled"</#if>>Execute Now</button>
 			</div>
 		</div>
 	</div>

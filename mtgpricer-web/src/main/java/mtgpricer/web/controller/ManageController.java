@@ -21,14 +21,14 @@ public class ManageController {
 	@Autowired
 	RipRequestQueue ripRequestQueue;
 	
-	@RequestMapping("/manage")
+	@RequestMapping("/settings/manage")
 	public ModelAndView showPage() {
 		
 		final RipRequest ripRequest = ripRequestQueue.getLatestRipRequest();
 		
 		final TimeZone timeZone = TimeZone.getTimeZone("PST");
 		
-		final ModelAndView modelAndView = new ModelAndView("manage");
+		final ModelAndView modelAndView = new ModelAndView("settings/manage");
 		modelAndView.addObject("canCreateNewRipRequest", ripRequest == null || ripRequest.getFinishDate() != null);
 		modelAndView.addObject("ripInProgress", ripRequest != null && ripRequest.getFinishDate() == null);
 		modelAndView.addObject("ripInProgressId", ripRequest != null ? ripRequest.getId() : null);

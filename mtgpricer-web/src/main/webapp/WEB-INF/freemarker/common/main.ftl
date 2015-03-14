@@ -15,6 +15,7 @@
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<#if (_auth?? && _auth.isAuthenticated)>
+						<li><a href="/settings"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span><span class="sr-only">Settings</a></a></li>
 						<li><a href="/logout">Logout</a></li>
 					<#else>
 						<li><a href="/login">Login</a></li>
