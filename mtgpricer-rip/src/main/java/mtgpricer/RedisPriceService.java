@@ -46,11 +46,7 @@ public class RedisPriceService implements PriceService {
 		assert card != null;
 		final CardPriceQueryParams params = new CardPriceQueryParams().limit(1);
 		final Map<Card, List<CardPrice>> cardPrices = this.getNewestPriceHistoryForCards(newArrayList(card), params);
-		if (cardPrices.containsKey(card)) {
-			return cardPrices.get(card).get(0);
-		} else {
-			return null;
-		}
+		return getFirst(cardPrices.get(card));
 	}
 	
 	@Override
@@ -64,11 +60,7 @@ public class RedisPriceService implements PriceService {
 		assert params != null;
 		
 		final Map<Card, List<CardPrice>> cardPrices = this.getNewestPriceHistoryForCards(newArrayList(card), params);
-		if (cardPrices.containsKey(card)) {
-			return cardPrices.get(card);
-		} else {
-			return null;
-		}
+		return nullToEmpty(cardPrices.get(card));
 	}
 
 	@Override
@@ -296,6 +288,23 @@ public class RedisPriceService implements PriceService {
 			list.add(value);
 		}
 		return list;
+	}
+
+	/**
+	 * Gets the first item within a list or null if the list is null or empty.
+	 */
+	private static <T> T getFirst(List<? extends T> values) {
+		if (values == null || values.isEmpty()) {
+			return null;
+		}
+		return values.get(0);
+	}
+	
+	private static <T> List<T> nullToEmpty(List<T> values) {
+		if (values == null) {
+			return Collections.emptyList();
+		}
+		return values;
 	}
 	
 	private static class CardPriceLoadContext {

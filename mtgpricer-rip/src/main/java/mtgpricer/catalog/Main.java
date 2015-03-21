@@ -29,6 +29,7 @@ public class Main implements CommandLineTool {
 		this.cardCatalogProvider = cardCatalogProvider;
 	}
 	
+	@Override
 	public void run(String[] args) {
 		if (args.length == 0) {
 			System.out.println(Main.class.getName() + " [command]");
