@@ -41,9 +41,11 @@ public class RedisPriceService implements PriceService {
 		this.cardCatalogProvider = cardCatalogProvider;
 	}
 	
+	@Override
 	public CardPrice getCurrentPriceForCard(Card card) {
 		assert card != null;
-		final Map<Card, List<CardPrice>> cardPrices = this.getPriceHistoryForCards(newArrayList(card), -1, -1, new CardPriceQueryParams());
+		final CardPriceQueryParams params = new CardPriceQueryParams().limit(1);
+		final Map<Card, List<CardPrice>> cardPrices = this.getNewestPriceHistoryForCards(newArrayList(card), params);
 		if (cardPrices.containsKey(card)) {
 			return cardPrices.get(card).get(0);
 		} else {
@@ -51,15 +53,17 @@ public class RedisPriceService implements PriceService {
 		}
 	}
 	
+	@Override
 	public List<CardPrice> getPriceHistoryForCard(Card card) {
 		return getPriceHistoryForCard(card, new CardPriceQueryParams());
 	}
 	
+	@Override
 	public List<CardPrice> getPriceHistoryForCard(Card card, CardPriceQueryParams params) {
 		assert card != null;
 		assert params != null;
 		
-		final Map<Card, List<CardPrice>> cardPrices = this.getPriceHistoryForCards(newArrayList(card), -params.getLimit(), -1, params);
+		final Map<Card, List<CardPrice>> cardPrices = this.getNewestPriceHistoryForCards(newArrayList(card), params);
 		if (cardPrices.containsKey(card)) {
 			return cardPrices.get(card);
 		} else {
@@ -67,10 +71,14 @@ public class RedisPriceService implements PriceService {
 		}
 	}
 
+	@Override
 	public Map<Card, List<CardPrice>> getPriceHistoryForCards(CardSet cardSet) {
-		return getPriceHistoryForCards(cardSet.getCards(), -10, -1, new CardPriceQueryParams());
+		assert cardSet != null;
+		final CardPriceQueryParams params = new CardPriceQueryParams().limit(10);
+		return getNewestPriceHistoryForCards(cardSet.getCards(), params);
 	}
 	
+	@Override
 	public List<CardPriceDiff> getTopPositiveCardPriceDiffSevenDays() {
 		final String key = RedisKeyFactory.cardKingdomCardPriceDiff7Rank();
 		final Set<Tuple> values = getZRevRangeWithScore(key);
@@ -83,6 +91,7 @@ public class RedisPriceService implements PriceService {
 		return buildCardPriceDiffFromZRankTuple(values);
 	}
 	
+	@Override
 	public List<CardPriceDiff> getTopNegativeCardPriceDiffSevenDays() {
 		final String key = RedisKeyFactory.cardKingdomCardPriceDiff7Rank();
 		final Set<Tuple> values = getZRangeWithScore(key);
@@ -95,6 +104,7 @@ public class RedisPriceService implements PriceService {
 		return buildCardPriceDiffFromZRankTuple(values);
 	}
 	
+	@Override
 	public List<CardPriceDiff> getTopPositiveCardPriceDiffSevenDaysStandard() {
 		final String key = RedisKeyFactory.cardKingdomCardPriceDiff7RankStandard();
 		final Set<Tuple> values = getZRevRangeWithScore(key);
@@ -175,7 +185,26 @@ public class RedisPriceService implements PriceService {
 		return priceDiffs;
 	}
 	
+	/**
+	 * Gets the newest price history for the given card from the data store.
+	 * @param cards the cards to get the price history for
+	 * @param params the params dictate how many cards are returned and the order they are returned in
+	 */
+	private Map<Card, List<CardPrice>> getNewestPriceHistoryForCards(Collection<? extends Card> cards, CardPriceQueryParams params) {
+		return getPriceHistoryForCards(cards, -params.getLimit(), -1, params);
+	}
 	
+	/**
+	 * Gets the price history for the given cards from the data store.
+	 * <p>
+	 * The values are stored from newest to oldest, so index 0 is the oldest record in existence and -1 is the newest. To get the 
+	 * the newest 10 card prices, the start index will be -10 and stop index will be -1. To get the oldest price history,
+	 * the start index will be -1 and the stop index will -1.
+	 * @param cards the cards to get the price history for
+	 * @param start the index number of the start within the range to return. 
+	 * @param stop the index number of the stop within the range to return.
+	 * @param params the params from client; only the order is used
+	 */
 	private Map<Card, List<CardPrice>> getPriceHistoryForCards(Collection<? extends Card> cards, int start, int stop, CardPriceQueryParams params) {
 		assert params != null;
 		if (cards == null || cards.size() == 0) {
