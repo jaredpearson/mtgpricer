@@ -33,7 +33,6 @@ public class UpdateRipFileTool implements CommandLineTool {
 	private CardCatalogProvider cardCatalogProvider;
 	private CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory;
 	private File outputDir;
-	private FilePriceDataStore priceDataLoader;
 	private Gson gson;
 	
 	@Autowired
@@ -47,11 +46,6 @@ public class UpdateRipFileTool implements CommandLineTool {
 	}
 	
 	@Autowired
-	public void setPriceDataLoader(FilePriceDataStore priceDataLoader) {
-		this.priceDataLoader = priceDataLoader;
-	}
-	
-	@Autowired
 	@Qualifier("ripOutputDir")
 	public void setOutputDir(File outputDir) {
 		this.outputDir = outputDir;
@@ -62,14 +56,13 @@ public class UpdateRipFileTool implements CommandLineTool {
 		this.gson = gson;
 	}
 	
+	@Override
 	public void run(String[] args) throws Exception {
 		if (outputDir == null) {
 			throw new IllegalStateException("outputDir must be set before invoking run");
 		}
-		if (priceDataLoader == null) {
-			throw new IllegalStateException("priceDataLoader must be set before invoking run");
-		}
 		
+		final FilePriceDataStore priceDataLoader = new FilePriceDataStore(outputDir, gson);
 		for (final File file : priceDataLoader.getDataFiles()) {
 			final JsonObject priceSiteJson = loadFile(file);
 			if (processCardSet(priceSiteJson, file.getName())) {
@@ -196,7 +189,7 @@ public class UpdateRipFileTool implements CommandLineTool {
 			return false;
 		}
 		
-		if (!nameOverride.equals(cardSetJson.get("name").getAsString())) {
+		if (!cardSetJson.has("name") || !nameOverride.equals(cardSetJson.get("name").getAsString())) {
 			cardSetJson.addProperty("name", nameOverride);
 			System.out.println("Set name for card set: " + nameOverride);
 			return true;
