@@ -27,6 +27,7 @@ public class CardKingdomSiteParserRulesFactory implements SiteParserRulesFactory
 	/**
 	 * Loads the site parser rules for the CardKingdom site
 	 */
+	@Override
 	public SiteParserRules loadSiteParserRules() {
 		final Map<String, CardParserRules> setCodeToCardParserRules;
 		try {
@@ -80,8 +81,10 @@ public class CardKingdomSiteParserRulesFactory implements SiteParserRulesFactory
 		cardSetNameToCatalogName.put("Duel Decks: Venser Vs. Koth", "Duel Decks: Venser vs. Koth");
 		cardSetNameToCatalogName.put("Duel Decks: Sorin Vs. Tibalt", "Duel Decks: Sorin vs. Tibalt");
 		cardSetNameToCatalogName.put("Duel Decks: Speed Vs. Cunning", "Duel Decks: Speed vs. Cunning");
+		cardSetNameToCatalogName.put("Duel Decks: Elspeth Vs. Kiora", "Duel Decks: Elspeth vs. Kiora");
 		cardSetNameToCatalogName.put("From the Vault: Annihilation", "From the Vault: Annihilation (2014)");
 		cardSetNameToCatalogName.put("Modern Event Deck", "Modern Event Deck 2014");
+		cardSetNameToCatalogName.put("Modern Event Deck*", "Modern Event Deck 2014");
 		cardSetNameToCatalogName.put("Premium Deck Series: Fire & Lightning", "Premium Deck Series: Fire and Lightning");
 		cardSetNameToCatalogName.put("Planechase 2012", "Planechase 2012 Edition");
 		cardSetNameToCatalogName.put("Portal 3K", "Portal Three Kingdoms");
