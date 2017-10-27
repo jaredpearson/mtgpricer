@@ -22,5 +22,6 @@ run_list(
 	"recipe[apt]", 
 	"recipe[java::default]", 
 	"recipe[redisio]",
-	"recipe[redisio::enable]"
+	"recipe[redisio::enable]",
+	"recipe[mtgpricer::webapp]"
 )

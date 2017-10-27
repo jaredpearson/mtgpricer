@@ -19,6 +19,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.roles_path = "provisioning/chef/roles"
       chef.add_role "web"
       chef.add_role "solr"
+      chef.json = {
+        "mtgpricer" => {
+          "data" => {
+            "sets_json" => "/vagrant/AllSets-x.json"
+          },
+          "webapp" => {
+            "jar" => "/vagrant/mtgpricer-web/target/mtgpricer-web-0.0.1-SNAPSHOT.jar"
+          }
+        }
+      }
     end
   end
 
