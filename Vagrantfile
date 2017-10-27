@@ -12,14 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.name = "mtgpricer-web"
       vb.memory = 2048
     end
-    
-    web.vm.provision :shell, inline: 'apt-get update'
-
-    # ruby is needed to install chef
-    web.vm.provision :shell, inline: 'apt-get install build-essential ruby1.9.1-dev --no-upgrade --yes'
-    web.vm.provision :shell, inline: 'gem install chef --version 11.16.4 --no-rdoc --no-ri'
 
     web.vm.provision "chef_solo" do |chef|
+      chef.version = "12.21.12"
       chef.cookbooks_path = ["provisioning/chef/site-cookbooks", "provisioning/chef/cookbooks"]
       chef.roles_path = "provisioning/chef/roles"
       chef.add_role "web"
@@ -35,13 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       vb.memory = 2048
     end
     
-    postgres.vm.provision :shell, inline: 'apt-get update'
-
-    # ruby is needed to install chef
-    postgres.vm.provision :shell, inline: 'apt-get install build-essential ruby1.9.1-dev --no-upgrade --yes'
-    postgres.vm.provision :shell, inline: 'gem install chef --version 11.16.4 --no-rdoc --no-ri'
-
     postgres.vm.provision "chef_solo" do |chef|
+      chef.version = "12.21.12"
       chef.cookbooks_path = ["provisioning/chef/site-cookbooks", "provisioning/chef/cookbooks"]
       chef.roles_path = "provisioning/chef/roles"
       chef.add_role "rdbms"

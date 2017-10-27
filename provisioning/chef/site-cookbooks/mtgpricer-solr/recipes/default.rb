@@ -1,4 +1,10 @@
 
+directory '/etc/solr' do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  action :create
+end
 
 template '/etc/solr/solr.xml' do
   source 'solr.xml.erb'

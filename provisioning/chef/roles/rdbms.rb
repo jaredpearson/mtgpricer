@@ -2,8 +2,6 @@ name "rdbms"
 
 default_attributes(
 	"postgresql" => {
-		"version" => "9.3",
-		"enable_pgdg_apt" => true,
 		"password" => {
 			"postgres" => "d!rtyDanc1ng"
 		},

@@ -21,6 +21,6 @@ default_attributes(
 run_list(
 	"recipe[apt]", 
 	"recipe[java::default]", 
-	"recipe[redisio::default]",
+	"recipe[redisio]",
 	"recipe[redisio::enable]"
 )
