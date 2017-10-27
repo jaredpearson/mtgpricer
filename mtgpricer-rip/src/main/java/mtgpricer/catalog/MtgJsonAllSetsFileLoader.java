@@ -1,13 +1,14 @@
 package mtgpricer.catalog;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Map;
 
 import com.google.gson.Gson;
+
+import mtgpricer.Resource;
 
 /**
  * Loads the card information from a local AllSets-x.json file downloaded from MtgJson.com. 
@@ -22,24 +23,24 @@ class MtgJsonAllSetsFileLoader {
 	}
 	
 	/**
-	 * Loads the card catalog from the specified file.
-	 * @return the catalog instance from the given file.
+	 * Loads the card catalog from the specified resource.
+	 * @return the catalog instance from the given resource.
 	 * @throws IOException
 	 */
-	public Collection<CardSetInfo> loadFromFile(File file) throws IOException {
-		assert file != null;
-		final Map<String, CardSetInfo> cardSetByCode = loadCardSetFromCatalogFile(file);
+	public Collection<CardSetInfo> loadFromResource(Resource resource) throws IOException {
+		assert resource != null;
+		final Map<String, CardSetInfo> cardSetByCode = loadCardSetFromCatalogFile(resource);
 		return cardSetByCode.values();
 	}
 	
-	private Map<String, CardSetInfo> loadCardSetFromCatalogFile(File file) throws IOException {
+	private Map<String, CardSetInfo> loadCardSetFromCatalogFile(Resource resource) throws IOException {
 		final Map<String, CardSetInfo> cardSetByCode;
 		final Type type = new com.google.gson.reflect.TypeToken<Map<String, CardSetInfo>>() {}.getType();
-		final FileReader fr = new FileReader(file);
+		final Reader reader = resource.getReader();
 		try {
-			cardSetByCode = gson.fromJson(fr, type);
+			cardSetByCode = gson.fromJson(reader, type);
 		} finally {
-			fr.close();
+			reader.close();
 		}
 		return cardSetByCode;
 	}

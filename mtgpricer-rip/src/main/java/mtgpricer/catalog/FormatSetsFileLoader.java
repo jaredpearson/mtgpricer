@@ -1,8 +1,7 @@
 package mtgpricer.catalog;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -13,6 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import mtgpricer.Resource;
 
 /**
  * Loads the tournament formats information from the given file.
@@ -28,18 +29,18 @@ class FormatSetsFileLoader {
 	}
 
 	/**
-	 * Loads the tournament formats information from the given file.
+	 * Loads the tournament formats information from the given resource.
 	 */
-	public Map<String, Set<TournamentFormat>> loadFromFile(File file) throws IOException {
-		assert file != null;
+	public Map<String, Set<TournamentFormat>> loadFromResource(Resource resource) throws IOException {
+		assert resource != null;
 		
 		final JsonObject rootObject;
-		final FileReader fileReader = new FileReader(file);
+		final Reader reader = resource.getReader();
 		try {
-			final JsonElement jsonElement = gson.fromJson(fileReader, JsonElement.class);
+			final JsonElement jsonElement = gson.fromJson(reader, JsonElement.class);
 			rootObject = jsonElement.getAsJsonObject();
 		} finally {
-			fileReader.close();
+			reader.close();
 		}
 		
 		final Map<String, Set<TournamentFormat>> setCodeToFormats = new HashMap<String, Set<TournamentFormat>>();

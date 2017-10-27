@@ -29,6 +29,19 @@ public class ConfigPropertyUtils {
 			throw new IllegalStateException("Configuration property \"" + propertyName + "\" references a file that does not exist.\n" + file.toString());
 		}
 	}
+	
+	/**
+	 * Creates a {@link Resource} from the given property and value.
+	 */
+	public static Resource createResource(final String propertyName, final String value) {
+		assertNotEmpty(propertyName, value);
+		if (value.startsWith("classpath:")) {
+			final String valueWithoutPrefix = value.substring(10);
+			return Resource.createForClasspathResource(valueWithoutPrefix);
+		} else {
+			return Resource.createForFile(new File(value));
+		}
+	}
 
 	/**
 	 * Creates a {@link java.io.File} from the the given value

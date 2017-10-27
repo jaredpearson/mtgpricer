@@ -3,6 +3,7 @@ package mtgpricer.catalog;
 import java.io.File;
 
 import mtgpricer.ConfigPropertyUtils;
+import mtgpricer.Resource;
 import mtgpricer.UtilConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +38,9 @@ public class CatalogConfig {
 	@Bean
 	@Lazy
 	public CardCatalogService cardCatalogService() {
-		final File catalogFile = ConfigPropertyUtils.createFile("catalog.catalogFilePath", catalogFilePath);
-		final File formatSetFile = ConfigPropertyUtils.createFile("catalog.formatSetFilePath", formatSetFilePath);
-		return new CardCatalogService(utilConfig.standardGson(), catalogFile, formatSetFile);
+		final Resource catalogResource = ConfigPropertyUtils.createResource("catalog.catalogFilePath", catalogFilePath);
+		final Resource formatSetResource = ConfigPropertyUtils.createResource("catalog.formatSetFilePath", formatSetFilePath);
+		return new CardCatalogService(utilConfig.standardGson(), catalogResource, formatSetResource);
 	}
 	
 	@Bean

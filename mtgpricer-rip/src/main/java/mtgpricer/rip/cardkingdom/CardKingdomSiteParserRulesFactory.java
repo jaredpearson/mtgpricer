@@ -1,6 +1,5 @@
 package mtgpricer.rip.cardkingdom;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,18 +8,20 @@ import java.util.Set;
 
 import com.google.gson.Gson;
 
+import mtgpricer.Resource;
+
 /**
  * Parser rules factory for the CardKingdom site
  * @author jared.pearson
  */
 public class CardKingdomSiteParserRulesFactory implements SiteParserRulesFactory {
-	private final File parserRulesFile;
+	private final Resource parserRulesResource;
 	private final Gson gson;
 	
-	public CardKingdomSiteParserRulesFactory(final File parserRulesFile, final Gson gson) {
-		assert parserRulesFile != null;
+	public CardKingdomSiteParserRulesFactory(final Resource parserRulesResource, final Gson gson) {
+		assert parserRulesResource != null;
 		assert gson != null;
-		this.parserRulesFile = parserRulesFile;
+		this.parserRulesResource = parserRulesResource;
 		this.gson = gson;
 	}
 	
@@ -31,7 +32,7 @@ public class CardKingdomSiteParserRulesFactory implements SiteParserRulesFactory
 	public SiteParserRules loadSiteParserRules() {
 		final Map<String, CardParserRules> setCodeToCardParserRules;
 		try {
-			setCodeToCardParserRules = new CardParserRulesFileLoader(gson).loadFromFile(parserRulesFile);
+			setCodeToCardParserRules = new CardParserRulesFileLoader(gson).loadFromResource(parserRulesResource);
 		} catch(IOException exc) {
 			throw new RuntimeException(exc);
 		}

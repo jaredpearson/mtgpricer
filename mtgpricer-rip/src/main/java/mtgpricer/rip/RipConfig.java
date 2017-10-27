@@ -3,6 +3,7 @@ package mtgpricer.rip;
 import java.io.File;
 
 import mtgpricer.ConfigPropertyUtils;
+import mtgpricer.Resource;
 import mtgpricer.UtilConfig;
 import mtgpricer.catalog.CardCatalogService;
 import mtgpricer.rip.cardkingdom.CardKingdomSiteFactory;
@@ -62,8 +63,8 @@ public class RipConfig {
 	@Bean
 	@Lazy
 	public CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory() {
-		final File parserRulesFile = ConfigPropertyUtils.createFile("catalog.catalogFilePath", cardKingdomParserRulesFilePath);
-		return new CardKingdomSiteParserRulesFactory(parserRulesFile, utilConfig.standardGson());
+		final Resource parserRulesResource = ConfigPropertyUtils.createResource("catalog.catalogFilePath", cardKingdomParserRulesFilePath);
+		return new CardKingdomSiteParserRulesFactory(parserRulesResource, utilConfig.standardGson());
 	}
 
 	@Bean
