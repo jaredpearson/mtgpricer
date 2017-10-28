@@ -41,6 +41,9 @@ template "mtgpricer service conf" do
     owner "root"
     group "root"
     mode "0755"
+    variables({
+        log: node['mtgpricer']['webapp']['log']
+    })
     notifies :enable, "service[mtgpricer_webapp]"
     notifies :start, "service[mtgpricer_webapp]"
 end
