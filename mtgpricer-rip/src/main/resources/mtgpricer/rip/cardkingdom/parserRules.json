@@ -3649,6 +3649,53 @@
       "numberOverrides": {},
       "multiverseOverrides": {}
     },
+    "XLN": {
+      "ignoredNames": [
+        "Checklist Card (Ixalan)",
+        "Dinosaur Token",
+        "Illusion Token",
+        "Merfolk Token",
+        "Plant Token",
+        "Pirate Token",
+        "Vampire Token",
+        "Treasure Token (007 A)",
+        "Treasure Token (008 B)",
+        "Treasure Token (009 C)",
+        "Treasure Token (010 D)"
+      ],
+      "numberOverrides": {
+        "Castaway's Despair (Planeswalker Deck)": "281",
+        "Forest (276 A)": "276",
+        "Forest (278 C)": "278",
+        "Forest (277 B)": "277",
+        "Forest (279 D)": "279",
+        "Grasping Current (Planeswalker Deck)": "282",
+        "Huatli's Spurring (Planeswalker Deck)": "287",
+        "Huatli, Dinosaur Knight (Foil - Planeswalker Deck)": "285",
+        "Huatli's Snubhorn (Planeswalker Deck)": "286",
+        "Island (264 A)": "264",
+        "Island (265 B)": "265",
+        "Island (266 C)": "266",
+        "Island (267 D)": "267",
+        "Jace, Ingenious Mind-Mage (Foil - Planeswalker Deck)": "280",
+        "Jace's Sentinel (Planeswalker Deck)": "283",
+        "Mountain (272 A)": "272",
+        "Mountain (273 B)": "273",
+        "Mountain (274 C)": "274",
+        "Mountain (275 D)": "275",
+        "Plains (260 A)": "260",
+        "Plains (261 B)": "261",
+        "Plains (262 C)": "262",
+        "Plains (263 D)": "263",
+        "Sun-Blessed Mount (Planeswalker Deck)": "288",
+        "Stone Quarry (Planeswalker Deck)": "289",
+        "Swamp (268 A)": "268",
+        "Swamp (269 B)": "269",
+        "Swamp (270 C)": "270",
+        "Swamp (271 D)": "271",
+        "Woodland Stream (Planeswalker Deck)": "284"
+      }
+    },
     "ZEN": {
       "unknownNames": [],
       "ignoredNames": [
