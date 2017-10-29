@@ -23,8 +23,15 @@ public class Main implements CommandLineTool {
 	}
 	
 	public void run(String[] args) throws Exception {
+		boolean useCache = false;
+		for (String arg : args) {
+			if ("--cache".equals(arg)) {
+				useCache = true;
+			}
+		}
+		
 		final Display display = Displays.createForPrintStream(System.out);
-		try (final PageRequester pageRequester = this.pageRequesterFactory.create()) {
+		try (final PageRequester pageRequester = createPageRequester(useCache)) {
 			ripProcessor.rip(display, pageRequester);
 		}
 	}
@@ -33,4 +40,11 @@ public class Main implements CommandLineTool {
 		CommandLineTools.run(Main.class, args);
 	}
 	
+	private PageRequester createPageRequester(boolean useCache) {
+		if (useCache) {
+			return this.pageRequesterFactory.createCachedPageRequester();
+		} else {
+			return this.pageRequesterFactory.create();
+		}
+	}
 }
