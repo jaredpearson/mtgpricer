@@ -63,25 +63,16 @@ public class RipRequestQueue implements Closeable {
 	 */
 	public boolean isProcessing() {
 		try {
-			final java.sql.Connection connection = dataSource.getConnection();
-			try {
-				final PreparedStatement stmt = connection.prepareStatement("SELECT count(*) FROM mtgpricer.rip_request WHERE finish_date IS NULL");
-				try {
-					final ResultSet rst = stmt.executeQuery();
-					try {
+			try (final java.sql.Connection connection = dataSource.getConnection()) {
+				try (final PreparedStatement stmt = connection.prepareStatement("SELECT count(*) FROM mtgpricer.rip_request WHERE finish_date IS NULL")) {
+					try (final ResultSet rst = stmt.executeQuery()) {
 						if (rst.next()) {
 							return rst.getInt(1) > 0;
 						} else {
 							return false;
 						}
-					} finally {
-						rst.close();
 					}
-				} finally {
-					stmt.close();
 				}
-			} finally {
-				connection.close();
 			}
 		} catch(SQLException exc) {
 			throw new RuntimeException(exc);
@@ -105,28 +96,19 @@ public class RipRequestQueue implements Closeable {
 	 */
 	public RipRequest getRipRequestById(long id) {
 		try {
-			final java.sql.Connection connection = dataSource.getConnection();
-			try {
-				final PreparedStatement stmt = connection.prepareStatement(buildSelectByIdQuery());
-				try {
+			try (final java.sql.Connection connection = dataSource.getConnection()) {
+				try (final PreparedStatement stmt = connection.prepareStatement(buildSelectByIdQuery())) {
 					stmt.setLong(1, id);
 					
-					final ResultSet rst = stmt.executeQuery();
-					try {
+					try (final ResultSet rst = stmt.executeQuery()) {
 						final List<RipRequest> requests = processResultSet(rst);
 						if (requests.isEmpty()) {
 							return null;
 						} else {
 							return requests.get(0);
 						}
-					} finally {
-						rst.close();
 					}
-				} finally {
-					stmt.close();
 				}
-			} finally {
-				connection.close();
 			}
 		} catch(SQLException exc) {
 			throw new RuntimeException(exc);
@@ -138,21 +120,12 @@ public class RipRequestQueue implements Closeable {
 	 */
 	private List<RipRequest> executeRipRequestQuery(String query) {
 		try {
-			final java.sql.Connection connection = dataSource.getConnection();
-			try {
-				final PreparedStatement stmt = connection.prepareStatement(query);
-				try {
-					final ResultSet rst = stmt.executeQuery();
-					try {
+			try (final java.sql.Connection connection = dataSource.getConnection()) {
+				try (final PreparedStatement stmt = connection.prepareStatement(query)) {
+					try (final ResultSet rst = stmt.executeQuery()) {
 						return processResultSet(rst);
-					} finally {
-						rst.close();
 					}
-				} finally {
-					stmt.close();
 				}
-			} finally {
-				connection.close();
 			}
 		} catch(SQLException exc) {
 			throw new RuntimeException(exc);
@@ -163,36 +136,27 @@ public class RipRequestQueue implements Closeable {
 	 * Inserts a new rip request into the database.
 	 * @return the ID of the new rip request
 	 */
-	protected long insertRipRequest() {
+	private long insertRipRequest() {
 		final Date startDate = Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTime();
 		
 		try {
-			final java.sql.Connection connection = dataSource.getConnection();
-			try {
-				PreparedStatement stmt = connection.prepareStatement("INSERT INTO mtgpricer.rip_request(start_date) values (?)", Statement.RETURN_GENERATED_KEYS);
-				try {
+			try (final java.sql.Connection connection = dataSource.getConnection()) {
+				try (PreparedStatement stmt = connection.prepareStatement("INSERT INTO mtgpricer.rip_request(start_date) values (?)", Statement.RETURN_GENERATED_KEYS)) {
 					stmt.setTimestamp(1, new java.sql.Timestamp(startDate.getTime()));
 					
 					if (stmt.executeUpdate() != 1) {
 						throw new IllegalStateException("Unable to create new rip request");
 					}
 					
-					final ResultSet rst = stmt.getGeneratedKeys();
-					try {
+					try (final ResultSet rst = stmt.getGeneratedKeys()) {
 						if (rst.next()) {
 							return rst.getLong(1);
 						} else {
 							throw new IllegalStateException("Failed to create rip_request; no ID returned");
 						}
-					} finally {
-						rst.close();
 					}
 					
-				} finally {
-					stmt.close();
 				}
-			} finally {
-				connection.close();
 			}
 		} catch(SQLException exc) {
 			throw new IllegalStateException("Failed to create rip_request.", exc);
@@ -202,13 +166,11 @@ public class RipRequestQueue implements Closeable {
 	/**
 	 * Updates the finish date for the request at the given ID 
 	 */
-	protected void updateRipRequestFinishDate(long id, Date finishDate) {
+	private void updateRipRequestFinishDate(long id, Date finishDate) {
 		assert finishDate != null;
 		try {
-			final java.sql.Connection connection = dataSource.getConnection();
-			try {
-				PreparedStatement stmt = connection.prepareStatement("UPDATE mtgpricer.rip_request SET finish_date = ? WHERE rip_request_id = ?");
-				try {
+			try (final java.sql.Connection connection = dataSource.getConnection()) {
+				try (final PreparedStatement stmt = connection.prepareStatement("UPDATE mtgpricer.rip_request SET finish_date = ? WHERE rip_request_id = ?");) {
 					stmt.setTimestamp(1, new java.sql.Timestamp(finishDate.getTime()));
 					stmt.setLong(2, id);
 					
@@ -216,11 +178,7 @@ public class RipRequestQueue implements Closeable {
 						throw new IllegalStateException("Unable to update rip_request: " + id);
 					}
 					
-				} finally {
-					stmt.close();
 				}
-			} finally {
-				connection.close();
 			}
 		} catch(SQLException exc) {
 			throw new IllegalStateException("Failed to update rip_request: " + id, exc);

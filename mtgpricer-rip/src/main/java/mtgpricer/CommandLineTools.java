@@ -19,11 +19,8 @@ public class CommandLineTools {
 	 */
 	public static void run(Class<? extends CommandLineTool> toolClass, String[] args) throws Exception {
 		assert toolClass != null;
-		final ConfigurableApplicationContext context = SpringApplicationContextFactory.create();
-		try {
+		try (final ConfigurableApplicationContext context = SpringApplicationContextFactory.create()) {
 			context.getBean(toolClass).run(args != null ? args : new String[0]);
-		} finally {
-			context.close();
 		}
 	}
 }

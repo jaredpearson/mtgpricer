@@ -3,7 +3,7 @@ package mtgpricer.bridge;
 import mtgpricer.Display;
 
 /**
- * Processes and moves the data the price data information that is ripped into the storage that
+ * Processes and moves the price data information that is ripped into the storage that
  * is used by the website for information. This could be just updating values in the site or 
  * more complex operations like collecting statistics.
  * @author jared.pearson

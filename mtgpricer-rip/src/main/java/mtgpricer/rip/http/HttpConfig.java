@@ -8,15 +8,22 @@ import org.springframework.context.annotation.Lazy;
 @Configuration
 @ComponentScan
 public class HttpConfig {
-	
+
 	@Bean
 	@Lazy
 	public PageRequesterFactory pageRequesterFactory() {
-		return new PageRequesterFactory() {
-			public PageRequester create() {
-				return new HttpPageRequester();
-			}
-		};
+		return new PageRequesterFactoryImpl();
 	}
 	
+	private static final class PageRequesterFactoryImpl implements PageRequesterFactory {
+		@Override
+		public PageRequester create() {
+			return new HttpPageRequester();
+		}
+
+		@Override
+		public PageRequester createCachedPageRequester() {
+			return new CachedPageRequestor(this.create());
+		}
+	}
 }

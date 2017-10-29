@@ -36,11 +36,8 @@ class MtgJsonAllSetsFileLoader {
 	private Map<String, CardSetInfo> loadCardSetFromCatalogFile(Resource resource) throws IOException {
 		final Map<String, CardSetInfo> cardSetByCode;
 		final Type type = new com.google.gson.reflect.TypeToken<Map<String, CardSetInfo>>() {}.getType();
-		final Reader reader = resource.getReader();
-		try {
+		try (final Reader reader = resource.getReader()) {
 			cardSetByCode = gson.fromJson(reader, type);
-		} finally {
-			reader.close();
 		}
 		return cardSetByCode;
 	}

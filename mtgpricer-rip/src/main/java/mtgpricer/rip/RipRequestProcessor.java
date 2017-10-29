@@ -32,6 +32,7 @@ public class RipRequestProcessor implements Runnable {
 		this.listener = listener != null ? listener : new ProcessRipRequestListenerBase(){};
 	}
 	
+	@Override
 	public void run() {
 		final Display display = Displays.createForPrintStream(System.out);
 		
@@ -59,8 +60,8 @@ public class RipRequestProcessor implements Runnable {
 	 * @author jared.pearson
 	 */
 	public interface ProcessRipRequestListener {
-		public void onFinished();
-		public void onFailed(String message, Throwable throwable);
+		void onFinished();
+		void onFailed(String message, Throwable throwable);
 	}
 	
 	/**

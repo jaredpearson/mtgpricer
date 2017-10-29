@@ -33,64 +33,54 @@ class CardKingdomSiteIndexParser implements SiteIndexParser {
 		this.parserRules = siteParserRules;
 	}
 
-	public SiteIndex parseHtml(String html) {
+	@Override
+	public SiteIndex parseHtml(final String html) {
 		final Document doc = Jsoup.parse(html);
-		final String selector = ".colleft > .col2 > a, .colleft > .col2 > b";
+		final String selector = ".anchorList td a";
 		final Elements headerAndLinkElements = doc.select(selector);
 		if (headerAndLinkElements.isEmpty()) {
 			throw new IllegalStateException(String.format("Expected \"%s\" to be found", selector));
 		}
 		
-		final List<SiteIndexCardSet> sets = new ArrayList<SiteIndexCardSet>();
-		boolean inMtgSection = false;
-		for (Element el : headerAndLinkElements) {
-			final String text = Strings.nullToEmpty(el.text());
-			if (inMtgSection) {
-				if (el.tagName().equals("a")) {
-					final String realName = Strings.nullToEmpty(el.text()).trim();
-					if (realName.length() == 0) {
-						continue;
-					}
-					
-					// skip any name in the ignore list
-					if (parserRules.isCardSetNameIgnored(realName)) {
-						logger.finer("Skipping \"" + realName + "\" since it's in the skip list.");
-						continue;
-					}
-					
-					// check the name translation map
-					final String overrideName = parserRules.getCardSetNameOverride(realName);
-					final String name;
-					if (overrideName != null) {
-						name = overrideName;
-						logger.finer("Changing name from \"" + realName + "\" to \"" + name + "\" since it's in the translation.");
-					} else {
-						name = realName;
-					}
-					
-					// attempt to map the card set from the catalog
-					final CardSet cardSet;
-					if (!cardCatalog.containsCardSetWithName(name)) {
-						logger.warning(String.format("Unknown set with name \"%s\". To fix, either add it to the card catalog or add it to the ignore list.", name));
-						cardSet = null;
-					} else {
-						cardSet = cardCatalog.getCardSetByName(name);
-					}
-					
-					final String cardSetName = (cardSet != null) ? cardSet.getName() : null;
-					final String cardSetCode = (cardSet != null) ? cardSet.getCode() : null;
-					
-					// Card Kingdom links to the set's about page from the index
-					final String setAboutUrl = el.attr("href");
-					
-					final SiteIndexCardSet set = new SiteIndexCardSet(cardSetName, realName, setAboutUrl, cardSetCode);
-					sets.add(set);
-				} else if(el.tagName().equals("b")) {
-					inMtgSection = false;
-				}
-			} else if (el.tagName().equals("b") && "Magic: the Gathering".equals(text)) {
-				inMtgSection = true;
+		final List<SiteIndexCardSet> sets = new ArrayList<>();
+		for (final Element el : headerAndLinkElements) {
+			final String realName = Strings.nullToEmpty(el.text()).trim();
+			if (realName.length() == 0) {
+				continue;
 			}
+			
+			// skip any name in the ignore list
+			if (parserRules.isCardSetNameIgnored(realName)) {
+				logger.finer("Skipping \"" + realName + "\" since it's in the skip list.");
+				continue;
+			}
+			
+			// check the name translation map
+			final String overrideName = parserRules.getCardSetNameOverride(realName);
+			final String name;
+			if (overrideName != null) {
+				name = overrideName;
+				logger.finer("Changing name from \"" + realName + "\" to \"" + name + "\" since it's in the translation.");
+			} else {
+				name = realName;
+			}
+			
+			// attempt to map the card set from the catalog
+			final CardSet cardSet;
+			if (!cardCatalog.containsCardSetWithName(name)) {
+				logger.warning(String.format("Unknown set with name \"%s\". To fix, either add it to the card catalog or add it to the ignore list.", name));
+				cardSet = null;
+			} else {
+				cardSet = cardCatalog.getCardSetByName(name);
+			}
+			
+			final String cardSetName = (cardSet != null) ? cardSet.getName() : null;
+			final String cardSetCode = (cardSet != null) ? cardSet.getCode() : null;
+			
+			// Card Kingdom links to the set's about page from the index
+			final String setAboutUrl = el.attr("href");
+			
+			sets.add(new SiteIndexCardSet(cardSetName, realName, setAboutUrl, cardSetCode));
 		}
 		return new SiteIndex(sets);
 	}

@@ -21,7 +21,7 @@ import mtgpricer.rip.http.PageRequester;
  */
 public class CardKingdomSite {
 	private static final Logger logger = Logger.getLogger(CardKingdomSite.class.getName());
-	private static final String cardKingdomUrl = "http://www.cardkingdom.com/";
+	private static final String cardKingdomUrl = "https://www.cardkingdom.com/";
 	private final CardCatalog cardCatalog;
 	private final PageRequester pageRequester;
 	private final CardKingdomSiteIndexParser cardSetIndexParser;
@@ -49,7 +49,7 @@ public class CardKingdomSite {
 		final SiteIndex siteIndex = requestSiteIndex();
 		logger.info("Site index retrieved. Getting set information for " + siteIndex.getCardSets().size() + " sets.");
 
-		final List<CardSetPriceInfo> cardSets = new ArrayList<CardSetPriceInfo>();
+		final List<CardSetPriceInfo> cardSets = new ArrayList<>();
 		for (SiteIndexCardSet cardSetIndex : siteIndex.getCardSets()) {
 			final CardSetPriceInfo cardSet = requestCardSetInfo(cardSetIndex);
 			cardSets.add(cardSet);
@@ -62,9 +62,8 @@ public class CardKingdomSite {
 	 * Request the site index from Card Kingdom.
 	 */
 	private SiteIndex requestSiteIndex() throws IOException {
-		final String html = pageRequester.getHtml(cardKingdomUrl);
-		final SiteIndex siteIndex = cardSetIndexParser.parseHtml(html);
-		return siteIndex;
+		final String html = pageRequester.getHtml("https://www.cardkingdom.com/catalog/magic_the_gathering/by_az");
+		return cardSetIndexParser.parseHtml(html);
 	}
 	
 	/**
@@ -87,32 +86,20 @@ public class CardKingdomSite {
 	/**
 	 * Gets all of the pages of cards for the given set.
 	 */
-	private List<CardKindgomCardSetPage> requestPages(SiteIndexCardSet cardSet) throws IOException {
+	private List<CardKindgomCardSetPage> requestPages(final SiteIndexCardSet cardSet) throws IOException {
 		assert cardSet != null;
 		
-		boolean visitedListPage = false;
+		// attempt to find the card set from the catalog
+		final CardSet cardSetInfo;
+		if (cardSet != null) { 
+			cardSetInfo = this.cardCatalog.getCardSetByCode(cardSet.getSetCode());
+		} else {
+			cardSetInfo = null;
+		}
+		
 		final List<CardKindgomCardSetPage> pages = new ArrayList<CardKindgomCardSetPage>();
 		String url = cardSet.getUrl();
 		while(url != null) {
-			
-			// CardKindom uses one URL for the "About" card set page and the list of cards within the set. The "About" page
-			// has a link to the list that must be clicked after the loading the "About" page. This only has to be clicked
-			// once per visit.
-			if (!visitedListPage) {
-				final String aboutTabUrl = cardSet.getUrl();
-				final String setCategoryId = aboutTabUrl.substring(aboutTabUrl.lastIndexOf("/") + 1);
-				final String cardTabUrl = "http://www.cardkingdom.com/catalog/set_model/mtg_card?category_id=" + setCategoryId;
-				pageRequester.getHtml(cardTabUrl);
-				visitedListPage = true;
-			}
-			
-			// attempt to find the card set from the catalog
-			final CardSet cardSetInfo;
-			if (cardSet != null) { 
-				cardSetInfo = this.cardCatalog.getCardSetByCode(cardSet.getSetCode());
-			} else {
-				cardSetInfo = null;
-			}
 			
 			// attempt to find the parser rules corresponding to the card set
 			final CardParserRules cardSetParserRule;

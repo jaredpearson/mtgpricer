@@ -18,12 +18,9 @@ public class HttpPageRequester implements PageRequester {
 	
 	public String getHtml(String url) throws IOException {
 		final HttpGet get = new HttpGet(url);
-		final CloseableHttpResponse response = client.execute(get);
-		try {
+		try (final CloseableHttpResponse response = client.execute(get)) {
 			HttpEntity entity = response.getEntity();
 			return EntityUtils.toString(entity);
-		} finally {
-			response.close();
 		}
 	}
 	

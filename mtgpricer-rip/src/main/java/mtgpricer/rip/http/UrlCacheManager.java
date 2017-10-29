@@ -34,6 +34,7 @@ class UrlCacheManager implements Closeable {
 	private CacheIndex cacheIndex;
 	private final File cacheDir;
 	private final File indexFile;
+	private final Gson gson;
 	
 	public UrlCacheManager() {
 		this(new File(".html_cache"), "index.json");
@@ -42,6 +43,7 @@ class UrlCacheManager implements Closeable {
 	public UrlCacheManager(File cacheDir, String indexFileName) {
 		this.cacheDir = cacheDir;
 		this.indexFile = new File(cacheDir, indexFileName);
+		this.gson = createGson();
 	}
 	
 	/**
@@ -116,13 +118,11 @@ class UrlCacheManager implements Closeable {
 			logger.fine("Deleting existing file from cache: " + cacheFile.getAbsolutePath());
 			cacheFile.delete();
 		}
-		final FileWriter fileWriter = new FileWriter(cacheFile);
-		try {
+		try (final FileWriter fileWriter = new FileWriter(cacheFile)) {
 			logger.fine("Writing file to cache: " + cacheFile.getAbsolutePath());
 			fileWriter.write(html);
-		} finally {
-			fileWriter.close();
 		}
+		flushCacheIndexToFile();
 	}
 	
 	public void close() throws IOException {
@@ -152,17 +152,13 @@ class UrlCacheManager implements Closeable {
 	/**
 	 * Loads the index file that holds all of the information about the files stored in the cache.
 	 */
-	private static CacheIndex loadCacheIndexFromFile(File indexFile) throws IOException {
+	private CacheIndex loadCacheIndexFromFile(File indexFile) throws IOException {
 		if (!indexFile.exists()) {
 			return new CacheIndex();
 		}
 		
-		final Gson gson = newGson();
-		final FileReader fileReader = new FileReader(indexFile);
-		try {
-			return gson.fromJson(fileReader, CacheIndex.class);
-		} finally {
-			fileReader.close();
+		try (final FileReader fileReader = new FileReader(indexFile)) {
+			return this.gson.fromJson(fileReader, CacheIndex.class);
 		}
 	}
 	
@@ -172,22 +168,17 @@ class UrlCacheManager implements Closeable {
 	private void flushCacheIndexToFile() throws IOException {
 		ensureCacheDir();
 		
-		final Gson gson = newGson();
-		final FileWriter fileWriter = new FileWriter(indexFile);
-		try {
-			gson.toJson(cacheIndex, fileWriter);
-		} finally {
-			fileWriter.close();
+		try (final FileWriter fileWriter = new FileWriter(indexFile)) {
+			this.gson.toJson(cacheIndex, fileWriter);
 		}
 	}
 	
-	private static Gson newGson() {
+	private static Gson createGson() {
 		final GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapter(CacheIndex.class, new CacheIndexSerializer());
 		gsonBuilder.registerTypeAdapter(CacheIndex.class, new CacheIndexDeserializer());
 		
-		final Gson gson = gsonBuilder.create();
-		return gson;
+		return gsonBuilder.create();
 	}
 	
 	private static class CacheIndexSerializer implements JsonSerializer<CacheIndex> {

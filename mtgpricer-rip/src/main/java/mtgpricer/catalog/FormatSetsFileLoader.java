@@ -35,15 +35,12 @@ class FormatSetsFileLoader {
 		assert resource != null;
 		
 		final JsonObject rootObject;
-		final Reader reader = resource.getReader();
-		try {
+		try (final Reader reader = resource.getReader()) {
 			final JsonElement jsonElement = gson.fromJson(reader, JsonElement.class);
 			rootObject = jsonElement.getAsJsonObject();
-		} finally {
-			reader.close();
 		}
 		
-		final Map<String, Set<TournamentFormat>> setCodeToFormats = new HashMap<String, Set<TournamentFormat>>();
+		final Map<String, Set<TournamentFormat>> setCodeToFormats = new HashMap<>();
 		for (final Map.Entry<String, JsonElement> entry : rootObject.entrySet()) {
 			final TournamentFormat format;
 			if ("standard".equals(entry.getKey())) {
@@ -60,7 +57,7 @@ class FormatSetsFileLoader {
 					final String setCode = item.getAsString();
 					
 					if (!setCodeToFormats.containsKey(setCode)) {
-						setCodeToFormats.put(setCode, new HashSet<TournamentFormat>(TournamentFormat.values().length));
+						setCodeToFormats.put(setCode, new HashSet<>(TournamentFormat.values().length));
 					}
 					
 					setCodeToFormats.get(setCode).add(format);

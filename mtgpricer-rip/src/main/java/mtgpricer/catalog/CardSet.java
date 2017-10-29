@@ -29,10 +29,10 @@ public class CardSet implements Comparable<CardSet> {
 		this.name = cardSetInfo.getName();
 		this.validFormats = Collections.unmodifiableSet(validFormats);
 		
-		final List<Card> cards = new ArrayList<Card>(cardSetInfo.getCards().size());
-		final Map<String, Card> cardNumberToCard = new HashMap<String, Card>();
-		final Map<String, Card> cardNameToCard = new HashMap<String, Card>();
-		final Map<Integer, Card> multiverseIdToCard = new HashMap<Integer, Card>();
+		final List<Card> cards = new ArrayList<>(cardSetInfo.getCards().size());
+		final Map<String, Card> cardNumberToCard = new HashMap<>();
+		final Map<String, Card> cardNameToCard = new HashMap<>();
+		final Map<Integer, Card> multiverseIdToCard = new HashMap<>();
 		for (final CardInfo cardInfo : cardSetInfo.getCards()) {
 			final Card card = new Card(setCode, cardInfo, validFormats.contains(TournamentFormat.STANDARD));
 			

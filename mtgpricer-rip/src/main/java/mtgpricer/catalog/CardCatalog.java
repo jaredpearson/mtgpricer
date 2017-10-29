@@ -1,9 +1,9 @@
 package mtgpricer.catalog;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
@@ -17,11 +17,13 @@ public class CardCatalog {
 	private final Map<String, CardSet> cardSetByName;
 	private final Map<String, CardSet> cardSetByCode;
 	
-	public CardCatalog(Collection<? extends CardSetInfo> cardSetInfos, Map<String, Set<TournamentFormat>> setCodeToFormats) {
+	public CardCatalog(
+			final Collection<? extends CardSetInfo> cardSetInfos,
+			final Map<String, Set<TournamentFormat>> setCodeToFormats) {
 		assert cardSetInfos != null;
-		final Set<CardSet> newCardSetsSet = new TreeSet<CardSet>();
-		final Map<String, CardSet> cardSetByCodeCopy = new HashMap<String, CardSet>();
-		final Map<String, CardSet> cardSetByName = new HashMap<String, CardSet>(cardSetByCodeCopy.size());
+		final Set<CardSet> newCardSetsSet = new TreeSet<>();
+		final Map<String, CardSet> cardSetByCodeCopy = new HashMap<>();
+		final Map<String, CardSet> cardSetByName = new HashMap<>(cardSetByCodeCopy.size());
 		
 		for (final CardSetInfo cardSetInfo : cardSetInfos) {
 			final String setCode = cardSetInfo.getCode();
@@ -70,10 +72,7 @@ public class CardCatalog {
 	 * is returned.
 	 */
 	public Card getCardWithMultiverseId(int multiverseId) {
-		final Set<Integer> multiverseIds = new HashSet<Integer>(1);
-		multiverseIds.add(multiverseId);
-		
-		final Map<Integer, Card> multiverseIdToCards = getCardsWithMultiverseIds(multiverseIds);
+		final Map<Integer, Card> multiverseIdToCards = getCardsWithMultiverseIds(Arrays.asList(multiverseId));
 		return multiverseIdToCards.get(multiverseId);
 	}
 	

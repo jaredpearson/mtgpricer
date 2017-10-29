@@ -13,10 +13,13 @@ public class SiteParserRules {
 	private final Map<String, String> cardSetNameOverride;
 	private final Map<String, CardParserRules> setCodeToParserRule;
 	
-	public SiteParserRules(final Set<String> cardSetNamesToIgnore, final  Map<String, String> cardSetNameOverride, final Map<String, CardParserRules> setCodeToParserRule) {
-		this.cardSetNamesToIgnore = (cardSetNamesToIgnore != null) ? cardSetNamesToIgnore : Collections.<String>emptySet();
-		this.cardSetNameOverride = (cardSetNameOverride != null) ? cardSetNameOverride : Collections.<String, String>emptyMap();
-		this.setCodeToParserRule = (setCodeToParserRule != null) ? setCodeToParserRule : Collections.<String, CardParserRules>emptyMap();
+	public SiteParserRules(
+			final Set<String> cardSetNamesToIgnore,
+			final Map<String, String> cardSetNameOverride,
+			final Map<String, CardParserRules> setCodeToParserRule) {
+		this.cardSetNamesToIgnore = (cardSetNamesToIgnore != null) ? cardSetNamesToIgnore : Collections.emptySet();
+		this.cardSetNameOverride = (cardSetNameOverride != null) ? cardSetNameOverride : Collections.emptyMap();
+		this.setCodeToParserRule = (setCodeToParserRule != null) ? setCodeToParserRule : Collections.emptyMap();
 	}
 	
 	public boolean isCardSetNameIgnored(String name) {

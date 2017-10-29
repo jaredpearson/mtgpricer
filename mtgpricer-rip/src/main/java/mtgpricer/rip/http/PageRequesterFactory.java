@@ -11,5 +11,13 @@ public interface PageRequesterFactory {
 	 * held by the instance.
 	 * @return a new page requester instance
 	 */
-	public PageRequester create();
+	PageRequester create();
+	
+	/**
+	 * Creates a new page requestor instance that is backed by a cache. The cache is based on the currently configured
+	 * cache implementation. Make sure to call the close method to release the resources
+	 * held by the instance.
+	 * @return a new page requester instance
+	 */
+	PageRequester createCachedPageRequester();
 }

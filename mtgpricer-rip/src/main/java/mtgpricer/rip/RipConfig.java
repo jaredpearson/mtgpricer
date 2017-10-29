@@ -44,8 +44,8 @@ public class RipConfig {
 	
 	@Bean
 	@Lazy
-	public mtgpricer.rip.Main ripMain() {
-		return new mtgpricer.rip.Main(ripProcessor());
+	public mtgpricer.rip.Main ripMain(RipProcessor ripProcessor, PageRequesterFactory pageRequesterFactory) {
+		return new mtgpricer.rip.Main(ripProcessor, pageRequesterFactory);
 	}
 	
 	@Bean

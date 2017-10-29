@@ -1381,9 +1381,9 @@
       "Forest (63 A)": 63,
       "Forest (64 B)": 64,
       "Forest (65 C)": 65,
-      "Island (60 A)": 66,
-      "Island (61 B)": 67,
-      "Island (62 C)": 68,
+      "Island (60 A)": 60,
+      "Island (61 B)": 61,
+      "Island (62 C)": 62,
       "Plains (30 A)": 30,
       "Plains (31 B)": 31,
       "Plains (32 C)": 32,
@@ -1487,7 +1487,7 @@
       "Swamp (42 A)": "42",
       "Swamp (43 B)": "43",
       "Swamp (44 C)": "44",
-      "Lim-Dul\u0027s High Guard": "6"
+      "Lim-Dul\u0027s High Guard": "6a"
     },
     "multiverseOverrides": {}
   },

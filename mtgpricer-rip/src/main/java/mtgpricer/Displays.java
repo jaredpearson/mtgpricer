@@ -16,11 +16,19 @@ public class Displays {
 	 */
 	public static Display createForPrintStream(final PrintStream printStream) {
 		assert printStream != null;
-		return new Display() {
-			public void writeln(String value) {
-				printStream.println(value);
-				printStream.flush();
-			}
-		};
+		return new PrintStreamDisplay(printStream);
+	}
+	
+	private static final class PrintStreamDisplay implements Display {
+		private final PrintStream printStream;
+
+		private PrintStreamDisplay(PrintStream printStream) {
+			this.printStream = printStream;
+		}
+
+		public void writeln(String value) {
+			printStream.println(value);
+			printStream.flush();
+		}
 	}
 }

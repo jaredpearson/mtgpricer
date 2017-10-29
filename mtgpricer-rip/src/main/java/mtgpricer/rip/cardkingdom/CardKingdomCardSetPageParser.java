@@ -33,35 +33,31 @@ class CardKingdomCardSetPageParser {
 	 * @param parserRule
 	 * @return
 	 */
-	public CardKindgomCardSetPage parseHtml(final String url, final String html, final CardSet cardSet, final CardParserRules parserRule) {
-		final Document doc = Jsoup.parse(html);
-		final String nextPageUrl = getNextPageUrl(doc);
-		
-		final Set<String> unknownCardNames = new HashSet<String>(); 
-		
-		final List<CardPriceInfo> cards = new ArrayList<CardPriceInfo>();
-		final Elements tableRowElements = doc.select("table.grid").eq(1).select("tr:gt(0)");
-		for (final Element tableRowElement : tableRowElements) {
-			final Elements rowCellElements = new Elements(tableRowElement).select("td");
-			if (rowCellElements.size() == 10) {
-				
-				final Element cardNameEl = rowCellElements.get(0);
+	public CardKindgomCardSetPage parseHtml(
+			final String url,
+			final String html,
+			final CardSet cardSet,
+			final CardParserRules parserRule) {
+		try {
+			final Document doc = Jsoup.parse(html);
+			final String nextPageUrl = getNextPageUrl(doc);
+			
+			final Set<String> unknownCardNames = new HashSet<>(); 
+			
+			final List<CardPriceInfo> cards = new ArrayList<>();
+			final Elements itemElements = doc.select(".productCardWrapper .itemContentWrapper");
+			for (final Element itemElement : itemElements) {
+				final Element cardNameEl = itemElement.getElementsByClass("productDetailTitle").first();
 				final String rawCardName = Strings.nullToEmpty(cardNameEl.text()).trim();
 				if (rawCardName.length() == 0) {
 					logger.finest("Skipping a card with no name");
 					continue;
 				}
-				
-				final Element conditionEl = rowCellElements.get(6);
-				final String conditionValue = conditionEl.text();
-				
-				final Element priceEl = rowCellElements.get(8);
-				
 				if (parserRule.isIgnored(rawCardName)) {
 					logger.finer("Skipping \"" + rawCardName + "\" since it's in the skip list.");
 					continue;
 				}
-
+	
 				Card card = null;
 				if (cardSet != null) {
 					card = attemptToFindCard(cardSet, parserRule, rawCardName);
@@ -70,22 +66,44 @@ class CardKingdomCardSetPageParser {
 					unknownCardNames.add(rawCardName);
 				}
 				
-				final String cardNumber = card != null ? card.getNumber() : null;
-				final String cardName = card != null ? card.getName() : null;
-				final Integer multiverseId = card != null ? card.getMultiverseId() : null;
-				final String rawPrice = Strings.nullToEmpty(priceEl.text()).trim();
-				final Double price = parsePriceValue(rawPrice);
-				if (price == null && rawPrice != null) {
-					logger.warning("Unable to parse price for " + rawCardName + ": " + rawPrice);
+				// for each card, there is a list containing condition and price
+				for (final Element conditionEl : itemElement.getElementsByClass("itemAddToCart")) {
+					
+					final String conditionValue;
+					if (conditionEl.classNames().contains("NM")) {
+						conditionValue = "NM";
+					} else if (conditionEl.classNames().contains("EX")) {
+						conditionValue = "EX";
+					} else if (conditionEl.classNames().contains("VG")) {
+						conditionValue = "VG";
+					} else if (conditionEl.classNames().contains("G")) {
+						conditionValue = "G";
+					} else {
+						conditionValue = null;
+						logger.warning("Unable to determine condition for " + rawCardName + ": " + conditionEl.className());
+					}
+					
+					final Element priceEl = conditionEl.select(".stylePrice").first();
+					final String rawPrice = Strings.nullToEmpty(priceEl.text()).trim();
+					final Double price = parsePriceValue(rawPrice);
+					if (price == null && rawPrice != null) {
+						logger.warning("Unable to parse price for " + rawCardName + ": " + rawPrice);
+					}
+	
+					final String cardNumber = card != null ? card.getNumber() : null;
+					final String cardName = card != null ? card.getName() : null;
+					final Integer multiverseId = card != null ? card.getMultiverseId() : null;
+					
+					cards.add(new CardPriceInfo(cardName, rawCardName, cardNumber, multiverseId, url, price, rawPrice, conditionValue));
 				}
-				
-				cards.add(new CardPriceInfo(cardName, rawCardName, cardNumber, multiverseId, url, price, rawPrice, conditionValue));
 			}
+			
+			logUnknownCards(url, cardSet, unknownCardNames);
+			
+			return new CardKindgomCardSetPage(nextPageUrl, cards);
+		} catch (Throwable t) {
+			throw new RuntimeException("Exception thrown while parsing page: " + url, t);
 		}
-		
-		logUnknownCards(url, cardSet, unknownCardNames);
-		
-		return new CardKindgomCardSetPage(nextPageUrl, cards);
 	}
 
 	private void logUnknownCards(final String url, final CardSet cardSet, final Set<String> unknownCardNames) {
@@ -148,19 +166,28 @@ class CardKingdomCardSetPageParser {
 		return card;
 	}
 	
-	private String getNextPageUrl(Document doc) {
+	private String getNextPageUrl(final Document doc) {
 		assert doc != null;
-		final Elements nextPageElements = doc.select("table.grid").eq(0).select("td").eq(1).select("a:matchesOwn(next)");
-		if (!nextPageElements.isEmpty()) {
-			return nextPageElements.get(0).attr("href");
-		} else {
+		final Elements nextPageElements = doc.select(".pagination li");
+		if (nextPageElements.isEmpty()) {
+			logger.warning("Page does not contain pagination: " + doc.location());
 			return null;
+		}
+		final Element lastEl = nextPageElements.last();
+		if (lastEl.classNames().contains("active")) {
+			return null;
+		} else {
+			return lastEl.select("a").attr("href");
 		}
 	}
 	
 	private static Double parsePriceValue(String rawValue) {
 		if (rawValue == null) {
 			return null;
+		}
+		
+		if (rawValue.startsWith("$")) {
+			rawValue = rawValue.substring(1);
 		}
 		
 		try {
@@ -171,7 +198,7 @@ class CardKingdomCardSetPageParser {
 		}
 
 		// check for the sale pattern
-		final Pattern salePattern = Pattern.compile("Sale ([0-9,]*(\\.[0-9]{2})?)");
+		final Pattern salePattern = Pattern.compile("Sale $+([0-9,]*(\\.[0-9]{2})?)");
 		Matcher m = salePattern.matcher(rawValue);
 		if (m.find()) {
 			try {
