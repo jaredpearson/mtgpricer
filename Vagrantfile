@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       chef.json = {
         "mtgpricer" => {
           "data" => {
-            "sets_json" => "/vagrant/AllSets-x.json",
+            "sets_json" => "/vagrant/data/AllSets-x.json",
             "priceData" => "/vagrant/data/priceData"
           },
           "webapp" => {

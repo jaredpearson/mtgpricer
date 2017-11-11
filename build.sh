@@ -7,9 +7,9 @@ if ! [ -x "$(command -v mvn)" ]; then
 fi
 
 # download the Magic card data
-if [ ! -f AllSets-x.json ]; then
+if [ ! -f data/AllSets-x.json ]; then
     echo "Downloading AllSets-x.json"
-    curl https://mtgjson.com/json/AllSets-x.json -o AllSets-x.json
+    curl https://mtgjson.com/json/AllSets-x.json -o data/AllSets-x.json
 else
     echo "Found AllSets-x.json. Skipping download."
 fi
