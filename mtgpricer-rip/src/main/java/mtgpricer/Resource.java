@@ -35,7 +35,7 @@ public abstract class Resource {
 		@Override
 		public Reader getReader() throws IOException {
 			final InputStream inputStream = getClass().getResourceAsStream(this.name);
-			return new BufferedReader(new InputStreamReader(inputStream));
+			return new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 		}
 	}
 	

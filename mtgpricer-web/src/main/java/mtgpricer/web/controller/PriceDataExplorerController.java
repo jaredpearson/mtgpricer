@@ -99,6 +99,7 @@ public class PriceDataExplorerController {
 		final SiteParserRules loadedParserRules = siteParserRulesFactory.loadSiteParserRules();
 		
 		servletResponse.setContentType("application/json");
+		servletResponse.setCharacterEncoding("UTF-8");
 		servletResponse.setHeader("content-disposition", "attachment;filename=parserRules.json");
 		try (final ServletOutputStream outputStream = servletResponse.getOutputStream()) {
 			try (final OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8")) {
