@@ -49,7 +49,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		final FreeMarkerViewResolver resolver = new FreeMarkerViewResolver();
 		resolver.setPrefix("");
 		resolver.setSuffix(".ftl");
-		resolver.setContentType("text/html; charset=UTF-8");
+		resolver.setContentType("text/html;charset=UTF-8");
 		return resolver;
 	}
 	

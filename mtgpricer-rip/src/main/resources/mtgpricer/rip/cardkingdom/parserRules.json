@@ -1154,9 +1154,11 @@
       "ignoredNames": [],
       "nameOverrides": {
         "Dandan": "Dandân",
-        "Ghazban Ogre": "GhazbÃÂÃÂ¡n Ogre"
+        "Ghazban Ogre": "Ghazbán Ogre"
       },
       "multiverseOverrides": {
+        "Dandan": 2802,
+        "Ghazban Ogre": 2832,
         "Urza's Mine (Mouth)": 2890,
         "Urza's Mine (Pulley)": 2891,
         "Urza's Mine (Sphere)": 2888,
@@ -1166,8 +1168,8 @@
         "Urza's Power Plant (Pot)": 2894,
         "Urza's Power Plant (Sphere)": 2892,
         "Urza's Tower (Forest)": 2899,
-        "Urza's Tower (Plains)": 2898,
         "Urza's Tower (Mountains)": 2896,
+        "Urza's Tower (Plains)": 2898,
         "Urza's Tower (Shore)": 2897
       }
     },
@@ -1241,7 +1243,7 @@
       ],
       "nameOverrides": {
         "Aethersnipe": "Æthersnipe",
-        "Jotun Grunt": "JÃÂÃÂ¶tun Grunt"
+        "Jotun Grunt": "Játun Grunt"
       },
       "multiverseOverrides": {
         "Fire-Ice": 247159

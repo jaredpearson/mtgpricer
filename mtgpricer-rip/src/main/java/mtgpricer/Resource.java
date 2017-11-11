@@ -2,6 +2,7 @@ package mtgpricer;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -49,7 +50,7 @@ public abstract class Resource {
 		
 		@Override
 		public Reader getReader() throws IOException {
-			return new FileReader(this.file);
+			return new InputStreamReader(new FileInputStream(this.file), "UTF-8");
 		}
 	}
 }
