@@ -1,26 +1,35 @@
-<#include "../common/main.ftl">
+<#include "common/settings.ftl">
 <#assign updateInProgressLabel = "Update in progress">
 
-<@page title="Manage">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-2">
-				<#include "menu.ftl">
-			</div>
-			<div class="col-md-10">
-				<h2>Rip</h2>
-				<p>Crawls the price sites for price information.</p>
-				<div id="ripRequestStatus">
-					<#if latestRipDate??>
-						Last updated ${latestRipDate}
-					<#elseif latestRipStartDate??>
-						${updateInProgressLabel}
-					</#if>
-				</div>
-				<button id="executeRip" class="btn btn-default" <#if !canCreateNewRipRequest!false>disabled="disabled"</#if>>Execute Now</button>
-			</div>
-		</div>
+<@settingsPage title="Manage">
+	<h2>Rip</h2>
+	<p>Crawls the price sites for price information.</p>
+	<div id="ripRequestStatus">
+		<#if latestRipDate??>
+			Last updated ${latestRipDate}
+		<#elseif latestRipStartDate??>
+			${updateInProgressLabel}
+		</#if>
 	</div>
+	<button id="executeRip" class="btn btn-default" <#if !canCreateNewRipRequest!false>disabled="disabled"</#if>>Execute Now</button>
+	
+	<h2>Price Data Explorer</h2>
+	<table class="table table-bordered">
+	    <thead>
+	        <tr>
+	            <th>Retrieved</th>
+	            <th>Sets</th>
+	            <th>Cards</th>
+	        </tr>
+	    </thead>
+	    <#list priceSites as priceSite>
+	    <tr>
+	        <td><a href="/settings/priceDataExplorer/${priceSite.id?c}">${priceSite.retrieved?datetime}</a></td>
+	        <td>${priceSite.numberOfCardSets}</td>
+	        <td>${priceSite.numberOfCards}</td>
+	    </tr>
+	    </#list>
+	</table>
 
 <script type="text/javascript">
 
@@ -92,4 +101,4 @@ function pollRipRequest(ripRequestId, callback) {
 }
 
 </script>
-</@page>
+</@settingsPage>

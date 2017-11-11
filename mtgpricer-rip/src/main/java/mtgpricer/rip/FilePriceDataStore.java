@@ -30,8 +30,9 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 		this.gson = gson;
 	}
 	
+	@Override
 	public Set<PriceSiteInfo> loadPriceData() {
-		final Set<PriceSiteInfo> priceSites = new HashSet<PriceSiteInfo>();
+		final Set<PriceSiteInfo> priceSites = new HashSet<>();
 		for (final File file : getDataFiles()) {
 			final PriceSiteInfo priceSite = loadPriceDataForSingleFile(file);
 			if (priceSite != null) {
@@ -39,6 +40,15 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 			}
 		}
 		return priceSites;
+	}
+	
+	@Override
+	public PriceSiteInfo loadPriceDataById(long id) {
+		final File outputFile = new File(outputDir, "cardkingdom-" + id + ".json");
+		if (!outputFile.exists()) {
+			throw new PriceDataNotFoundException("Unable to find price data with ID: " + id + ".\nFile not found: " + outputFile.getAbsolutePath());
+		}
+		return this.loadPriceDataForSingleFile(outputFile);
 	}
 	
 	/**
@@ -60,7 +70,7 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 		return priceFiles;
 	}
 	
-	public PriceSiteInfo loadPriceDataForSingleFile(File file) {
+	private PriceSiteInfo loadPriceDataForSingleFile(File file) {
 		assert file != null;
 		try {
 			final PriceSiteInfo priceSiteInfo = loadPriceSiteInfoFromFile(file);
@@ -84,20 +94,28 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 		}
 	}
 	
-	public void persist(PriceSiteInfo priceSiteInfo) throws IOException {
+	@Override
+	public long persist(PriceSiteInfo priceSiteInfo) throws IOException {
 		assert priceSiteInfo != null;
 		
 		// make sure the output directory exists
 		outputDir.mkdirs();
 		
+		// for now, just use the epoch time for the ID. this will not be 
+		// sufficient if there are ever multiples being retrieved at once due to possible
+		// collisions.
+		final long id = priceSiteInfo.getRetrieved().getTime();
+		
+		final PriceSiteInfo priceSiteInfoWithId = new PriceSiteInfoBuilder(priceSiteInfo)
+				.setId(id)
+				.build();
+		
 		// write the site to the output directory 
-		final File outputFile = new File(outputDir, "cardkingdom-" + priceSiteInfo.getRetrieved().getTime() + ".json");
-		final FileWriter fileWriter = new FileWriter(outputFile);
-		try {
-			gson.toJson(priceSiteInfo, fileWriter);
-		} finally {
-			fileWriter.close();
+		final File outputFile = new File(outputDir, "cardkingdom-" + id + ".json");
+		try (final FileWriter fileWriter = new FileWriter(outputFile)) {
+			gson.toJson(priceSiteInfoWithId, fileWriter);
 		}
+		return id;
 	}
 
 	private PriceSiteInfo loadPriceSiteInfoFromFile(final File file) throws IOException {

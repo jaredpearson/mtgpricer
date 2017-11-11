@@ -13,6 +13,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Spring configuration for the general utilities
@@ -34,7 +35,9 @@ public class UtilConfig {
 	@Bean
 	@Lazy
 	public Gson standardGson() {
-		return new Gson();
+		return new GsonBuilder()
+				.setDateFormat("yyyy/MM/dd kk:mm:ss Z")
+				.create();
 	}
 
 	@Bean

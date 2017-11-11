@@ -9,14 +9,28 @@ import java.util.List;
  * @author jared.pearson
  */
 public class PriceSiteInfo {
+	private final Long id;
 	private final Date retrieved;
 	private final String url;
 	private final List<CardSetPriceInfo> cardSets;
 	
-	public PriceSiteInfo(String url, Date retrieved, List<CardSetPriceInfo> cardSets) {
+	public PriceSiteInfo(
+			Long id,
+			String url,
+			Date retrieved,
+			List<CardSetPriceInfo> cardSets) {
+		this.id = id;
 		this.url = url;
 		this.retrieved = new Date(retrieved.getTime());
 		this.cardSets = Collections.unmodifiableList(cardSets);
+	}
+
+	/**
+	 * Gets the ID of this price site info instance.
+	 * @return the ID or null if no persisted.
+	 */
+	public Long getId() {
+		return this.id;
 	}
 	
 	/**

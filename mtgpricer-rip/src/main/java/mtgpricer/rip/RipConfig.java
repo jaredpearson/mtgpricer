@@ -63,7 +63,7 @@ public class RipConfig {
 	@Bean
 	@Lazy
 	public CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory() {
-		final Resource parserRulesResource = ConfigPropertyUtils.createResource("catalog.catalogFilePath", cardKingdomParserRulesFilePath);
+		final Resource parserRulesResource = ConfigPropertyUtils.createResource("rip.cardKingdom.parserRulesFilePath", cardKingdomParserRulesFilePath);
 		return new CardKingdomSiteParserRulesFactory(parserRulesResource, utilConfig.standardGson());
 	}
 

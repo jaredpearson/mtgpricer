@@ -7,7 +7,7 @@ case $1 in
     start)
         echo "Starting mtgpricer_webapp"
         if [ ! -f $PID_PATH ]; then
-            nohup java -Dcatalog.catalogFilePath=/usr/share/mtgpricer/data/AllSets-x.json -jar /usr/share/mtgpricer/mtgpricer.jar > $LOG_FILE </dev/null &
+            nohup java -Dcatalog.catalogFilePath=/usr/share/mtgpricer/data/AllSets-x.json -Drip.outputDir=/usr/share/mtgpricer/data/priceData -jar /usr/share/mtgpricer/mtgpricer.jar > $LOG_FILE </dev/null &
             echo $! > $PID_PATH
             echo "mtgpricer_webapp started"
         fi

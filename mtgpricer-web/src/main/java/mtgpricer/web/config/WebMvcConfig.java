@@ -25,6 +25,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		super.addResourceHandlers(registry);
 		registry.addResourceHandler("**.html").addResourceLocations("/");
 		registry.addResourceHandler("/css/*").addResourceLocations("/css/");
+		registry.addResourceHandler("/js/*").addResourceLocations("/js/");
 	}
 	
 	@Bean

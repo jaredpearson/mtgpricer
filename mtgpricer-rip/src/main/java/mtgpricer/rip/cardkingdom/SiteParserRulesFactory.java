@@ -8,5 +8,10 @@ public interface SiteParserRulesFactory {
 	/**
 	 * Loads a {@link SiteParserRules} instance.
 	 */
-	public SiteParserRules loadSiteParserRules();
+	SiteParserRules loadSiteParserRules();
+	
+	/**
+	 * Saves the {@link SiteParserRules} instance.
+	 */
+	void saveSiteParserRules(SiteParserRules siteParserRules);
 }

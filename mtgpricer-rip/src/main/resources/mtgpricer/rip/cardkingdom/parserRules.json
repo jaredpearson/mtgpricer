@@ -1,18 +1,11 @@
 {
   "ignoredSets": [
-    "Deck Builder's Toolkit",
     "Collectors Ed",
     "Collectors Ed Intl",
+    "Deck Builder's Toolkit",
     "Promotional"
   ],
   "setNameOverrides": {
-    "3rd Edition": "Revised Edition",
-    "4th Edition": "Fourth Edition",
-    "5th Edition": "Fifth Edition",
-    "6th Edition": "Classic Sixth Edition",
-    "7th Edition": "Seventh Edition",
-    "8th Edition": "Eighth Edition",
-    "9th Edition": "Ninth Edition",
     "10th Edition": "Tenth Edition",
     "2010 Core Set": "Magic 2010",
     "2011 Core Set": "Magic 2011",
@@ -20,52 +13,49 @@
     "2013 Core Set": "Magic 2013",
     "2014 Core Set": "Magic 2014 Core Set",
     "2015 Core Set": "Magic 2015 Core Set",
+    "3rd Edition": "Revised Edition",
+    "4th Edition": "Fourth Edition",
+    "5th Edition": "Fifth Edition",
+    "6th Edition": "Classic Sixth Edition",
+    "7th Edition": "Seventh Edition",
+    "8th Edition": "Eighth Edition",
+    "9th Edition": "Ninth Edition",
     "Alpha": "Limited Edition Alpha",
     "Battle Royale": "Battle Royale Box Set",
     "Beatdown": "Beatdown Box Set",
     "Beta": "Limited Edition Beta",
     "Commander": "Magic: The Gathering-Commander",
     "Commander 2013": "Commander 2013 Edition",
-    "Conspiracy": "Magic: The Gathering—Conspiracy",
+    "Conspiracy": "Magic: The GatheringÃ¢ÂÂConspiracy",
     "Deckmaster": "Deckmasters",
     "Duel Decks: Ajani Vs. Nicol Bolas": "Duel Decks: Ajani vs. Nicol Bolas",
     "Duel Decks: Divine Vs. Demonic": "Duel Decks: Divine vs. Demonic",
+    "Duel Decks: Elspeth Vs. Kiora": "Duel Decks: Elspeth vs. Kiora",
     "Duel Decks: Elspeth Vs. Tezzeret": "Duel Decks: Elspeth vs. Tezzeret",
     "Duel Decks: Elves Vs. Goblins": "Duel Decks: Elves vs. Goblins",
+    "Duel Decks: Garruk Vs. Liliana": "Duel Decks: Garruk vs. Liliana",
     "Duel Decks: Heroes Vs. Monsters": "Duel Decks: Heroes vs. Monsters",
     "Duel Decks: Izzet Vs. Golgari": "Duel Decks: Izzet vs. Golgari",
     "Duel Decks: Jace Vs. Chandra": "Duel Decks: Jace vs. Chandra",
     "Duel Decks: Jace Vs. Vraska": "Duel Decks: Jace vs. Vraska",
     "Duel Decks: Knights Vs. Dragons": "Duel Decks: Knights vs. Dragons",
-    "Duel Decks: Garruk Vs. Liliana": "Duel Decks: Garruk vs. Liliana",
     "Duel Decks: Phyrexia Vs. The Coalition": "Duel Decks: Phyrexia vs. the Coalition",
-    "Duel Decks: Venser Vs. Koth": "Duel Decks: Venser vs. Koth",
     "Duel Decks: Sorin Vs. Tibalt": "Duel Decks: Sorin vs. Tibalt",
     "Duel Decks: Speed Vs. Cunning": "Duel Decks: Speed vs. Cunning",
-    "Duel Decks: Elspeth Vs. Kiora": "Duel Decks: Elspeth vs. Kiora",
+    "Duel Decks: Venser Vs. Koth": "Duel Decks: Venser vs. Koth",
     "From the Vault: Annihilation": "From the Vault: Annihilation (2014)",
     "Modern Event Deck": "Modern Event Deck 2014",
     "Modern Event Deck*": "Modern Event Deck 2014",
-    "Premium Deck Series: Fire & Lightning": "Premium Deck Series: Fire and Lightning",
     "Planechase 2012": "Planechase 2012 Edition",
     "Portal 3K": "Portal Three Kingdoms",
     "Portal II": "Portal Second Age",
+    "Premium Deck Series: Fire & Lightning": "Premium Deck Series: Fire and Lightning",
     "Ravnica": "Ravnica: City of Guilds",
     "Timeshifted": "Time Spiral \"Timeshifted\"",
     "Unlimited": "Unlimited Edition"
   },
   "sets": {
     "10E": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Dragon Token",
-        "Goblin Token",
-        "Saproling Token",
-        "Soldier Token",
-        "Wasp Token",
-        "Zombie Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (383 D)": "383",
         "Forest (382 C)": "382",
@@ -88,13 +78,21 @@
         "Forest (380 A)": "380",
         "Plains (364 A)": "364"
       },
+      "ignoredNames": [
+        "Dragon Token",
+        "Goblin Token",
+        "Saproling Token",
+        "Soldier Token",
+        "Wasp Token",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "2ED": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 888,
         "Forest (B)": 889,
@@ -111,14 +109,13 @@
         "Swamp (A)": 875,
         "Swamp (B)": 876,
         "Swamp (C)": 877,
-        "Will-O\u0027-The-Wisp": 688
+        "Will-O'-The-Wisp": 688
       }
     },
     "3ED": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 1386,
         "Forest (B)": 1387,
@@ -136,18 +133,17 @@
         "Swamp (B)": 1374,
         "Swamp (C)": 1375,
         "El-Hajjaj": 1158,
-        "Will-O\u0027-The-Wisp": 1187
+        "Will-O'-The-Wisp": 1187
       }
     },
     "4ED": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "El-Hajjaj": "El-Hajjâj",
         "Junun Efreet": "Junún Efreet",
-        "Will-O\u0027-The-Wisp": "Will-o\u0027-the-Wisp"
+        "Will-O'-The-Wisp": "Will-o'-the-Wisp"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 2377,
         "Forest (B)": 2378,
@@ -164,29 +160,27 @@
         "Swamp (A)": 2374,
         "Swamp (B)": 2375,
         "Swamp (C)": 2376,
-        "Will-O\u0027-The-Wisp": 2138
+        "Will-O'-The-Wisp": 2138
       }
     },
     "5DN": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Fold into Aether": "Fold into Æther"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Abunas\u0027 Chant": 50164
+        "Abunas' Chant": 50164
       }
     },
     "5ED": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Storm": "Æther Storm",
         "Dandan": "Dandân",
         "Ghazban Ogre": "Ghazbán Ogre"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 4171,
         "Forest (B)": 4172,
@@ -211,11 +205,6 @@
       }
     },
     "6ED": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Aether Flash": "Æther Flash"
-      },
       "numberOverrides": {
         "Island (337 C)": "337",
         "Plains (331 A)": "331",
@@ -238,15 +227,13 @@
         "Mountain (344 B)": "344",
         "Mountain (343 A)": "343"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Aether Flash": "Æther Flash"
+      },
       "multiverseOverrides": {}
     },
     "7ED": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Aether Flash": "Æther Flash",
-        "Tainted AEther": "Tainted Æther"
-      },
       "numberOverrides": {
         "Island (334 C)": "334",
         "Island (335 D)": "335",
@@ -269,20 +256,14 @@
         "Swamp (348 C)": "348",
         "Forest (328 A)": "328"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Aether Flash": "Æther Flash",
+        "Tainted AEther": "Tainted Æther"
+      },
       "multiverseOverrides": {}
     },
     "8ED": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Enormous Baloth",
-        "Eager Cadet",
-        "Giant Octopus",
-        "Silverback Ape",
-        "Sea Eagle",
-        "Vizzerdrix",
-        "Vengeance"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (337 C)": "337",
         "Plains (331 A)": "331",
@@ -305,10 +286,41 @@
         "Mountain (344 B)": "344",
         "Mountain (343 A)": "343"
       },
+      "ignoredNames": [
+        "Enormous Baloth",
+        "Eager Cadet",
+        "Giant Octopus",
+        "Silverback Ape",
+        "Sea Eagle",
+        "Vizzerdrix",
+        "Vengeance"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "9ED": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Island (337 C)": "337",
+        "Plains (331 A)": "331",
+        "Island (336 B)": "336",
+        "Swamp (340 B)": "340",
+        "Island (338 D)": "338",
+        "Swamp (339 A)": "339",
+        "Plains (332 B)": "332",
+        "Forest (350 D)": "350",
+        "Plains (334 D)": "334",
+        "Plains (333 C)": "333",
+        "Forest (347 A)": "347",
+        "Forest (348 B)": "348",
+        "Mountain (345 C)": "345",
+        "Mountain (346 D)": "346",
+        "Swamp (341 C)": "341",
+        "Swamp (342 D)": "342",
+        "Forest (349 C)": "349",
+        "Island (335 A)": "335",
+        "Mountain (344 B)": "344",
+        "Mountain (343 A)": "343"
+      },
       "ignoredNames": [
         "Coral Eel",
         "Enormous Baloth",
@@ -321,45 +333,118 @@
         "Vengeance"
       ],
       "nameOverrides": {},
-      "numberOverrides": {
-        "Island (337 C)": "337",
-        "Plains (331 A)": "331",
-        "Island (336 B)": "336",
-        "Swamp (340 B)": "340",
-        "Island (338 D)": "338",
-        "Swamp (339 A)": "339",
-        "Plains (332 B)": "332",
-        "Forest (350 D)": "350",
-        "Plains (334 D)": "334",
-        "Plains (333 C)": "333",
-        "Forest (347 A)": "347",
-        "Forest (348 B)": "348",
-        "Mountain (345 C)": "345",
-        "Mountain (346 D)": "346",
-        "Swamp (341 C)": "341",
-        "Swamp (342 D)": "342",
-        "Forest (349 C)": "349",
-        "Island (335 A)": "335",
-        "Mountain (344 B)": "344",
-        "Mountain (343 A)": "343"
-      },
       "multiverseOverrides": {}
     },
-    "ALA": {
-      "unknownNames": [],
+    "AER": {
+      "numberOverrides": {
+        "Ajani's Aid (Planeswalker Deck)": "188",
+        "Ajani's Comrade (Planeswalker Deck)": "187",
+        "Ajani, Valiant Protector (Foil - Planeswalker Deck)": "185",
+        "Inspiring Roar (Planeswalker Deck)": "186",
+        "Pendulum of Patterns (Planeswalker Deck)": "192",
+        "Submerged Boneyard (Planeswalker Deck)": "194",
+        "Tezzeret's Betrayal (Planeswalker Deck)": "191",
+        "Tezzeret's Simulacrum (Planeswalker Deck)": "193",
+        "Tezzeret, Master of Metal (Foil - Planeswalker Deck)": "190",
+        "Tranquil Expanse (Planeswalker Deck)": "189"
+      },
       "ignoredNames": [
+        "Emblem (Tezzeret)",
+        "Etherium Cell Token",
+        "Gremlin Token",
+        "Ragavan Token"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "AKH": {
+      "numberOverrides": {
+        "Cinder Barrens (Deckbuilder Toolkit)": "280",
+        "Commit // Memory": "211a",
+        "Companion of the Trials (Planeswalker Deck)": "271",
+        "Cut // Ribbons": "223a",
+        "Desiccated Naga (Planeswalker Deck)": "276",
+        "Destined // Lead": "217a",
+        "Dusk // Dawn": "210a",
+        "Failure // Comply": "221a",
+        "Forest (254)": "254",
+        "Forest (267 A)": "267",
+        "Forest (268 B)": "268",
+        "Forest (269 C)": "269",
+        "Forsaken Sanctuary (Deckbuilder Toolkit)": "281",
+        "Foul Orchard (Planeswalker Deck)": "279",
+        "Gideon's Resolve (Planeswalker Deck)": "272",
+        "Gideon, Martial Paragon (Foil - Planeswalker Deck)": "270",
+        "Graceful Cat (Planeswalker Deck)": "273",
+        "Heaven // Earth": "224a",
+        "Highland Lake (Deckbuilder Toolkit)": "282",
+        "Insult // Injury": "213a",
+        "Island (251)": "251",
+        "Island (258 A)": "258",
+        "Island (259 B)": "259",
+        "Island (260 C)": "260",
+        "Labyrinth Guardian Token": "278",
+        "Liliana's Influence (Planeswalker Deck)": "277",
+        "Liliana, Death Wielder (Foil - Planeswalker Deck)": "275",
+        "Meandering River (Deckbuilder Toolkit)": "283",
+        "Mountain (253)": "253",
+        "Mountain (264 A)": "264",
+        "Mountain (265 B)": "265",
+        "Mountain (266 C)": "266",
+        "Mouth // Feed": "214a",
+        "Never // Return": "212a",
+        "Onward // Victory": "218a",
+        "Plains (250)": "250",
+        "Plains (255 A)": "255",
+        "Plains (256 B)": "256",
+        "Plains (257 C)": "257",
+        "Prepare // Fight": "220a",
+        "Rags // Riches": "222a",
+        "Reduce // Rubble": "216a",
+        "Spring // Mind": "219a",
+        "Start // Finish": "215a",
+        "Stone Quarry (Planeswalker Deck)": "274",
+        "Submerged Boneyard (Deckbuilder Toolkit)": "284",
+        "Swamp (252)": "252",
+        "Swamp (261 A)": "261",
+        "Swamp (262 B)": "262",
+        "Swamp (263 C)": "263",
+        "Tattered Mummy (Planeswalker Deck)": "278",
+        "Timber Gorge (Deckbuilder Toolkit)": "285",
+        "Tranquil Expanse (Deckbuilder Toolkit)": "286",
+        "Woodland Stream (Deckbuilder Toolkit)": "287"
+      },
+      "ignoredNames": [
+        "Amonkhet Punch Card",
+        "Angel of Sanctions Token",
+        "Anointer Priest Token",
+        "Aven Initiate Token",
+        "Aven Wind Guide Token",
         "Beast Token",
-        "Goblin Token",
-        "Homunculus Token",
-        "Dragon Token",
-        "Saproling Token",
-        "Ooze Token",
-        "Soldier Token",
-        "Thopter Token",
-        "Skeleton Token",
+        "Cat Token",
+        "Drake Token",
+        "Emblem (Gideon)",
+        "Glyph Keeper Token",
+        "Heart-Piercer Manticore Token",
+        "Hippo Token",
+        "Honored Hydra Token",
+        "Insect Token",
+        "Oketra's Attendant Token",
+        "Sacred Cat Token",
+        "Snake Token",
+        "Tah-Crop Skirmisher Token",
+        "Temmet, Vizier of Naktamun Token",
+        "Trueheart Duelist Token",
+        "Unwavering Initiate Token",
+        "Vizier of Many Faces Token",
+        "Warrior Token",
+        "Wurm Token",
         "Zombie Token"
       ],
       "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "ALA": {
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -382,37 +467,47 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
+      "ignoredNames": [
+        "Beast Token",
+        "Goblin Token",
+        "Homunculus Token",
+        "Dragon Token",
+        "Saproling Token",
+        "Ooze Token",
+        "Soldier Token",
+        "Thopter Token",
+        "Skeleton Token",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "ALL": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Lim-Dul\u0027s High Guard": 3082,
-        "Lim-Dul\u0027s Paladin": 3222,
-        "Lim-Dul\u0027s Vault": 3223
+        "Lim-Dul's High Guard": 3082,
+        "Lim-Dul's Paladin": 3222,
+        "Lim-Dul's Vault": 3223
       }
     },
     "APC": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Mutation": "Æther Mutation"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Fire-Ice": 27166,
         "Night-Day": 26691,
         "Life-Death": 26691,
         "Illusion-Reality": 26691,
         "Order-Chaos": 27168
-
       }
     },
     "ARB": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Bird Soldier Token",
         "Dragon Token",
@@ -420,60 +515,183 @@
         "Zombie Wizard Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "ARC": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "A Display of My Dark Power (Scheme)": "8",
+        "All in Good Time (Scheme)": "1",
+        "All Shall Smolder in My Wake (Scheme)": "2",
+        "Approach My Molten Realm (Scheme)": "3",
+        "Behold the Power of Destruction (Scheme)": "4",
+        "Choose Your Champion (Scheme)": "5",
+        "Dance, Pathetic Marionette (Scheme)": "6",
+        "Embrace My Diabolical Vision (Scheme)": "9",
+        "Every Hope Shall Vanish (Scheme)": "10",
+        "Every Last Vestige Shall Rot (Scheme)": "11",
+        "Evil Comes to Fruition (Scheme)": "12",
+        "Feed the Machine (Scheme)": "14",
+        "Forest (148 A)": "148",
+        "Forest (149 B)": "149",
+        "Forest (150 C)": "150",
+        "I Bask in Your Silent Awe (Scheme)": "15",
+        "I Call on the Ancient Magics (Scheme)": "16",
+        "I Delight in Your Convulsions (Scheme)": "17",
+        "I Know All, I See All (Scheme)": "18",
+        "Ignite the Cloneforge! (Scheme)": "19",
+        "Into the Earthen Maw (Scheme)": "20",
+        "Introductions Are in Order (Scheme)": "21",
+        "Island (139 A)": "139",
+        "Island (141 C)": "141",
+        "Island (140 B)": "140",
+        "Know Naught but Fire (Scheme)": "23",
+        "Look Skyward and Despair (Scheme)": "24",
+        "May Civilization Collapse (Scheme)": "25",
+        "Mortal Flesh Is Weak (Scheme)": "26",
+        "Mountain (145 A)": "145",
+        "Mountain (146 B)": "146",
+        "Mountain (147 C)": "147",
+        "My Crushing Masterstroke (Scheme)": "27",
+        "My Genius Knows No Bounds (Scheme)": "28",
+        "My Undead Horde Awakens (Scheme)": "29",
+        "My Wish Is Your Command (Scheme)": "30",
+        "Nature Demands an Offering (Scheme)": "31",
+        "Nature Shields Its Own (Scheme)": "32",
+        "Nothing Can Stop Me Now (Scheme)": "33",
+        "Only Blood Ends Your Nightmares (Scheme)": "34",
+        "Plains (137 A)": "137",
+        "Plains (138 B)": "138",
+        "Realms Befitting My Majesty (Scheme)": "36",
+        "Roots of All Evil (Scheme)": "37",
+        "Rotted Ones, Lay Siege (Scheme)": "38",
+        "Surrender Your Thoughts (Scheme)": "39",
+        "Swamp (142 A)": "142",
+        "Swamp (143 B)": "143",
+        "Swamp (144 C)": "144",
+        "The Dead Shall Serve (Scheme)": "7",
+        "The Fate of the Flammable (Scheme)": "13",
+        "The Iron Guardian Stirs (Scheme)": "22",
+        "The Pieces Are Coming Together (Scheme)": "35",
+        "The Very Soil Shall Shake (Scheme)": "41",
+        "Tooth, Claw, and Tail (Scheme)": "40",
+        "Which of You Burns Brightest? (Scheme)": "42",
+        "Your Fate Is Thrice Sealed (Scheme)": "43",
+        "Your Puny Minds Cannot Fathom (Scheme)": "44",
+        "Your Will Is Not Your Own (Scheme)": "45"
+      },
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Spellbomb": "Æther Spellbomb"
-      },
-      "numberOverrides": {
-        "Swamp (144 C)": "144",
-        "Swamp (143 B)": "143",
-        "Mountain (146 B)": "146",
-        "Forest (148 A)": "148",
-        "Plains (138 B)": "138",
-        "Mountain (145 A)": "145",
-        "Plains (137 A)": "137",
-        "Forest (149 B)": "149",
-        "Mountain (147 C)": "147",
-        "Island (139 A)": "139",
-        "Forest (150 C)": "150",
-        "Island (141 C)": "141",
-        "Island (140 B)": "140",
-        "Swamp (142 A)": "142"
       },
       "multiverseOverrides": {
         "Wax-Wane": 220502
       }
     },
     "ARN": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Dandan": "Dandân",
         "Ghazban Ogre": "Ghazbán Ogre"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Juzam Djinn": 922,
         "Ifh-Biff Efreet": 947,
         "El-Hajjaj": 915,
         "Junun Efreet": 921,
         "Khabal Ghoul": 923,
-        "Ring of Ma\u0027ruf": 912
+        "Ring of Ma'ruf": 912
       }
     },
     "ATH": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Aesthir Glider": "19",
+        "Armageddon": "46",
+        "Armored Pegasus": "72",
+        "Benalish Knight": "73",
+        "Black Knight": "7",
+        "Brushland": "44",
+        "Canopy Spider": "64",
+        "Carnivorous Plant": "65",
+        "Combat Medic": "74",
+        "Cuombajj Witches": "22",
+        "Disenchant": "75",
+        "Drifting Meadow": "61",
+        "Erhnam Djinn": "51",
+        "Feast of the Unicorn": "23",
+        "Fireball": "27",
+        "Forest (A)": "84",
+        "Freewind Falcon": "76",
+        "Giant Growth": "66",
+        "Giant Spider": "67",
+        "Goblin Balloon Brigade": "11",
+        "Goblin Digging Team": "28",
+        "Goblin Grenade": "29",
+        "Goblin Hero": "30",
+        "Goblin King": "2",
+        "Goblin Matron": "31",
+        "Goblin Mutant": "12",
+        "Goblin Offensive": "13",
+        "Goblin Recruiter": "14",
+        "Goblin Snowman": "15",
+        "Goblin Tinkerer": "32",
+        "Goblin Vandal": "33",
+        "Goblin Warrens": "3",
+        "Gorilla Chieftain": "68",
+        "Hurricane": "52",
+        "Hymn to Tourach": "24",
+        "Hypnotic Specter": "8",
+        "Icatian Javelineers": "77",
+        "Ihsan's Shade": "10",
+        "Infantry Veteran": "78",
+        "Jalum Tome": "49",
+        "Knight of Stromgald": "9",
+        "Lady Orca": "6",
+        "Lightning Bolt": "34",
+        "Llanowar Elves": "69",
+        "Mirri, Cat Warrior": "45",
+        "Mogg Fanatic": "35",
+        "Mogg Flunkies": "36",
+        "Mogg Raider": "37",
+        "Mountain (A)": "40",
+        "Nevinyrral's Disk": "1",
+        "Order of the White Shield": "55",
+        "Overrun": "54",
+        "Pacifism": "79",
+        "Pegasus Charger": "56",
+        "Pegasus Stampede": "60",
+        "Pendelhaven": "48",
+        "Plains (A)": "86",
+        "Polluted Mire": "20",
+        "Pyrokinesis": "16",
+        "Pyrotechnics": "38",
+        "Raging Goblin": "39",
+        "Ranger en-Vec": "50",
+        "Samite Healer": "81",
+        "Scavenger Folk": "70",
+        "Serra Angel": "57",
+        "Serrated Arrows": "63",
+        "Slippery Karst": "62",
+        "Smoldering Crater": "21",
+        "Spectral Bears": "53",
+        "Strip Mine": "5",
+        "Swamp (A)": "42",
+        "Swords to Plowshares": "58",
+        "Terror": "25",
+        "Unholy Strength": "26",
+        "Uthden Troll": "17",
+        "Volcanic Dragon": "4",
+        "Warrior's Honor": "82",
+        "White Knight": "59",
+        "Woolly Spider": "71",
+        "Youthful Knight": "83"
+      },
       "ignoredNames": [
         "Forest (B)",
         "Mountain (B)",
         "Plains (B)",
-        "Swamp (B)",
-        "Sacred Mesa"
+        "Sacred Mesa",
+        "Swamp (B)"
       ],
       "nameOverrides": {
         "Forest (A)": "Forest",
@@ -481,46 +699,36 @@
         "Plains (A)": "Plains",
         "Swamp (A)": "Swamp"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "ATQ": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Mishra\u0027s Factory (Autumn)": 1071,
-        "Mishra\u0027s Factory (Summer)": 1074,
-        "Mishra\u0027s Factory (Spring)": 1072,
-        "Mishra\u0027s Factory (Winter)": 1073,
-        "Urza\u0027s Power Plant (Sphere)": 1085,
-        "Urza\u0027s Power Plant (Columns)": 1084,
-        "Urza\u0027s Power Plant (Bug)": 1087,
-        "Urza\u0027s Power Plant (Pot)": 1086,
-        "Urza\u0027s Tower (Forest)": 1088,
-        "Urza\u0027s Tower (Shore)": 1091,
-        "Urza\u0027s Tower (Plains)": 1090,
-        "Urza\u0027s Tower (Mountains)": 1089,
-        "Urza\u0027s Mine (Pulley)": 1082,
-        "Urza\u0027s Mine (Mouth)": 1081,
-        "Urza\u0027s Mine (Sphere)": 1083,
-        "Urza\u0027s Mine (Tower)": 1080
+        "Mishra's Factory (Autumn)": 1071,
+        "Mishra's Factory (Spring)": 1072,
+        "Mishra's Factory (Summer)": 1074,
+        "Mishra's Factory (Winter)": 1073,
+        "Strip Mine (A)": 1076,
+        "Strip Mine (B)": 1077,
+        "Strip Mine (C)": 1078,
+        "Strip Mine (D)": 1079,
+        "Urza's Mine (Mouth)": 1081,
+        "Urza's Mine (Pulley)": 1082,
+        "Urza's Mine (Sphere)": 1083,
+        "Urza's Mine (Tower)": 1080,
+        "Urza's Power Plant (Bug)": 1087,
+        "Urza's Power Plant (Columns)": 1084,
+        "Urza's Power Plant (Pot)": 1086,
+        "Urza's Power Plant (Sphere)": 1085,
+        "Urza's Tower (Forest)": 1088,
+        "Urza's Tower (Mountains)": 1089,
+        "Urza's Tower (Plains)": 1090,
+        "Urza's Tower (Shore)": 1091
       }
     },
     "AVR": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Angel Token",
-        "Emblem (Tamiyo, The Moon Sage)",
-        "Demon Token",
-        "Human Token (White)",
-        "Human Token (Red)",
-        "Spirit Token (White)",
-        "Spirit Token (Blue)",
-        "Zombie Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (234 B)": "234",
         "Island (233 A)": "233",
@@ -538,10 +746,68 @@
         "Swamp (236 A)": "236",
         "Plains (230 A)": "230"
       },
+      "ignoredNames": [
+        "Angel Token",
+        "Emblem (Tamiyo, The Moon Sage)",
+        "Demon Token",
+        "Human Token (White)",
+        "Human Token (Red)",
+        "Spirit Token (White)",
+        "Spirit Token (Blue)",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "BFZ": {
+      "numberOverrides": {
+        "Forest (270 A)": "270",
+        "Forest (271 B)": "271",
+        "Forest (272 C)": "272",
+        "Forest (273 D)": "273",
+        "Forest (274 E)": "274",
+        "Island (255 A)": "255",
+        "Island (256 B)": "256",
+        "Island (257 C)": "257",
+        "Island (258 D)": "258",
+        "Island (259 E)": "259",
+        "Mountain (265 A)": "265",
+        "Mountain (266 B)": "266",
+        "Mountain (267 C)": "267",
+        "Mountain (268 D)": "268",
+        "Mountain (269 E)": "269",
+        "Plains (250 A)": "250",
+        "Plains (251 B)": "251",
+        "Plains (252 C)": "252",
+        "Plains (253 D)": "253",
+        "Plains (254 E)": "254",
+        "Swamp (260 A)": "260",
+        "Swamp (261 B)": "261",
+        "Swamp (262 C)": "262",
+        "Swamp (263 D)": "263",
+        "Swamp (264 E)": "264"
+      },
+      "ignoredNames": [
+        "Dragon Token",
+        "Eldrazi Scion Token (2 A)",
+        "Eldrazi Scion Token (3 B)",
+        "Eldrazi Scion Token (4 C)",
+        "Eldrazi Token",
+        "Elemental Token",
+        "Elemental Token (Red/Green)",
+        "Emblem (Gideon, Ally of Zendikar)",
+        "Emblem (Kiora, Master of the Depths)",
+        "Emblem (Ob Nixilis Reignited)",
+        "Kor Ally Token",
+        "Knight Ally Token",
+        "Octopus Token",
+        "Plant Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "BNG": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Bird Token (White)",
         "Centaur Token",
@@ -558,14 +824,12 @@
       "nameOverrides": {
         "Unravel the Aether": "Unravel the Æther"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "BRB": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 21119,
         "Forest (B)": 22347,
@@ -606,13 +870,15 @@
       }
     },
     "BTD": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Erhnam Djinn (Foil)": "54",
+        "Sengir Vampire (Foil)": "29"
+      },
       "ignoredNames": [
         "Erhnam Djinn - Foil",
         "Sengir Vampire - Foil"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (88 A)": 27242,
         "Forest (89 B)": 27243,
@@ -629,27 +895,6 @@
       }
     },
     "C13": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Derevi, Empyrial Tactician (Oversized Foil)",
-        "Jeleva, Nephalia\u0027s Scourge (Oversized Foil)",
-        "Gahiji, Honored One (Oversized Foil)",
-        "Marath, Will of the Wild (Oversized Foil)",
-        "Nekusar, the Mindrazer (Oversized Foil)",
-        "Mayael the Anima (Oversized Foil)",
-        "Rubinia Soulsinger (Oversized Foil)",
-        "Roon of the Hidden Realm (Oversized Foil)",
-        "Oloro, Ageless Ascetic (Oversized Foil)",
-        "Prossh, Skyraider of Kher (Oversized Foil)",
-        "Shattergang Brothers (Oversized Foil)",
-        "Sek\u0027Kuar, Deathkeeper (Oversized Foil)",
-        "Sharuum the Hegemon (Oversized Foil)",
-        "Sydri, Galvanic Genius (Oversized Foil)",
-        "Thraximundar (Oversized Foil)"
-      ],
-      "nameOverrides": {
-        "Aethermage\u0027s Touch": "Æthermage\u0027s Touch"
-      },
       "numberOverrides": {
         "Island (341 A)": "341",
         "Forest (356 D)": "356",
@@ -672,48 +917,32 @@
         "Plains (340 D)": "340",
         "Swamp (348 D)": "348"
       },
+      "ignoredNames": [
+        "Derevi, Empyrial Tactician (Oversized Foil)",
+        "Jeleva, Nephalia's Scourge (Oversized Foil)",
+        "Gahiji, Honored One (Oversized Foil)",
+        "Marath, Will of the Wild (Oversized Foil)",
+        "Nekusar, the Mindrazer (Oversized Foil)",
+        "Mayael the Anima (Oversized Foil)",
+        "Rubinia Soulsinger (Oversized Foil)",
+        "Roon of the Hidden Realm (Oversized Foil)",
+        "Oloro, Ageless Ascetic (Oversized Foil)",
+        "Prossh, Skyraider of Kher (Oversized Foil)",
+        "Shattergang Brothers (Oversized Foil)",
+        "Sek'Kuar, Deathkeeper (Oversized Foil)",
+        "Sharuum the Hegemon (Oversized Foil)",
+        "Sydri, Galvanic Genius (Oversized Foil)",
+        "Thraximundar (Oversized Foil)"
+      ],
+      "nameOverrides": {
+        "Aethermage's Touch": "Æthermage's Touch"
+      },
       "multiverseOverrides": {
-        "Lim-Dul\u0027s Vault": 376399,
+        "Lim-Dul's Vault": 376399,
         "Rough-Tumble": 376475
       }
     },
     "C14": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Beast Token - Elf Druid Token (Steve Prescott)",
-        "Angel Token - Cat Token",
-        "Beast Token - Elemental Token (Dave Allsop)",
-        "Ape Token - Zombie Token (Blue)",
-        "Demon Token - Zombie Token (Pete Venters/Black)",
-        "Demon Token - Zombie Token (Kev Walker/Black)",
-        "Elf Warrior Token - Gargoyle Token",
-        "Elephant Token - Elf Warrior Token",
-        "Fish Token - Zombie Token (Blue)",
-        "Horror Token - Zombie Token (Black)",
-        "Goat Token - Goblin Token",
-        "Kor Soldier Token - Pegasus Token",
-        "Kraken Token - Zombie Token (Blue)",
-        "Myr Token - Pentavite Token",
-        "Soldier Token - Spirit Token",
-        "Stoneforged Blade Token - Germ Token",
-        "Treefolk Token - Wolf Token",
-        "Whale Token - Zombie Token (Blue)",
-        "Wurm Token - Goat Token (Deathtouch)",
-        "Wurm Token - Goat Token (Lifelink)",
-        "Emblem - Zombie Token (Teferi, Temporal Archmage/Blue)",
-        "Emblem - Tuktuk the Returned Token (Daretti, Scrap Savant)",
-        "Emblem - Zombie Token (Ob Nixilis of the Black Oath/Black)",
-        "Daretti, Scrap Savant (Oversized Foil)",
-        "Freyalise, Llanowar's Fury (Oversized Foil)",
-        "Ob Nixilis of the Black Oath (Oversized Foil)",
-        "Nahiri, the Lithomancer (Oversized Foil)",
-        "Teferi, Temporal Archmage (Oversized Foil)"
-      ],
-      "nameOverrides": {
-        "Aether Gale": "Æther Gale",
-        "Aether Snap": "Æther Snap",
-        "Sharper Parasite": "Shaper Parasite"
-      },
       "numberOverrides": {
         "Forest (334 A)": "334",
         "Forest (335 B)": "335",
@@ -727,8 +956,8 @@
         "Mountain (331 B)": "331",
         "Mountain (332 C)": "332",
         "Mountain (333 D)": "333",
-        "Plains (319 B)": "319",
         "Plains (318 A)": "318",
+        "Plains (319 B)": "319",
         "Plains (320 C)": "320",
         "Plains (321 D)": "321",
         "Swamp (326 A)": "326",
@@ -736,61 +965,214 @@
         "Swamp (328 C)": "328",
         "Swamp (329 D)": "329"
       },
+      "ignoredNames": [
+        "Angel Token - Cat Token",
+        "Ape Token - Zombie Token (Blue)",
+        "Beast Token - Elemental Token (Allsop)",
+        "Beast Token - Elemental Token (Dave Allsop)",
+        "Beast Token - Elf Druid Token (Prescott)",
+        "Beast Token - Elf Druid Token (Steve Prescott)",
+        "Daretti, Scrap Savant (Oversized Foil)",
+        "Demon Token (Walker) - Zombie Token (Black)",
+        "Demon Token - Zombie Token (Kev Walker/Black)",
+        "Demon Token - Zombie Token (Pete Venters/Black)",
+        "Demon Token - Zombie Token (Venters/Black)",
+        "Elephant Token - Elf Warrior Token",
+        "Elf Warrior Token - Gargoyle Token",
+        "Emblem (Daretti/Tuktuk the Returned Token)",
+        "Emblem (Nixilis - Zombie Token (Black))",
+        "Emblem (Teferi - Zombie Token (Blue))",
+        "Emblem - Tuktuk the Returned Token (Daretti, Scrap Savant)",
+        "Emblem - Zombie Token (Ob Nixilis of the Black Oath/Black)",
+        "Emblem - Zombie Token (Teferi, Temporal Archmage/Blue)",
+        "Fish Token - Zombie Token (Blue)",
+        "Freyalise, Llanowar's Fury (Oversized Foil)",
+        "Germ Token - Zombie Token (Black)",
+        "Goat Token - Goblin Token",
+        "Horror Token - Zombie Token (Black)",
+        "Kor Soldier Token - Pegasus Token",
+        "Kraken Token - Zombie Token (Blue)",
+        "Myr Token - Pentavite Token",
+        "Nahiri, the Lithomancer (Oversized Foil)",
+        "Ob Nixilis of the Black Oath (Oversized Foil)",
+        "Soldier Token - Spirit Token",
+        "Stoneforged Blade Token - Germ Token",
+        "Teferi, Temporal Archmage (Oversized Foil)",
+        "Treefolk Token - Wolf Token",
+        "Whale Token - Zombie Token (Blue)",
+        "Wurm Token - Goat Token (Deathtouch)",
+        "Wurm Token - Goat Token (Lifelink)"
+      ],
+      "nameOverrides": {
+        "Aether Gale": "Æther Gale",
+        "Aether Snap": "Æther Snap",
+        "Sharper Parasite": "Shaper Parasite"
+      },
+      "multiverseOverrides": {}
+    },
+    "C15": {
+      "numberOverrides": {
+        "Forest (339 A)": "339",
+        "Forest (340 B)": "340",
+        "Forest (341 C)": "341",
+        "Forest (342 D)": "342",
+        "Island (327 A)": "327",
+        "Island (328 B)": "328",
+        "Island (329 C)": "329",
+        "Island (330 D)": "330",
+        "Mountain (335 A)": "335",
+        "Mountain (336 B)": "336",
+        "Mountain (337 C)": "337",
+        "Mountain (338 D)": "338",
+        "Plains (323 A)": "323",
+        "Plains (324 B)": "324",
+        "Plains (325 C)": "325",
+        "Plains (326 D)": "326",
+        "Swamp (331 A)": "331",
+        "Swamp (332 B)": "332",
+        "Swamp (333 C)": "333",
+        "Swamp (334 D)": "334"
+      },
+      "ignoredNames": [
+        "Angel Token - Knight Token (Stewart)",
+        "Bear Token - Spider Token",
+        "Beast Token - Snake Token",
+        "Cat Token - Spirit Token (Enchantment WB)",
+        "Daxos the Returned (Oversized Foil)",
+        "Dragon Token",
+        "Drake Token - Elemental Token (Blue/Red)",
+        "Elemental Shaman Token - Shapeshifter Token",
+        "Elephant Token- Saproling Token",
+        "Experience Token",
+        "Ezuri, Claw of Progress (Oversized Foil)",
+        "Frog Lizard Token - Germ Token (Black)",
+        "Germ Token - Zombie Token",
+        "Gold Token - Knight Token (White)",
+        "Kalemne, Disciple of Iroas (Oversized Foil)",
+        "Knight Token - Elemental Shaman Token (Red)",
+        "Lightning Rager Token",
+        "Meren of Clan Nel Toth (Oversized Foil)",
+        "Mizzix of the Izmagnus (Oversized Foil)",
+        "Saproling Token - Snake Token (Green/Blue)",
+        "Shapeshifter Token",
+        "Snake Token - Saproling Token",
+        "Spider Token - Dragon Token (Red)",
+        "Spider Token - Saproling Token",
+        "Spirit Token - Angel Token (BW - White (Childs))",
+        "Spirit Token - Knight Token (Stewart)",
+        "Wolf Token - Spider Token",
+        "Wolf Token - Zombie Token (Black)",
+        "Zombie Token - Cat Token (White)",
+        "Zombie Token - Elephant Token (Green)",
+        "Zombie Token - Spirit Token (Black - White/Black)"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "C17": {
+      "numberOverrides": {
+        "Arahbo, Roar of the World (Foil)": "35",
+        "Edgar Markov (Foil)": "36",
+        "Forest (307 A)": "307",
+        "Forest (308 B)": "308",
+        "Forest (309 C)": "309",
+        "Inalla, Archmage Ritualist (Foil)": "38",
+        "Island (298 A)": "298",
+        "Island (299 B)": "299",
+        "Island (300 C)": "300",
+        "Kess, Dissident Mage (Foil)": "39",
+        "Licia, Sanguine Tribune (Foil)": "40",
+        "Mairsil, the Pretender (Foil)": "41",
+        "Mathas, Fiend Seeker (Foil)": "42",
+        "Mirri, Weatherlight Duelist (Foil)": "43",
+        "Mountain (304 A)": "304",
+        "Mountain (305 B)": "305",
+        "Mountain (306 C)": "306",
+        "Nazahn, Revered Bladesmith (Foil)": "44",
+        "O-Kagachi, Vengeful Kami (Foil)": "45",
+        "Plains (295 A)": "295",
+        "Plains (296 B)": "296",
+        "Plains (297 C)": "297",
+        "Ramos, Dragon Engine (Foil)": "55",
+        "Swamp (301 A)": "301",
+        "Swamp (302 B)": "302",
+        "Swamp (303 C)": "303",
+        "The Ur-Dragon (Foil)": "48"
+      },
+      "ignoredNames": [
+        "Arahbo, Roar of the World (Oversized Foil)",
+        "Bat Token - Vampire Token",
+        "Cat Dragon Token - Dragon Token (Kovacs)",
+        "Cat Dragon Token - Dragon Token (Zug)",
+        "Cat Dragon Token - Gold Token",
+        "Cat Token - Cat Warrior Token",
+        "Cat Token - Rat Token",
+        "Cat Warrior Token - Rat Token",
+        "Dragon Token (Kovacs) - Gold Token",
+        "Dragon Token (Zug) - Gold Token",
+        "Edgar Markov (Oversized Foil)",
+        "Eldrazi Spawn Token - Vampire Token",
+        "Gold Token - Zombie Token",
+        "Inalla, Archmage Ritualist (Oversized Foil)",
+        "The Ur-Dragon (Oversized Foil)",
+        "Vampire Token - Zombie Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "CHK": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Brothers Yamazaki (160 A)": "160a",
+        "Brothers Yamazaki (160 B)": "160b",
+        "Forest (303 A)": "303",
+        "Forest (304 B)": "304",
+        "Forest (305 C)": "305",
+        "Forest (306 D)": "306",
+        "Island (291 A)": "291",
+        "Island (292 B)": "292",
+        "Island (293 C)": "293",
+        "Island (294 D)": "294",
+        "Mountain (299 A)": "299",
+        "Mountain (300 B)": "300",
+        "Mountain (301 C)": "301",
+        "Mountain (302 D)": "302",
+        "Plains (287 A)": "287",
+        "Plains (288 B)": "288",
+        "Plains (289 C)": "289",
+        "Plains (290 D)": "290",
+        "Swamp (295 A)": "295",
+        "Swamp (296 B)": "296",
+        "Swamp (297 C)": "297",
+        "Swamp (298 D)": "298"
+      },
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {
-        "Mountain (299 A)": "299",
-        "Plains (290 D)": "290",
-        "Swamp (297 C)": "297",
-        "Swamp (298 D)": "298",
-        "Island (292 B)": "292",
-        "Island (291 A)": "291",
-        "Mountain (300 B)": "300",
-        "Plains (287 A)": "287",
-        "Forest (304 B)": "304",
-        "Mountain (302 D)": "302",
-        "Plains (288 B)": "288",
-        "Swamp (296 B)": "296",
-        "Forest (303 A)": "303",
-        "Plains (289 C)": "289",
-        "Swamp (295 A)": "295",
-        "Mountain (301 C)": "301",
-        "Forest (305 C)": "305",
-        "Island (293 C)": "293",
-        "Forest (306 D)": "306",
-        "Island (294 D)": "294"
-      },
       "multiverseOverrides": {}
     },
     "CHR": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Dandan": "Dandân",
-        "Ghazban Ogre": "Ghazbán Ogre"
+        "Ghazban Ogre": "GhazbÃÂÃÂ¡n Ogre"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Urza\u0027s Mine (Mouth)": 2890,
-        "Urza\u0027s Mine (Pulley)": 2891,
-        "Urza\u0027s Mine (Sphere)": 2888,
-        "Urza\u0027s Mine (Tower)": 2889,
-        "Urza\u0027s Power Plant (Bug)": 2891,
-        "Urza\u0027s Power Plant (Columns)": 2893,
-        "Urza\u0027s Power Plant (Pot)": 2894,
-        "Urza\u0027s Power Plant (Sphere)": 2892,
-        "Urza\u0027s Tower (Forest)": 2899,
-        "Urza\u0027s Tower (Plains)": 2898,
-        "Urza\u0027s Tower (Mountains)": 2896,
-        "Urza\u0027s Tower (Shore)": 2897
+        "Urza's Mine (Mouth)": 2890,
+        "Urza's Mine (Pulley)": 2891,
+        "Urza's Mine (Sphere)": 2888,
+        "Urza's Mine (Tower)": 2889,
+        "Urza's Power Plant (Bug)": 2891,
+        "Urza's Power Plant (Columns)": 2893,
+        "Urza's Power Plant (Pot)": 2894,
+        "Urza's Power Plant (Sphere)": 2892,
+        "Urza's Tower (Forest)": 2899,
+        "Urza's Tower (Plains)": 2898,
+        "Urza's Tower (Mountains)": 2896,
+        "Urza's Tower (Shore)": 2897
       }
     },
     "CM1": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Azusa, Lost but Seeking (Oversized Foil)",
         "Karn, Silver Golem (Oversized Foil)",
@@ -804,32 +1186,20 @@
         "Karrthus, Tyrant of Jund (Oversized Foil)"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "CMA": {
+      "numberOverrides": {
+        "Derevi, Empyrial Tactician (Foil)": "176",
+        "Freyalise, Llanowar's Fury (Foil)": "111",
+        "Kaalia of the Vast (Foil)": "180",
+        "Meren of Clan Nel Toth (Foil)": "186"
+      },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "CMD": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Animar, Soul of Elements (Oversize Foil)",
-        "Damia, Sage of Stone (Oversize Foil)",
-        "Intet, the Dreamer (Oversize Foil)",
-        "Ghave, Guru of Spores (Oversize Foil)",
-        "Oros, the Avenger (Oversize Foil)",
-        "Karador, Ghost Chieftain (Oversize Foil)",
-        "Numot, the Devastator (Oversize Foil)",
-        "Kaalia of the Vast (Oversize Foil)",
-        "Ruhan of the Fomori (Oversize Foil)",
-        "Riku of Two Reflections (Oversize Foil)",
-        "The Mimeoplasm (Oversize Foil)",
-        "Teneb, the Harvester (Oversize Foil)",
-        "Tariel, Reckoner of Souls (Oversize Foil)",
-        "Vorosh, the Hunter (Oversize Foil)",
-        "Zedruu the Greathearted (Oversize Foil)"
-      ],
-      "nameOverrides": {
-        "Aethersnipe": "Æthersnipe",
-        "Jotun Grunt": "Jötun Grunt"
-      },
       "numberOverrides": {
         "Swamp (310 D)": "310",
         "Plains (302 D)": "302",
@@ -852,12 +1222,35 @@
         "Island (303 A)": "303",
         "Plains (300 B)": "300"
       },
+      "ignoredNames": [
+        "Animar, Soul of Elements (Oversize Foil)",
+        "Damia, Sage of Stone (Oversize Foil)",
+        "Intet, the Dreamer (Oversize Foil)",
+        "Ghave, Guru of Spores (Oversize Foil)",
+        "Oros, the Avenger (Oversize Foil)",
+        "Karador, Ghost Chieftain (Oversize Foil)",
+        "Numot, the Devastator (Oversize Foil)",
+        "Kaalia of the Vast (Oversize Foil)",
+        "Ruhan of the Fomori (Oversize Foil)",
+        "Riku of Two Reflections (Oversize Foil)",
+        "The Mimeoplasm (Oversize Foil)",
+        "Teneb, the Harvester (Oversize Foil)",
+        "Tariel, Reckoner of Souls (Oversize Foil)",
+        "Vorosh, the Hunter (Oversize Foil)",
+        "Zedruu the Greathearted (Oversize Foil)"
+      ],
+      "nameOverrides": {
+        "Aethersnipe": "Æthersnipe",
+        "Jotun Grunt": "JÃÂÃÂ¶tun Grunt"
+      },
       "multiverseOverrides": {
         "Fire-Ice": 247159
       }
     },
     "CNS": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Flaring Flame-kin": "142"
+      },
       "ignoredNames": [
         "Construct Token",
         "Demon Token",
@@ -874,13 +1267,10 @@
         "Aether Searcher": "Æther Searcher",
         "Sporecrap Spider": "Sporecap Spider"
       },
-      "numberOverrides": {
-        "Flaring Flame-kin": "142"
-      },
       "multiverseOverrides": {}
     },
     "CON": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Angel Token",
         "Elemental Token"
@@ -888,29 +1278,20 @@
       "nameOverrides": {
         "Scornful Aether-Lich": "Scornful Æther-Lich"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "CSP": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Surging Aether": "Surging Æther"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Jotun Owl Keeper": 121236,
         "Jotun Grunt": 122075
       }
     },
     "DD2": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Elemental Shaman Token"
-      ],
-      "nameOverrides": {
-        "Aethersnipe": "Æthersnipe"
-      },
       "numberOverrides": {
         "Mountain (62 D)": "62",
         "Mountain (61 C)": "61",
@@ -921,242 +1302,23 @@
         "Island (33 D)": "33",
         "Island (32 C)": "32"
       },
+      "ignoredNames": [
+        "Elemental Shaman Token"
+      ],
+      "nameOverrides": {
+        "Aethersnipe": "Æthersnipe"
+      },
       "multiverseOverrides": {}
     },
     "DD3": {
-      "unknownNames": [
-        "Beast Attack (Garruk vs Liliana)",
-        "Clickslither (lves vs Goblins)",
-        "Angelic Page (Divine vs Demonic)",
-        "Chartooth Cougar (Jace vs Chandra)",
-        "Bad Moon (Garruk vs Liliana)",
-        "Basking Rootwalla (Garruk vs Liliana)",
-        "Dusk Imp (Divine vs Demonic)",
-        "Corrupt (Divine vs Demonic)",
-        "Ancestral Vision (Jace vs Chandra)",
-        "Demonic Tutor (Divine vs Demonic)",
-        "Angel\u0027s Feather (Divine vs Demonic)",
-        "Charging Paladin (Divine vs Demonic)",
-        "Daze (Jace vs Chandra)",
-        "Corrupt (Garruk vs Liliana)",
-        "Duress (Divine vs Demonic)",
-        "Akki Coalflinger (Elves vs Goblins)",
-        "Angelic Benediction (Divine vs Demonic)",
-        "Dark Ritual (Divine vs Demonic)",
-        "Demonfire (Jace vs Chandra)",
-        "Cruel Edict (Divine vs Demonic)",
-        "Abyssal Gatekeeper (Divine vs Demonic)",
-        "Breeding Pit (Divine vs Demonic)",
-        "Angel of Mercy (Divine vs Demonic)",
-        "Abyssal Specter (Divine vs Demonic)",
-        "Cone of Flame (Jace vs Chandra)",
-        "Demon\u0027s Horn (Divine vs Demonic)",
-        "Blastoderm (Garruk vs Liliana)",
-        "Dark Banishing (Divine vs Demonic)",
-        "Counterspell (Jace vs Chandra)",
-        "Air Elemental (Jace vs Chandra)",
-        "Brine Elemental (Jace vs Chandra)",
-        "Deathgreeter (Garruk vs Liliana)",
-        "Barter in Blood (Divine vs Demonic)",
-        "Condescend (Jace vs Chandra)",
-        "Allosaurus Rider (Elves vs Goblins)",
-        "Cackling Imp (Divine vs Demonic)",
-        "Boggart Shenanigans (Elves vs Goblins)",
-        "Ambush Commander (Elves vs Goblins)",
-        "Daggerclaw Imp (Divine vs Demonic)",
-        "Barren Moor (Divine vs Demonic)",
-        "Demon\u0027s Jester (Divine vs Demonic)",
-        "Bottle Gnomes (Jace vs Chandra)",
-        "Akroma, Angel of Wrath (Divine vs Demonic)",
-        "Albino Troll (Garruk vs Liliana)",
-        "Drudge Skeletons (Garruk vs Liliana)",
-        "Consume Spirit (Divine vs Demonic)",
-        "Angelic Protector (Divine vs Demonic)",
-        "Angelsong (Divine vs Demonic)",
-        "Chandra Nalaar (Jace vs Chandra)",
-        "Elvish Eulogist (Elves vs Goblins)",
-        "Goblin Warchief (Elves vs Goblins)",
-        "Elvish Warrior (Elves vs Goblins)",
-        "Gempalm Incinerator (Elves vs Goblins)",
-        "Fireblast (Jace vs Chandra)",
-        "Enslave (Garruk vs Liliana)",
-        "Emberwilde Augur (Elves vs Goblins)",
-        "Fallen Angel (Divine vs Demonic)",
-        "Firebolt (Jace vs Chandra)",
-        "Goblin Ringleader (Elves vs Goblins)",
-        "Goblin Matron (Elves vs Goblins)",
-        "Flamekin Brawler (Jace vs Chandra)",
-        "Harmonize (Elves vs Goblins)",
-        "Hideous End (Garruk vs Liliana)",
-        "Flamewave Invoker (Jace vs Chandra)",
-        "Guile (Jace vs Chandra)",
-        "Flamewave Invoker (Elves vs Goblins)",
-        "Gush (Jace vs Chandra)",
-        "Goblin Sledder (Elves vs Goblins)",
-        "Ghost-Lit Stalker (Garruk vs Liliana)",
-        "Forgotten Cave (Elves vs Goblins)",
-        "Furnace Whelp (Jace vs Chandra)",
-        "Fathom Seer (Jace vs Chandra)",
-        "Genju of the Fens (Garruk vs Liliana)",
-        "Fireslinger (Jace vs Chandra)",
-        "Giant Growth (Elves vs Goblins)",
-        "Faith\u0027s Fetters (Divine vs Demonic)",
-        "Errant Ephemeron (Jace vs Chandra)",
-        "Giant Growth (Garruk vs Liliana)",
-        "Fact or Fiction (Jace vs Chandra)",
-        "Faerie Macabre (Garruk vs Liliana)",
-        "Hostility (Jace vs Chandra)",
-        "Heedless One (Elves vs Goblins)",
-        "Elvish Harbinger (Elves vs Goblins)",
-        "Fireball (Jace vs Chandra)",
-        "Elephant Guide (Garruk vs Liliana)",
-        "Gempalm Strider (Elves vs Goblins)",
-        "Fleshbag Marauder (Garruk vs Liliana)",
-        "Genju of the Cedars (Garruk vs Liliana)",
-        "Howling Banshee (Garruk vs Liliana)",
-        "Fledgling Mawcor (Jace vs Chandra)",
-        "Goblin Burrows (Elves vs Goblins)",
-        "Harmonize (Garruk vs Liliana)",
-        "Flametongue Kavu (Jace vs Chandra)",
-        "Healing Salve (Divine vs Demonic)",
-        "Flame Javelin (Jace vs Chandra)",
-        "Garruk Wildspeaker (Garruk vs Liliana)",
-        "Elvish Promenade (Elves vs Goblins)",
-        "Foul Imp (Divine vs Demonic)",
-        "Goblin Cohort (Elves vs Goblins)",
-        "Mulldrifter (Jace vs Chandra)",
-        "Overrun (Garruk vs Liliana)",
-        "Incinerate (Jace vs Chandra)",
-        "Mutilate (Garruk vs Liliana)",
-        "Rakdos Pit Dragon (Jace vs Chandra)",
-        "Luminous Angel (Divine vs Demonic)",
-        "Marble Diamond (Divine vs Demonic)",
-        "Plated Slagwurm (Garruk vs Liliana)",
-        "Rancor (Garruk vs Liliana)",
-        "Ib Halfheart, Goblin Tactician (Elves vs Goblins)",
-        "Ravenous Rats (Garruk vs Liliana)",
-        "Man-o\u0027-War (Jace vs Chandra)",
-        "Ophidian (Jace vs Chandra)",
-        "Liliana Vess (Garruk vs Liliana)",
-        "Mogg War Marshal (Elves vs Goblins)",
-        "Pyre Charger (Jace vs Chandra)",
-        "Indrik Stomphowler (Garruk vs Liliana)",
-        "Magma Jet (Jace vs Chandra)",
-        "Martyr of Frost (Jace vs Chandra)",
-        "Otherworldly Journey (Divine vs Demonic)",
-        "Moonglove Extract (Elves vs Goblins)",
-        "Jace Beleren (Jace vs Chandra)",
-        "Ichor Slick (Garruk vs Liliana)",
-        "Oxidda Golem (Jace vs Chandra)",
-        "Keening Banshee (Garruk vs Liliana)",
-        "Lignify (Garruk vs Liliana)",
-        "Phyrexian Rager (Garruk vs Liliana)",
-        "Lord of the Pit (Divine vs Demonic)",
-        "Oni Possession (Divine vs Demonic)",
-        "Nature\u0027s Lore (Garruk vs Liliana)",
-        "Invigorate (Garruk vs Liliana)",
-        "Polluted Mire (Garruk vs Liliana)",
-        "Mudbutton Torchrunner (Elves vs Goblins)",
-        "Icatian Priest (Divine vs Demonic)",
-        "Krosan Tusker (Garruk vs Liliana)",
-        "Pacifism (Divine vs Demonic)",
-        "Ingot Chewer (Jace vs Chandra)",
-        "Mind Stone (Jace vs Chandra)",
-        "Raging Goblin (Elves vs Goblins)",
-        "Imperious Perfect (Elves vs Goblins)",
-        "Kuro, Pitlord (Divine vs Demonic)",
-        "Ravenous Baloth (Garruk vs Liliana)",
-        "Llanowar Elves (Elves vs Goblins)",
-        "Inner-Flame Acolyte (Jace vs Chandra)",
-        "Overeager Apprentice (Divine vs Demonic)",
-        "Keldon Megaliths (Jace vs Chandra)",
-        "Lys Alana Huntmaster (Elves vs Goblins)",
-        "Quicksilver Dragon (Jace vs Chandra)",
-        "Promise of Power (Divine vs Demonic)",
-        "Mogg Fanatic (Elves vs Goblins)",
-        "Souldrinker (Divine vs Demonic)",
-        "Slate of Ancestry (Elves vs Goblins)",
-        "Tar Pitcher (Elves vs Goblins)",
-        "Tranquil Thicket (Elves vs Goblins)",
-        "Slith Firewalker (Jace vs Chandra)",
-        "Soot Imp (Divine vs Demonic)",
-        "Skirk Fire Marshal (Elves vs Goblins)",
-        "Tarfire (Elves vs Goblins)",
-        "Seal of Fire (Jace vs Chandra)",
-        "Siege-Gang Commander (Elves vs Goblins)",
-        "Snuff Out (Garruk vs Liliana)",
-        "Timberwatch Elf (Elves vs Goblins)",
-        "Reckless One (Elves vs Goblins)",
-        "Reiver Demon (Divine vs Demonic)",
-        "Secluded Steppe (Divine vs Demonic)",
-        "Urborg Syphon-Mage (Garruk vs Liliana)",
-        "Skirk Shaman (Elves vs Goblins)",
-        "Sylvan Messenger (Elves vs Goblins)",
-        "Stampeding Wildebeests (Garruk vs Liliana)",
-        "Serra Advocate (Divine vs Demonic)",
-        "Slippery Karst (Garruk vs Liliana)",
-        "Repulse (Jace vs Chandra)",
-        "Twilight Shepherd (Divine vs Demonic)",
-        "Vicious Hunger (Garruk vs Liliana)",
-        "Unholy Strength (Divine vs Demonic)",
-        "Serra Angel (Divine vs Demonic)",
-        "Sign in Blood (Garruk vs Liliana)",
-        "Rise from the Grave (Garruk vs Liliana)",
-        "Soulbright Flamekin (Jace vs Chandra)",
-        "Spire Golem (Jace vs Chandra)",
-        "Stonewood Invoker (Elves vs Goblins)",
-        "Rude Awakening (Garruk vs Liliana)",
-        "Vampire Bats (Garruk vs Liliana)",
-        "Skeletal Vampire (Garruk vs Liliana)",
-        "Twisted Abomination (Garruk vs Liliana)",
-        "Spitting Earth (Elves vs Goblins)",
-        "Skirk Prospector (Elves vs Goblins)",
-        "Terrain Generator (Jace vs Chandra)",
-        "Righteous Cause (Divine vs Demonic)",
-        "Sustainer of the Realm (Divine vs Demonic)",
-        "Skirk Drill Sergeant (Elves vs Goblins)",
-        "Reya Dawnbringer (Divine vs Demonic)",
-        "Serra\u0027s Boon (Divine vs Demonic)",
-        "Serra\u0027s Embrace (Divine vs Demonic)",
-        "Stinkweed Imp (Divine vs Demonic)",
-        "Treetop Village (Garruk vs Liliana)",
-        "Riftwing Cloudskate (Jace vs Chandra)",
-        "Venerable Monk (Divine vs Demonic)",
-        "Serrated Arrows (Garruk vs Liliana)",
-        "Tendrils of Corruption (Garruk vs Liliana)",
-        "Vine Trellis (Garruk vs Liliana)",
-        "Wirewood Lodge (Elves vs Goblins)",
-        "Wood Elves (Elves vs Goblins)",
-        "Willbender (Jace vs Chandra)",
-        "Wild Mongrel (Garruk vs Liliana)",
-        "Wirewood Savage (Garruk vs Liliana)",
-        "Wall of Bone (Garruk vs Liliana)",
-        "Wren\u0027s Run Vanquisher (Elves vs Goblins)",
-        "Wall of Deceit (Jace vs Chandra)",
-        "Wirewood Symbiote (Elves vs Goblins)",
-        "Voidmage Apprentice (Jace vs Chandra)",
-        "Wellwisher (Elves vs Goblins)",
-        "Waterspout Djinn (Jace vs Chandra)",
-        "Windstorm (Garruk vs Liliana)",
-        "Wirewood Herald (Elves vs Goblins)",
-        "Voice of the Woods (Elves vs Goblins)",
-        "Wildsize (Elves vs Goblins)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aethersnipe (Jace vs Chandra)": "Æthersnipe (Jace vs Chandra)"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "DDC": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Demon Token",
-        "Spirit Token",
-        "Thrull Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Plains (28 C)": "28",
         "Plains (29 D)": "29",
@@ -1167,16 +1329,15 @@
         "Plains (26 A)": "26",
         "Swamp (60 B)": "60"
       },
+      "ignoredNames": [
+        "Demon Token",
+        "Spirit Token",
+        "Thrull Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDD": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Beast Token (Donahue)",
-        "Elephant Token",
-        "Beast Token (Prescott)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (31 D)": "31",
         "Forest (30 C)": "30",
@@ -1187,16 +1348,15 @@
         "Forest (29 B)": "29",
         "Swamp (61 B)": "61"
       },
+      "ignoredNames": [
+        "Beast Token (Donahue)",
+        "Elephant Token",
+        "Beast Token (Prescott)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDE": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Minion Token",
-        "Hornet Token",
-        "Saproling Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (71 B)": "71",
         "Swamp (32 A)": "32",
@@ -1208,14 +1368,15 @@
         "Swamp (33 B)": "33",
         "Swamp (34 C)": "34"
       },
+      "ignoredNames": [
+        "Minion Token",
+        "Hornet Token",
+        "Saproling Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDF": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Aether Spellbomb": "Æther Spellbomb"
-      },
       "numberOverrides": {
         "Island (76 A)": "76",
         "Plains (38 D)": "38",
@@ -1226,14 +1387,13 @@
         "Plains (37 C)": "37",
         "Plains (35 A)": "35"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Aether Spellbomb": "Æther Spellbomb"
+      },
       "multiverseOverrides": {}
     },
     "DDG": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Goblin Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (45 C)": "45",
         "Mountain (78 A)": "78",
@@ -1248,15 +1408,13 @@
         "Forest (46 D)": "46",
         "Plains (41 C)": "41"
       },
+      "ignoredNames": [
+        "Goblin Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDH": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Griffin Token",
-        "Saproling Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Mountain (41 A)": "41",
         "Swamp (78 B)": "78",
@@ -1267,6 +1425,11 @@
         "Forest (38 A)": "38",
         "Plains (40 A)": "40"
       },
+      "ignoredNames": [
+        "Griffin Token",
+        "Saproling Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {
         "Spite-Malice": 249394,
         "Rise-Fall": 259266,
@@ -1274,14 +1437,6 @@
       }
     },
     "DDI": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Emblem (Koth of the Hammer)",
-        "Emblem (Venser, The Sojourner)"
-      ],
-      "nameOverrides": {
-        "Aether Membrane": "Æther Membrane"
-      },
       "numberOverrides": {
         "Mountain (77 D)": "77",
         "Mountain (76 C)": "76",
@@ -1294,14 +1449,16 @@
         "Plains (40 C)": "40",
         "Island (42 B)": "42"
       },
+      "ignoredNames": [
+        "Emblem (Koth of the Hammer)",
+        "Emblem (Venser, The Sojourner)"
+      ],
+      "nameOverrides": {
+        "Aether Membrane": "Æther Membrane"
+      },
       "multiverseOverrides": {}
     },
     "DDJ": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Saproling Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Swamp (86 D)": "86",
         "Forest (88 B)": "88",
@@ -1320,17 +1477,16 @@
         "Swamp (83 A)": "83",
         "Island (40 D)": "40"
       },
+      "ignoredNames": [
+        "Saproling Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {
         "Life-Death": 292976,
         "Fire-Ice": 292753
       }
     },
     "DDK": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Spirit Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Mountain (77 C)": "77",
         "Swamp (78 D)": "78",
@@ -1345,15 +1501,13 @@
         "Plains (40 C)": "40",
         "Swamp (36 B)": "36"
       },
+      "ignoredNames": [
+        "Spirit Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDL": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Griffin Token",
-        "Beast Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (81 D)": "81",
         "Mountain (75 F)": "75",
@@ -1372,17 +1526,14 @@
         "Forest (78 A)": "78",
         "Mountain (76 G)": "76"
       },
+      "ignoredNames": [
+        "Griffin Token",
+        "Beast Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DDM": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Assassin Token"
-      ],
-      "nameOverrides": {
-        "Aether Figment": "Æther Figment",
-        "Aether Adept": "Æther Adept"
-      },
       "numberOverrides": {
         "Forest (87 D)": "87",
         "Forest (86 C)": "86",
@@ -1400,14 +1551,16 @@
         "Swamp (82 D)": "82",
         "Island (40 D)": "40"
       },
+      "ignoredNames": [
+        "Assassin Token"
+      ],
+      "nameOverrides": {
+        "Aether Figment": "Æther Figment",
+        "Aether Adept": "Æther Adept"
+      },
       "multiverseOverrides": {}
     },
     "DDN": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Goblin Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (77 C)": "77",
         "Mountain (35 A)": "35",
@@ -1425,39 +1578,42 @@
         "Swamp (41 C)": "41",
         "Faerie Imposter": "43"
       },
-      "multiverseOverrides": {}
-    },
-    "DDO": {
-      "unknownNames": [],
       "ignoredNames": [
         "Goblin Token"
       ],
       "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "DDO": {
       "numberOverrides": {
-        "Forest (63 A)": 63,
-        "Forest (64 B)": 64,
-        "Forest (65 C)": 65,
-        "Island (60 A)": 60,
-        "Island (61 B)": 61,
-        "Island (62 C)": 62,
-        "Plains (30 A)": 30,
-        "Plains (31 B)": 31,
-        "Plains (32 C)": 32,
-        "Plains (33 D)": 33
+        "Forest (63 A)": "63",
+        "Forest (64 B)": "64",
+        "Forest (65 C)": "65",
+        "Island (60 A)": "60",
+        "Island (61 B)": "61",
+        "Island (62 C)": "62",
+        "Plains (30 A)": "30",
+        "Plains (31 B)": "31",
+        "Plains (32 C)": "32",
+        "Plains (33 D)": "33"
       },
+      "ignoredNames": [
+        "Goblin Token",
+        "Soldier Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {
         "Kraken Token": 394383
       }
     },
     "DGM": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Elemental Token"
       ],
       "nameOverrides": {
         "Aetherling": "Ætherling"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Flesh-Blood": 368991,
         "Give-Take": 369097,
@@ -1477,13 +1633,12 @@
       }
     },
     "DIS": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Azorius Aethermage": "Azorius Æthermage",
-        "Aethermage\u0027s Touch": "Æthermage\u0027s Touch"
+        "Aethermage's Touch": "Æthermage's Touch"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Bound-Determined": 107373,
         "Crime-Punishment": 107285,
@@ -1498,7 +1653,7 @@
       }
     },
     "DKA": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Checklist Card (Dark Ascension)",
         "Emblem (Sorin, Lord of Innistrad)",
@@ -1506,10 +1661,9 @@
         "Vampire Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Afflicted Deserter - Werewolf Ransacker": 262675,
-        "Chosen of Markov - Markov\u0027s Servant": 243229,
+        "Chosen of Markov - Markov's Servant": 243229,
         "Chalice of Life - Chalice of Death": 226735,
         "Elbrus, the Binding Blade - Withengar Unbound": 244740,
         "Lambholt Elder - Silverpelt Werewolf": 242537,
@@ -1517,7 +1671,7 @@
         "Hinterland Hermit - Hinterland Scourge": 247125,
         "Loyal Cathar - Unhallowed Cathar": 244724,
         "Scorned Villager - Moonscarred Werewolf": 262694,
-        "Mondronen Shaman - Tovolar\u0027s Magehunter": 253433,
+        "Mondronen Shaman - Tovolar's Magehunter": 253433,
         "Soul Seizer - Ghastly Haunting": 222178,
         "Ravenous Demon - Archdemon of Greed": 227417,
         "Seance": 249422,
@@ -1525,7 +1679,16 @@
       }
     },
     "DKM": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Forest (48 A)": "48",
+        "Mountain (45 A)": "45",
+        "Mountain (46 B)": "46",
+        "Mountain (47 C)": "47",
+        "Swamp (42 A)": "42",
+        "Swamp (43 B)": "43",
+        "Swamp (44 C)": "44",
+        "Lim-Dul's High Guard": "6a"
+      },
       "ignoredNames": [
         "Lhurgoyf Foil",
         "Icy Manipulator Foil",
@@ -1535,60 +1698,156 @@
         "Forest (50 C)"
       ],
       "nameOverrides": {},
-      "numberOverrides": {
-        "Forest (48 A)": "48",
-        "Mountain (45 A)": "45",
-        "Mountain (46 B)": "46",
-        "Mountain (47 C)": "47",
-        "Swamp (42 A)": "42",
-        "Swamp (43 B)": "43",
-        "Swamp (44 C)": "44",
-        "Lim-Dul\u0027s High Guard": "6a"
-      },
       "multiverseOverrides": {}
     },
     "DPA": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Ascendant Evincar (Foil)",
-        "Mahamoti Djinn (Foil)",
-        "Kamahl, Pit Fighter (Foil)",
-        "Immaculate Magistrate (Foil)",
-        "Verdant Force (Foil)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
-        "Island (A 98)": "98",
-        "Island (B 99)": "99",
-        "Island (D 101)": "101",
-        "Island (C 100)": "100",
+        "Abyssal Specter": "18",
+        "Act of Treason": "37",
+        "Air Elemental": "1",
+        "Banefire": "38",
+        "Blanchwood Armor": "55",
+        "Blaze": "39",
+        "Bloodmark Mentor": "40",
+        "Boomerang": "2",
+        "Cancel": "3",
+        "Cinder Pyromancer": "41",
+        "Civic Wayfinder": "56",
+        "Cloud Sprite": "4",
+        "Coat of Arms": "90",
+        "Consume Spirit": "20",
+        "Counterbore": "5",
+        "Crowd of Cinders": "21",
+        "Deluge": "6",
+        "Demon's Horn": "91",
+        "Denizen of the Deep": "7",
+        "Dragon's Claw": "92",
+        "Drove of Elves": "57",
+        "Drudge Skeletons": "22",
+        "Dusk Imp": "23",
+        "Duskdale Wurm": "58",
+        "Earth Elemental": "42",
+        "Elven Riders": "59",
+        "Elvish Champion": "60",
+        "Elvish Eulogist": "61",
+        "Elvish Promenade": "62",
+        "Elvish Visionary": "62",
+        "Elvish Warrior": "64",
+        "Enrage": "43",
+        "Essence Drain": "24",
+        "Essence Scatter": "8",
+        "Evacuation": "9",
+        "Eyeblight's Ending": "25",
         "Forest (110 A)": "110",
         "Forest (111 B)": "111",
         "Forest (112 C)": "112",
         "Forest (113 D)": "113",
+        "Furnace of Rath": "44",
+        "Gaea's Herald": "65",
+        "Giant Growth": "66",
+        "Giant Spider": "67",
+        "Goblin Piker": "45",
+        "Goblin Sky Raider": "46",
+        "Greenweaver Druid": "68",
+        "Hill Giant": "47",
+        "Howl of the Night Pack": "69",
+        "Imperious Perfect": "71",
+        "Incinerate": "48",
+        "Island (A 98)": "98",
+        "Island (B 99)": "99",
+        "Island (C 100)": "100",
+        "Island (D 101)": "101",
+        "Jagged-Scar Archers": "72",
+        "Kraken's Eye": "93",
+        "Lightning Elemental": "50",
+        "Loxodon Warhammer": "94",
+        "Lys Alana Huntmaster": "73",
+        "Megrim": "26",
+        "Mind Control": "11",
+        "Mind Rot": "27",
+        "Mind Shatter": "28",
+        "Mind Spring": "12",
+        "Molimo, Maro-Sorcerer": "74",
+        "Moonglove Winnower": "29",
+        "Mortivore": "30",
         "Mountain (106 A)": "106",
         "Mountain (107 B)": "107",
         "Mountain (108 C)": "108",
         "Mountain (109 D)": "109",
+        "Natural Spring": "75",
+        "Naturalize": "76",
+        "Nature's Spiral": "77",
+        "Negate": "13",
+        "Overrun": "78",
+        "Phantom Warrior": "14",
+        "Prodigal Pyromancer": "51",
+        "Rage Reflection": "52",
+        "Rampant Growth": "79",
+        "Ravenous Rats": "31",
+        "River Boa": "80",
+        "Roughshod Mentor": "81",
+        "Runeclaw Bear": "82",
+        "Sengir Vampire": "32",
+        "Severed Legion": "33",
+        "Shivan Dragon": "53",
+        "Shock": "54",
+        "Snapping Drake": "15",
+        "Spined Wurm": "83",
         "Swamp (102 A)": "102",
-        "Swamp (104 C)": "104",
         "Swamp (103 B)": "103",
-        "Swamp (105 D)": "105"
+        "Swamp (104 C)": "104",
+        "Swamp (105 D)": "105",
+        "Talara's Battalion": "84",
+        "Terror": "34",
+        "The Rack": "95",
+        "Thieving Magpie": "16",
+        "Trained Armodon": "85",
+        "Troll Ascetic": "86",
+        "Underworld Dreams": "35",
+        "Unholy Strength": "36",
+        "Unsummon": "17",
+        "Vigor": "88",
+        "Wall of Spears": "96",
+        "Wall of Wood": "89",
+        "Wurm's Tooth": "97"
       },
+      "ignoredNames": [
+        "Ascendant Evincar (Foil)",
+        "Immaculate Magistrate (Foil)",
+        "Kamahl, Pit Fighter (Foil)",
+        "Mahamoti Djinn (Foil)",
+        "Verdant Force (Foil)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "DST": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Vial": "Æther Vial",
         "Aether Snap": "Æther Snap"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "DTK": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Forest (262 A)": "262",
+        "Forest (263 B)": "263",
+        "Forest (264 C)": "264",
+        "Island (253 A)": "253",
+        "Island (254 B)": "254",
+        "Island (255 C)": "255",
+        "Mountain (259 A)": "259",
+        "Mountain (260 B)": "260",
+        "Mountain (261 C)": "261",
+        "Plains (250 A)": "250",
+        "Plains (251 B)": "251",
+        "Plains (252 C)": "252",
+        "Swamp (256 A)": "256",
+        "Swamp (257 B)": "257",
+        "Swamp (258 C)": "258"
+      },
       "ignoredNames": [
         "Djinn Monk Token Ships on Mar 27, 2015",
         "Dragon Token Ships on Mar 27, 2015",
@@ -1605,10 +1864,10 @@
         "Morph Token",
         "Warrior Token",
         "Zombie Horror",
-        "Zombie Token"
+        "Zombie Token",
+        "Zombie Horror Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Acid-Spewer Dragon Ships on Mar 27, 2015": 394485,
         "Aerie Bowmasters Ships on Mar 27, 2015": 394486,
@@ -1876,8 +2135,49 @@
         "Zurgo Bellstriker Ships on Mar 27, 2015": 20158
       }
     },
+    "EMA": {
+      "numberOverrides": {},
+      "ignoredNames": [
+        "Carnivore Token",
+        "Dragon Token",
+        "Elemental Token (Blue/Red)",
+        "Elemental Token (Red)",
+        "Elephant Token",
+        "Elf Warrior Token",
+        "Emblem (Dack Fayden)",
+        "Goblin Soldier Token (Red/White)",
+        "Goblin Token",
+        "Serf Token",
+        "Soldier Token",
+        "Spirit Token (Colorless)",
+        "Spirit Token (White)",
+        "Wall Token",
+        "Wurm Token",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "EMN": {
+      "numberOverrides": {},
+      "ignoredNames": [
+        "Checklist Card (Eldritch Moon)",
+        "Eldrazi Horror Token",
+        "Emblem (Liliana)",
+        "Emblem (Tamiyo)",
+        "Human Token",
+        "Human Wizard Token",
+        "Spider Token",
+        "Zombie Token (03)",
+        "Zombie Token (04)",
+        "Zombie Token (05)",
+        "Zombie Token (06)"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
     "EVE": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Bird Token",
         "Elemental Token",
@@ -1888,19 +2188,9 @@
         "Spirit Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "EVG": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Goblin Token",
-        "Elemental Token",
-        "Elf Warrior Token",
-        "Ambush Commander - Foil",
-        "Siege-Gang Commander - Foil"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (31 D)": "31",
         "Forest (30 C)": "30",
@@ -1911,22 +2201,28 @@
         "Mountain (59 A)": "59",
         "Forest (29 B)": "29"
       },
+      "ignoredNames": [
+        "Goblin Token",
+        "Elemental Token",
+        "Elf Warrior Token",
+        "Ambush Commander - Foil",
+        "Siege-Gang Commander - Foil"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "EXO": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Tide": "Æther Tide"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "FEM": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Hymn to Tourach (Danforth)": 1849,
         "Hymn to Tourach (Hoover)": 1851,
@@ -1935,246 +2231,243 @@
       }
     },
     "FRF": {
-      "unknownNames": [
+      "numberOverrides": {
+        "Forest (184 A)": "184",
+        "Forest (185 B)": "185",
+        "Island (178 A)": "178",
+        "Island (179 B)": "179",
+        "Mountain (182 A)": "182",
+        "Mountain (183 B)": "183",
+        "Plains (176 A)": "176",
+        "Plains (177 B)": "177",
+        "Swamp (180 A)": "180",
+        "Swamp (181 B)": "181",
+        "Forest (184 A) Ships on Jan 23, 2015": "184",
+        "Forest (185 B) Ships on Jan 23, 2015": "185",
+        "Island (178 A) Ships on Jan 23, 2015": "178",
+        "Island (179 B) Ships on Jan 23, 2015": "179",
+        "Mountain (182 A) Ships on Jan 23, 2015": "182",
+        "Mountain (183 B) Ships on Jan 23, 2015": "183",
+        "Plains (176 A) Ships on Jan 23, 2015": "176",
+        "Plains (177 B) Ships on Jan 23, 2015": "177",
+        "Swamp (180 A) Ships on Jan 23, 2015": "180",
+        "Swamp (181 B) Ships on Jan 23, 2015": "181"
+      },
+      "ignoredNames": [
         "Manifest Token",
         "Monk Token",
         "Spirit Token",
         "Warrior Token"
       ],
-      "ignoredNames": [],
       "nameOverrides": {
         "Abzan Advantage Ships on Jan 23, 2015": "Abzan Advantage",
-      "Abzan Beastmaster Ships on Jan 23, 2015": "Abzan Beastmaster",
-      "Abzan Kin-Guard Ships on Jan 23, 2015": "Abzan Kin-Guard",
-      "Abzan Runemark Ships on Jan 23, 2015": "Abzan Runemark",
-      "Abzan Skycaptain Ships on Jan 23, 2015": "Abzan Skycaptain",
-      "Ainok Guide Ships on Jan 23, 2015": "Ainok Guide",
-      "Alesha's Vanguard Ships on Jan 23, 2015": "Alesha's Vanguard",
-      "Alesha, Who Smiles at Death Ships on Jan 23, 2015": "Alesha, Who Smiles at Death",
-      "Ambush Krotiq Ships on Jan 23, 2015": "Ambush Krotiq",
-      "Ancestral Vengeance Ships on Jan 23, 2015": "Ancestral Vengeance",
-      "Arashin Cleric Ships on Jan 23, 2015": "Arashin Cleric",
-      "Arashin War Beast Ships on Jan 23, 2015": "Arashin War Beast",
-      "Arcbond Ships on Jan 23, 2015": "Arcbond",
-      "Archers of Qarsi Ships on Jan 23, 2015": "Archers of Qarsi",
-      "Archfiend of Depravity Ships on Jan 23, 2015": "Archfiend of Depravity",
-      "Atarka, World Render Ships on Jan 23, 2015": "Atarka, World Render",
-      "Aven Skirmisher Ships on Jan 23, 2015": "Aven Skirmisher",
-      "Aven Surveyor Ships on Jan 23, 2015": "Aven Surveyor",
-      "Bathe in Dragonfire Ships on Jan 23, 2015": "Bathe in Dragonfire",
-      "Battle Brawler Ships on Jan 23, 2015": "Battle Brawler",
-      "Battlefront Krushok Ships on Jan 23, 2015": "Battlefront Krushok",
-      "Bloodfell Caves Ships on Jan 23, 2015": "Bloodfell Caves",
-      "Bloodfire Enforcers Ships on Jan 23, 2015": "Bloodfire Enforcers",
-      "Blossoming Sands Ships on Jan 23, 2015": "Blossoming Sands",
-      "Break Through the Line Ships on Jan 23, 2015": "Break Through the Line",
-      "Brutal Hordechief Ships on Jan 23, 2015": "Brutal Hordechief",
-      "Cached Defenses Ships on Jan 23, 2015": "Cached Defenses",
-      "Channel Harm Ships on Jan 23, 2015": "Channel Harm",
-      "Citadel Siege Ships on Jan 23, 2015": "Citadel Siege",
-      "Cloudform Ships on Jan 23, 2015": "Cloudform",
-      "Collateral Damage Ships on Jan 23, 2015": "Collateral Damage",
-      "Crucible of the Spirit Dragon Ships on Jan 23, 2015": "Crucible of the Spirit Dragon",
-      "Crux of Fate Ships on Jan 23, 2015": "Crux of Fate",
-      "Cunning Strike Ships on Jan 23, 2015": "Cunning Strike",
-      "Daghatar the Adamant Ships on Jan 23, 2015": "Daghatar the Adamant",
-      "Dark Deal Ships on Jan 23, 2015": "Dark Deal",
-      "Defiant Ogre Ships on Jan 23, 2015": "Defiant Ogre",
-      "Destructor Dragon Ships on Jan 23, 2015": "Destructor Dragon",
-      "Diplomacy of the Wastes Ships on Jan 23, 2015": "Diplomacy of the Wastes",
-      "Dismal Backwater Ships on Jan 23, 2015": "Dismal Backwater",
-      "Douse in Gloom Ships on Jan 23, 2015": "Douse in Gloom",
-      "Dragon Bell Monk Ships on Jan 23, 2015": "Dragon Bell Monk",
-      "Dragonrage Ships on Jan 23, 2015": "Dragonrage",
-      "Dragonscale General Ships on Jan 23, 2015": "Dragonscale General",
-      "Dromoka, the Eternal Ships on Jan 23, 2015": "Dromoka, the Eternal",
-      "Elite Scaleguard Ships on Jan 23, 2015": "Elite Scaleguard",
-      "Enhanced Awareness Ships on Jan 23, 2015": "Enhanced Awareness",
-      "Ethereal Ambush Ships on Jan 23, 2015": "Ethereal Ambush",
-      "Fascination Ships on Jan 23, 2015": "Fascination",
-      "Fearsome Awakening Ships on Jan 23, 2015": "Fearsome Awakening",
-      "Feral Krushok Ships on Jan 23, 2015": "Feral Krushok",
-      "Fierce Invocation Ships on Jan 23, 2015": "Fierce Invocation",
-      "Flamerush Rider Ships on Jan 23, 2015": "Flamerush Rider",
-      "Flamewake Phoenix Ships on Jan 23, 2015": "Flamewake Phoenix",
-      "Formless Nurturing Ships on Jan 23, 2015": "Formless Nurturing",
-      "Friendly Fire Ships on Jan 23, 2015": "Friendly Fire",
-      "Frontier Mastodon Ships on Jan 23, 2015": "Frontier Mastodon",
-      "Frontier Siege Ships on Jan 23, 2015": "Frontier Siege",
-      "Frost Walker Ships on Jan 23, 2015": "Frost Walker",
-      "Fruit of the First Tree Ships on Jan 23, 2015": "Fruit of the First Tree",
-      "Ghastly Conscription Ships on Jan 23, 2015": "Ghastly Conscription",
-      "Goblin Boom Keg Ships on Jan 23, 2015": "Goblin Boom Keg",
-      "Goblin Heelcutter Ships on Jan 23, 2015": "Goblin Heelcutter",
-      "Gore Swine Ships on Jan 23, 2015": "Gore Swine",
-      "Grave Strength Ships on Jan 23, 2015": "Grave Strength",
-      "Great-Horn Krushok Ships on Jan 23, 2015": "Great-Horn Krushok",
-      "Grim Contest Ships on Jan 23, 2015": "Grim Contest",
-      "Gurmag Angler Ships on Jan 23, 2015": "Gurmag Angler",
-      "Harsh Sustenance Ships on Jan 23, 2015": "Harsh Sustenance",
-      "Hero's Blade Ships on Jan 23, 2015": "Hero's Blade",
-      "Hewed Stone Retainers Ships on Jan 23, 2015": "Hewed Stone Retainers",
-      "Honor's Reward Ships on Jan 23, 2015": "Honor's Reward",
-      "Hooded Assassin Ships on Jan 23, 2015": "Hooded Assassin",
-      "Humble Defector Ships on Jan 23, 2015": "Humble Defector",
-      "Hungering Yeti Ships on Jan 23, 2015": "Hungering Yeti",
-      "Hunt the Weak Ships on Jan 23, 2015": "Hunt the Weak",
-      "Jeskai Barricade Ships on Jan 23, 2015": "Jeskai Barricade",
-      "Jeskai Infiltrator Ships on Jan 23, 2015": "Jeskai Infiltrator",
-      "Jeskai Runemark Ships on Jan 23, 2015": "Jeskai Runemark",
-      "Jeskai Sage Ships on Jan 23, 2015": "Jeskai Sage",
-      "Jungle Hollow Ships on Jan 23, 2015": "Jungle Hollow",
-      "Kolaghan, the Storm's Fury Ships on Jan 23, 2015": "Kolaghan, the Storm's Fury",
-      "Lightform Ships on Jan 23, 2015": "Lightform",
-      "Lightning Shrieker Ships on Jan 23, 2015": "Lightning Shrieker",
-      "Lotus Path Djinn Ships on Jan 23, 2015": "Lotus Path Djinn",
-      "Lotus-Eye Mystics Ships on Jan 23, 2015": "Lotus-Eye Mystics",
-      "Manifest Token Ships on Jan 23, 2015": "Manifest Token",
-      "Map the Wastes Ships on Jan 23, 2015": "Map the Wastes",
-      "Marang River Prowler Ships on Jan 23, 2015": "Marang River Prowler",
-      "Mardu Runemark Ships on Jan 23, 2015": "Mardu Runemark",
-      "Mardu Scout Ships on Jan 23, 2015": "Mardu Scout",
-      "Mardu Shadowspear Ships on Jan 23, 2015": "Mardu Shadowspear",
-      "Mardu Strike Leader Ships on Jan 23, 2015": "Mardu Strike Leader",
-      "Mardu Woe-Reaper Ships on Jan 23, 2015": "Mardu Woe-Reaper",
-      "Mastery of the Unseen Ships on Jan 23, 2015": "Mastery of the Unseen",
-      "Merciless Executioner Ships on Jan 23, 2015": "Merciless Executioner",
-      "Mindscour Dragon Ships on Jan 23, 2015": "Mindscour Dragon",
-      "Mistfire Adept Ships on Jan 23, 2015": "Mistfire Adept",
-      "Mob Rule Ships on Jan 23, 2015": "Mob Rule",
-      "Monastery Mentor Ships on Jan 23, 2015": "Monastery Mentor",
-      "Monastery Siege Ships on Jan 23, 2015": "Monastery Siege",
-      "Monk Token Ships on Jan 23, 2015": "Monk Token",
-      "Neutralizing Blast Ships on Jan 23, 2015": "Neutralizing Blast",
-      "Noxious Dragon Ships on Jan 23, 2015": "Noxious Dragon",
-      "Ojutai, Soul of Winter Ships on Jan 23, 2015": "Ojutai, Soul of Winter",
-      "Orc Sureshot Ships on Jan 23, 2015": "Orc Sureshot",
-      "Outpost Siege Ships on Jan 23, 2015": "Outpost Siege",
-      "Palace Siege Ships on Jan 23, 2015": "Palace Siege",
-      "Pilgrim of the Fires Ships on Jan 23, 2015": "Pilgrim of the Fires",
-      "Pressure Point Ships on Jan 23, 2015": "Pressure Point",
-      "Pyrotechnics Ships on Jan 23, 2015": "Pyrotechnics",
-      "Qarsi High Priest Ships on Jan 23, 2015": "Qarsi High Priest",
-      "Rageform Ships on Jan 23, 2015": "Rageform",
-      "Rakshasa's Disdain Ships on Jan 23, 2015": "Rakshasa's Disdain",
-      "Rally the Ancestors Ships on Jan 23, 2015": "Rally the Ancestors",
-      "Reach of Shadows Ships on Jan 23, 2015": "Reach of Shadows",
-      "Reality Shift Ships on Jan 23, 2015": "Reality Shift",
-      "Refocus Ships on Jan 23, 2015": "Refocus",
-      "Renowned Weaponsmith Ships on Jan 23, 2015": "Renowned Weaponsmith",
-      "Return to the Earth Ships on Jan 23, 2015": "Return to the Earth",
-      "Rite of Undoing Ships on Jan 23, 2015": "Rite of Undoing",
-      "Rugged Highlands Ships on Jan 23, 2015": "Rugged Highlands",
-      "Ruthless Instincts Ships on Jan 23, 2015": "Ruthless Instincts",
-      "Sage's Reverie Ships on Jan 23, 2015": "Sage's Reverie",
-      "Sage-Eye Avengers Ships on Jan 23, 2015": "Sage-Eye Avengers",
-      "Sandblast Ships on Jan 23, 2015": "Sandblast",
-      "Sandsteppe Mastodon Ships on Jan 23, 2015": "Sandsteppe Mastodon",
-      "Sandsteppe Outcast Ships on Jan 23, 2015": "Sandsteppe Outcast",
-      "Scoured Barrens Ships on Jan 23, 2015": "Scoured Barrens",
-      "Scroll of the Masters Ships on Jan 23, 2015": "Scroll of the Masters",
-      "Shaman of the Great Hunt Ships on Jan 23, 2015": "Shaman of the Great Hunt",
-      "Shamanic Revelation Ships on Jan 23, 2015": "Shamanic Revelation",
-      "Shifting Loyalties Ships on Jan 23, 2015": "Shifting Loyalties",
-      "Shockmaw Dragon Ships on Jan 23, 2015": "Shockmaw Dragon",
-      "Shu Yun, the Silent Tempest Ships on Jan 23, 2015": "Shu Yun, the Silent Tempest",
-      "Sibsig Host Ships on Jan 23, 2015": "Sibsig Host",
-      "Sibsig Muchdraggers Ships on Jan 23, 2015": "Sibsig Muckdraggers",
-      "Sibsig Muchdraggers": "Sibsig Muckdraggers",
-      "Silumgar, the Drifting Death Ships on Jan 23, 2015": "Silumgar, the Drifting Death",
-      "Smoldering Efreet Ships on Jan 23, 2015": "Smoldering Efreet",
-      "Soul Summons Ships on Jan 23, 2015": "Soul Summons",
-      "Soulfire Grand Master Ships on Jan 23, 2015": "Soulfire Grand Master",
-      "Soulflayer Ships on Jan 23, 2015": "Soulflayer",
-      "Spirit Token Ships on Jan 23, 2015": "Spirit Token",
-      "Sudden Reclamation Ships on Jan 23, 2015": "Sudden Reclamation",
-      "Sultai Emissary Ships on Jan 23, 2015": "Sultai Emissary",
-      "Sultai Runemark Ships on Jan 23, 2015": "Sultai Runemark",
-      "Sultai Skullkeeper Ships on Jan 23, 2015": "Sultai Skullkeeper",
-      "Supplant Form Ships on Jan 23, 2015": "Supplant Form",
-      "Swiftwater Cliffs Ships on Jan 23, 2015": "Swiftwater Cliffs",
-      "Tasigur's Cruelty Ships on Jan 23, 2015": "Tasigur's Cruelty",
-      "Tasigur, the Golden Fang Ships on Jan 23, 2015": "Tasigur, the Golden Fang",
-      "Temporal Trespass Ships on Jan 23, 2015": "Temporal Trespass",
-      "Temur Battle Rage Ships on Jan 23, 2015": "Temur Battle Rage",
-      "Temur Runemark Ships on Jan 23, 2015": "Temur Runemark",
-      "Temur Sabertooth Ships on Jan 23, 2015": "Temur Sabertooth",
-      "Temur War Shaman Ships on Jan 23, 2015": "Temur War Shaman",
-      "Thornwood Falls Ships on Jan 23, 2015": "Thornwood Falls",
-      "Torrent Elemental Ships on Jan 23, 2015": "Torrent Elemental",
-      "Tranquil Cove Ships on Jan 23, 2015": "Tranquil Cove",
-      "Typhoid Rats Ships on Jan 23, 2015": "Typhoid Rats",
-      "Ugin's Construct Ships on Jan 23, 2015": "Ugin's Construct",
-      "Ugin, the Spirit Dragon Ships on Jan 23, 2015": "Ugin, the Spirit Dragon",
-      "Valorous Stance Ships on Jan 23, 2015": "Valorous Stance",
-      "Vaultbreaker Ships on Jan 23, 2015": "Vaultbreaker",
-      "Wandering Champion Ships on Jan 23, 2015": "Wandering Champion",
-      "War Flare Ships on Jan 23, 2015": "War Flare",
-      "Warden of the First Tree Ships on Jan 23, 2015": "Warden of the First Tree",
-      "Wardscale Dragon Ships on Jan 23, 2015": "Wardscale Dragon",
-      "Warrior Token Ships on Jan 23, 2015": "Warrior Token",
-      "Whisk Away Ships on Jan 23, 2015": "Whisk Away",
-      "Whisperer of the Wilds Ships on Jan 23, 2015": "Whisperer of the Wilds",
-      "Whisperwood Elemental Ships on Jan 23, 2015": "Whisperwood Elemental",
-      "Wild Slash Ships on Jan 23, 2015": "Wild Slash",
-      "Wildcall Ships on Jan 23, 2015": "Wildcall",
-      "Will of the Naga Ships on Jan 23, 2015": "Will of the Naga",
-      "Wind-Scarred Crag Ships on Jan 23, 2015": "Wind-Scarred Crag",
-      "Winds of Qal Sisma Ships on Jan 23, 2015": "Winds of Qal Sisma",
-      "Write into Being Ships on Jan 23, 2015": "Write into Being",
-      "Yasova Dragonclaw Ships on Jan 23, 2015": "Yasova Dragonclaw"
+        "Abzan Beastmaster Ships on Jan 23, 2015": "Abzan Beastmaster",
+        "Abzan Kin-Guard Ships on Jan 23, 2015": "Abzan Kin-Guard",
+        "Abzan Runemark Ships on Jan 23, 2015": "Abzan Runemark",
+        "Abzan Skycaptain Ships on Jan 23, 2015": "Abzan Skycaptain",
+        "Ainok Guide Ships on Jan 23, 2015": "Ainok Guide",
+        "Alesha's Vanguard Ships on Jan 23, 2015": "Alesha's Vanguard",
+        "Alesha, Who Smiles at Death Ships on Jan 23, 2015": "Alesha, Who Smiles at Death",
+        "Ambush Krotiq Ships on Jan 23, 2015": "Ambush Krotiq",
+        "Ancestral Vengeance Ships on Jan 23, 2015": "Ancestral Vengeance",
+        "Arashin Cleric Ships on Jan 23, 2015": "Arashin Cleric",
+        "Arashin War Beast Ships on Jan 23, 2015": "Arashin War Beast",
+        "Arcbond Ships on Jan 23, 2015": "Arcbond",
+        "Archers of Qarsi Ships on Jan 23, 2015": "Archers of Qarsi",
+        "Archfiend of Depravity Ships on Jan 23, 2015": "Archfiend of Depravity",
+        "Atarka, World Render Ships on Jan 23, 2015": "Atarka, World Render",
+        "Aven Skirmisher Ships on Jan 23, 2015": "Aven Skirmisher",
+        "Aven Surveyor Ships on Jan 23, 2015": "Aven Surveyor",
+        "Bathe in Dragonfire Ships on Jan 23, 2015": "Bathe in Dragonfire",
+        "Battle Brawler Ships on Jan 23, 2015": "Battle Brawler",
+        "Battlefront Krushok Ships on Jan 23, 2015": "Battlefront Krushok",
+        "Bloodfell Caves Ships on Jan 23, 2015": "Bloodfell Caves",
+        "Bloodfire Enforcers Ships on Jan 23, 2015": "Bloodfire Enforcers",
+        "Blossoming Sands Ships on Jan 23, 2015": "Blossoming Sands",
+        "Break Through the Line Ships on Jan 23, 2015": "Break Through the Line",
+        "Brutal Hordechief Ships on Jan 23, 2015": "Brutal Hordechief",
+        "Cached Defenses Ships on Jan 23, 2015": "Cached Defenses",
+        "Channel Harm Ships on Jan 23, 2015": "Channel Harm",
+        "Citadel Siege Ships on Jan 23, 2015": "Citadel Siege",
+        "Cloudform Ships on Jan 23, 2015": "Cloudform",
+        "Collateral Damage Ships on Jan 23, 2015": "Collateral Damage",
+        "Crucible of the Spirit Dragon Ships on Jan 23, 2015": "Crucible of the Spirit Dragon",
+        "Crux of Fate Ships on Jan 23, 2015": "Crux of Fate",
+        "Cunning Strike Ships on Jan 23, 2015": "Cunning Strike",
+        "Daghatar the Adamant Ships on Jan 23, 2015": "Daghatar the Adamant",
+        "Dark Deal Ships on Jan 23, 2015": "Dark Deal",
+        "Defiant Ogre Ships on Jan 23, 2015": "Defiant Ogre",
+        "Destructor Dragon Ships on Jan 23, 2015": "Destructor Dragon",
+        "Diplomacy of the Wastes Ships on Jan 23, 2015": "Diplomacy of the Wastes",
+        "Dismal Backwater Ships on Jan 23, 2015": "Dismal Backwater",
+        "Douse in Gloom Ships on Jan 23, 2015": "Douse in Gloom",
+        "Dragon Bell Monk Ships on Jan 23, 2015": "Dragon Bell Monk",
+        "Dragonrage Ships on Jan 23, 2015": "Dragonrage",
+        "Dragonscale General Ships on Jan 23, 2015": "Dragonscale General",
+        "Dromoka, the Eternal Ships on Jan 23, 2015": "Dromoka, the Eternal",
+        "Elite Scaleguard Ships on Jan 23, 2015": "Elite Scaleguard",
+        "Enhanced Awareness Ships on Jan 23, 2015": "Enhanced Awareness",
+        "Ethereal Ambush Ships on Jan 23, 2015": "Ethereal Ambush",
+        "Fascination Ships on Jan 23, 2015": "Fascination",
+        "Fearsome Awakening Ships on Jan 23, 2015": "Fearsome Awakening",
+        "Feral Krushok Ships on Jan 23, 2015": "Feral Krushok",
+        "Fierce Invocation Ships on Jan 23, 2015": "Fierce Invocation",
+        "Flamerush Rider Ships on Jan 23, 2015": "Flamerush Rider",
+        "Flamewake Phoenix Ships on Jan 23, 2015": "Flamewake Phoenix",
+        "Formless Nurturing Ships on Jan 23, 2015": "Formless Nurturing",
+        "Friendly Fire Ships on Jan 23, 2015": "Friendly Fire",
+        "Frontier Mastodon Ships on Jan 23, 2015": "Frontier Mastodon",
+        "Frontier Siege Ships on Jan 23, 2015": "Frontier Siege",
+        "Frost Walker Ships on Jan 23, 2015": "Frost Walker",
+        "Fruit of the First Tree Ships on Jan 23, 2015": "Fruit of the First Tree",
+        "Ghastly Conscription Ships on Jan 23, 2015": "Ghastly Conscription",
+        "Goblin Boom Keg Ships on Jan 23, 2015": "Goblin Boom Keg",
+        "Goblin Heelcutter Ships on Jan 23, 2015": "Goblin Heelcutter",
+        "Gore Swine Ships on Jan 23, 2015": "Gore Swine",
+        "Grave Strength Ships on Jan 23, 2015": "Grave Strength",
+        "Great-Horn Krushok Ships on Jan 23, 2015": "Great-Horn Krushok",
+        "Grim Contest Ships on Jan 23, 2015": "Grim Contest",
+        "Gurmag Angler Ships on Jan 23, 2015": "Gurmag Angler",
+        "Harsh Sustenance Ships on Jan 23, 2015": "Harsh Sustenance",
+        "Hero's Blade Ships on Jan 23, 2015": "Hero's Blade",
+        "Hewed Stone Retainers Ships on Jan 23, 2015": "Hewed Stone Retainers",
+        "Honor's Reward Ships on Jan 23, 2015": "Honor's Reward",
+        "Hooded Assassin Ships on Jan 23, 2015": "Hooded Assassin",
+        "Humble Defector Ships on Jan 23, 2015": "Humble Defector",
+        "Hungering Yeti Ships on Jan 23, 2015": "Hungering Yeti",
+        "Hunt the Weak Ships on Jan 23, 2015": "Hunt the Weak",
+        "Jeskai Barricade Ships on Jan 23, 2015": "Jeskai Barricade",
+        "Jeskai Infiltrator Ships on Jan 23, 2015": "Jeskai Infiltrator",
+        "Jeskai Runemark Ships on Jan 23, 2015": "Jeskai Runemark",
+        "Jeskai Sage Ships on Jan 23, 2015": "Jeskai Sage",
+        "Jungle Hollow Ships on Jan 23, 2015": "Jungle Hollow",
+        "Kolaghan, the Storm's Fury Ships on Jan 23, 2015": "Kolaghan, the Storm's Fury",
+        "Lightform Ships on Jan 23, 2015": "Lightform",
+        "Lightning Shrieker Ships on Jan 23, 2015": "Lightning Shrieker",
+        "Lotus Path Djinn Ships on Jan 23, 2015": "Lotus Path Djinn",
+        "Lotus-Eye Mystics Ships on Jan 23, 2015": "Lotus-Eye Mystics",
+        "Manifest Token Ships on Jan 23, 2015": "Manifest Token",
+        "Map the Wastes Ships on Jan 23, 2015": "Map the Wastes",
+        "Marang River Prowler Ships on Jan 23, 2015": "Marang River Prowler",
+        "Mardu Runemark Ships on Jan 23, 2015": "Mardu Runemark",
+        "Mardu Scout Ships on Jan 23, 2015": "Mardu Scout",
+        "Mardu Shadowspear Ships on Jan 23, 2015": "Mardu Shadowspear",
+        "Mardu Strike Leader Ships on Jan 23, 2015": "Mardu Strike Leader",
+        "Mardu Woe-Reaper Ships on Jan 23, 2015": "Mardu Woe-Reaper",
+        "Mastery of the Unseen Ships on Jan 23, 2015": "Mastery of the Unseen",
+        "Merciless Executioner Ships on Jan 23, 2015": "Merciless Executioner",
+        "Mindscour Dragon Ships on Jan 23, 2015": "Mindscour Dragon",
+        "Mistfire Adept Ships on Jan 23, 2015": "Mistfire Adept",
+        "Mob Rule Ships on Jan 23, 2015": "Mob Rule",
+        "Monastery Mentor Ships on Jan 23, 2015": "Monastery Mentor",
+        "Monastery Siege Ships on Jan 23, 2015": "Monastery Siege",
+        "Monk Token Ships on Jan 23, 2015": "Monk Token",
+        "Neutralizing Blast Ships on Jan 23, 2015": "Neutralizing Blast",
+        "Noxious Dragon Ships on Jan 23, 2015": "Noxious Dragon",
+        "Ojutai, Soul of Winter Ships on Jan 23, 2015": "Ojutai, Soul of Winter",
+        "Orc Sureshot Ships on Jan 23, 2015": "Orc Sureshot",
+        "Outpost Siege Ships on Jan 23, 2015": "Outpost Siege",
+        "Palace Siege Ships on Jan 23, 2015": "Palace Siege",
+        "Pilgrim of the Fires Ships on Jan 23, 2015": "Pilgrim of the Fires",
+        "Pressure Point Ships on Jan 23, 2015": "Pressure Point",
+        "Pyrotechnics Ships on Jan 23, 2015": "Pyrotechnics",
+        "Qarsi High Priest Ships on Jan 23, 2015": "Qarsi High Priest",
+        "Rageform Ships on Jan 23, 2015": "Rageform",
+        "Rakshasa's Disdain Ships on Jan 23, 2015": "Rakshasa's Disdain",
+        "Rally the Ancestors Ships on Jan 23, 2015": "Rally the Ancestors",
+        "Reach of Shadows Ships on Jan 23, 2015": "Reach of Shadows",
+        "Reality Shift Ships on Jan 23, 2015": "Reality Shift",
+        "Refocus Ships on Jan 23, 2015": "Refocus",
+        "Renowned Weaponsmith Ships on Jan 23, 2015": "Renowned Weaponsmith",
+        "Return to the Earth Ships on Jan 23, 2015": "Return to the Earth",
+        "Rite of Undoing Ships on Jan 23, 2015": "Rite of Undoing",
+        "Rugged Highlands Ships on Jan 23, 2015": "Rugged Highlands",
+        "Ruthless Instincts Ships on Jan 23, 2015": "Ruthless Instincts",
+        "Sage's Reverie Ships on Jan 23, 2015": "Sage's Reverie",
+        "Sage-Eye Avengers Ships on Jan 23, 2015": "Sage-Eye Avengers",
+        "Sandblast Ships on Jan 23, 2015": "Sandblast",
+        "Sandsteppe Mastodon Ships on Jan 23, 2015": "Sandsteppe Mastodon",
+        "Sandsteppe Outcast Ships on Jan 23, 2015": "Sandsteppe Outcast",
+        "Scoured Barrens Ships on Jan 23, 2015": "Scoured Barrens",
+        "Scroll of the Masters Ships on Jan 23, 2015": "Scroll of the Masters",
+        "Shaman of the Great Hunt Ships on Jan 23, 2015": "Shaman of the Great Hunt",
+        "Shamanic Revelation Ships on Jan 23, 2015": "Shamanic Revelation",
+        "Shifting Loyalties Ships on Jan 23, 2015": "Shifting Loyalties",
+        "Shockmaw Dragon Ships on Jan 23, 2015": "Shockmaw Dragon",
+        "Shu Yun, the Silent Tempest Ships on Jan 23, 2015": "Shu Yun, the Silent Tempest",
+        "Sibsig Host Ships on Jan 23, 2015": "Sibsig Host",
+        "Sibsig Muchdraggers Ships on Jan 23, 2015": "Sibsig Muckdraggers",
+        "Sibsig Muchdraggers": "Sibsig Muckdraggers",
+        "Silumgar, the Drifting Death Ships on Jan 23, 2015": "Silumgar, the Drifting Death",
+        "Smoldering Efreet Ships on Jan 23, 2015": "Smoldering Efreet",
+        "Soul Summons Ships on Jan 23, 2015": "Soul Summons",
+        "Soulfire Grand Master Ships on Jan 23, 2015": "Soulfire Grand Master",
+        "Soulflayer Ships on Jan 23, 2015": "Soulflayer",
+        "Spirit Token Ships on Jan 23, 2015": "Spirit Token",
+        "Sudden Reclamation Ships on Jan 23, 2015": "Sudden Reclamation",
+        "Sultai Emissary Ships on Jan 23, 2015": "Sultai Emissary",
+        "Sultai Runemark Ships on Jan 23, 2015": "Sultai Runemark",
+        "Sultai Skullkeeper Ships on Jan 23, 2015": "Sultai Skullkeeper",
+        "Supplant Form Ships on Jan 23, 2015": "Supplant Form",
+        "Swiftwater Cliffs Ships on Jan 23, 2015": "Swiftwater Cliffs",
+        "Tasigur's Cruelty Ships on Jan 23, 2015": "Tasigur's Cruelty",
+        "Tasigur, the Golden Fang Ships on Jan 23, 2015": "Tasigur, the Golden Fang",
+        "Temporal Trespass Ships on Jan 23, 2015": "Temporal Trespass",
+        "Temur Battle Rage Ships on Jan 23, 2015": "Temur Battle Rage",
+        "Temur Runemark Ships on Jan 23, 2015": "Temur Runemark",
+        "Temur Sabertooth Ships on Jan 23, 2015": "Temur Sabertooth",
+        "Temur War Shaman Ships on Jan 23, 2015": "Temur War Shaman",
+        "Thornwood Falls Ships on Jan 23, 2015": "Thornwood Falls",
+        "Torrent Elemental Ships on Jan 23, 2015": "Torrent Elemental",
+        "Tranquil Cove Ships on Jan 23, 2015": "Tranquil Cove",
+        "Typhoid Rats Ships on Jan 23, 2015": "Typhoid Rats",
+        "Ugin's Construct Ships on Jan 23, 2015": "Ugin's Construct",
+        "Ugin, the Spirit Dragon Ships on Jan 23, 2015": "Ugin, the Spirit Dragon",
+        "Valorous Stance Ships on Jan 23, 2015": "Valorous Stance",
+        "Vaultbreaker Ships on Jan 23, 2015": "Vaultbreaker",
+        "Wandering Champion Ships on Jan 23, 2015": "Wandering Champion",
+        "War Flare Ships on Jan 23, 2015": "War Flare",
+        "Warden of the First Tree Ships on Jan 23, 2015": "Warden of the First Tree",
+        "Wardscale Dragon Ships on Jan 23, 2015": "Wardscale Dragon",
+        "Warrior Token Ships on Jan 23, 2015": "Warrior Token",
+        "Whisk Away Ships on Jan 23, 2015": "Whisk Away",
+        "Whisperer of the Wilds Ships on Jan 23, 2015": "Whisperer of the Wilds",
+        "Whisperwood Elemental Ships on Jan 23, 2015": "Whisperwood Elemental",
+        "Wild Slash Ships on Jan 23, 2015": "Wild Slash",
+        "Wildcall Ships on Jan 23, 2015": "Wildcall",
+        "Will of the Naga Ships on Jan 23, 2015": "Will of the Naga",
+        "Wind-Scarred Crag Ships on Jan 23, 2015": "Wind-Scarred Crag",
+        "Winds of Qal Sisma Ships on Jan 23, 2015": "Winds of Qal Sisma",
+        "Write into Being Ships on Jan 23, 2015": "Write into Being",
+        "Yasova Dragonclaw Ships on Jan 23, 2015": "Yasova Dragonclaw"
       },
-      "numberOverrides": {
-      "Forest (184 A)": 184,
-      "Forest (185 B)": 185,
-      "Island (178 A)": 178,
-      "Island (179 B)": 179,
-      "Mountain (182 A)": 182,
-      "Mountain (183 B)": 183,
-      "Plains (176 A)": 176,
-      "Plains (177 B)": 177,
-      "Swamp (180 A)": 180,
-      "Swamp (181 B)": 181,
-      "Forest (184 A) Ships on Jan 23, 2015": 184,
-      "Forest (185 B) Ships on Jan 23, 2015": 185,
-      "Island (178 A) Ships on Jan 23, 2015": 178,
-      "Island (179 B) Ships on Jan 23, 2015": 179,
-      "Mountain (182 A) Ships on Jan 23, 2015": 182,
-      "Mountain (183 B) Ships on Jan 23, 2015": 183,
-      "Plains (176 A) Ships on Jan 23, 2015": 176,
-      "Plains (177 B) Ships on Jan 23, 2015": 177,
-      "Swamp (180 A) Ships on Jan 23, 2015": 180,
-      "Swamp (181 B) Ships on Jan 23, 2015": 181
-    },
       "multiverseOverrides": {
         "Brutal Hordechief": 391806,
         "Hewed Stone Retainers": 391853,
-      "Island (178 A)": 391859,
-      "Island (179 B)": 391860,
-      "Whisperwood Elemental": 391958,
-      "Valorous Stance": 391950
+        "Island (178 A)": 391859,
+        "Island (179 B)": 391860,
+        "Whisperwood Elemental": 391958,
+        "Valorous Stance": 391950
       }
     },
     "FUT": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Vedalken Aethermage": "Vedalken Æthermage"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "GPT": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aetherplasm": "Ætherplasm"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "GTC": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Angel Token",
         "Cleric Token",
@@ -2188,14 +2481,12 @@
       "nameOverrides": {
         "Aetherize": "Ætherize"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "H09": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (41)": 207934,
         "Swamp (39)": 207938,
@@ -2205,20 +2496,14 @@
       }
     },
     "HML": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Storm": "Æther Storm"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "HOP": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "The Aether Flues": "The Æther Flues"
-      },
       "numberOverrides": {
         "Island (147 A)": "147",
         "Plains (142 A)": "142",
@@ -2249,46 +2534,84 @@
         "Forest (169 E)": "169",
         "Mountain (163 H)": "163"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "The Aether Flues": "The Æther Flues"
+      },
       "multiverseOverrides": {
         "Assault-Battery": 205409,
         "Order-Chaos": 205384
       }
     },
-    "ICE": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Forest (C)",
-        "Island (A)",
-        "Island (B)",
-        "Island (C)",
-        "Mountain (A)",
-        "Mountain (B)",
-        "Mountain (C)",
-        "Plains (A)",
-        "Plains (B)",
-        "Plains (C)",
-        "Swamp (A)",
-        "Swamp (B)",
-        "Swamp (C)"
+    "HOU": {
+      "numberOverrides": {
+        "Appeal // Authority": "152a",
+        "Avid Reclaimer (Planeswalker Deck)": "201",
+        "Brambleweft Behemoth (Planeswalker Deck)": "202",
+        "Cinder Barrens (Planeswalker Deck)": "209",
+        "Claim // Fame": "150a",
+        "Consign // Oblivion": "149a",
+        "Driven // Despair": "157a",
+        "Dreamstealer Token": "186",
+        "Farm // Market": "148a",
+        "Forest (189)": "189",
+        "Forest (198 A)": "198",
+        "Forest (199 B)": "199",
+        "Grind // Dust": "155a",
+        "Island (186)": "186",
+        "Island (192 A)": "192",
+        "Island (193 B)": "193",
+        "Leave // Chance": "153a",
+        "Mountain (188)": "188",
+        "Mountain (196 A)": "196",
+        "Mountain (197 B)": "197",
+        "Nicol Bolas, the Deceiver (Foil - Planeswalker Deck)": "205",
+        "Nissa's Encouragement (Planeswalker Deck)": "203",
+        "Nissa, Genesis Mage (Foil - Planeswalker Deck)": "200",
+        "Plains (185)": "185",
+        "Plains (190 A)": "190",
+        "Plains (191 B)": "191",
+        "Reason // Believe": "154a",
+        "Refuse // Cooperate": "156a",
+        "Struggle // Survive": "151a",
+        "Survivor's Encampment": "184",
+        "Swamp (187)": "187",
+        "Swamp (194 A)": "194",
+        "Swamp (195 B)": "195",
+        "Visage of Bolas (Planeswalker Deck)": "208",
+        "Wasp of the Bitter End (Planeswalker Deck)": "206",
+        "Woodland Stream (Planeswalker Deck)": "204",
+        "Zealot of the God-Pharaoh (Planeswalker Deck)": "207"
+      },
+      "ignoredNames": [
+        "Adorned Pouncer Token",
+        "Champion of Wits Token",
+        "Earthshaker Khenra Token",
+        "Horse Token",
+        "Insect Token",
+        "Proven Combatant Token",
+        "Resilient Khenra Token",
+        "Sinuous Striker Token",
+        "Snake Token",
+        "Steadfast Sentinel Token",
+        "Sunscourge Champion Token"
       ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "ICE": {
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Lim-Dul\u0027s Hex": 2470,
+        "Lim-Dul's Hex": 2470,
         "Oath of Lim-Dul": 2480,
         "Legions of Lim-Dul": 2466,
-        "Lim-Dul\u0027s Cohort": 2469,
+        "Lim-Dul's Cohort": 2469,
         "Marton Stromgald": 2635
       }
     },
     "INV": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Aether Rift": "Æther Rift"
-      },
       "numberOverrides": {
         "Island (337 C)": "337",
         "Plains (331 A)": "331",
@@ -2311,6 +2634,10 @@
         "Mountain (344 B)": "344",
         "Mountain (343 A)": "343"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Aether Rift": "Æther Rift"
+      },
       "multiverseOverrides": {
         "Assault-Battery": 20580,
         "Pain-Suffering": 20578,
@@ -2320,23 +2647,6 @@
       }
     },
     "ISD": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Angel Token",
-        "Demon Token",
-        "Homunculus Token",
-        "Ooze Token",
-        "Spider Token",
-        "Spirit Token",
-        "Zombie Token (#9)",
-        "Zombie Token (#8)",
-        "Vampire Token",
-        "Zombie Token (#7)",
-        "Wolf Token (Green)",
-        "Wolf Token (Deathtouch)",
-        "Checklist Card (Innistrad)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (254 B)": "254",
         "Island (255 C)": "255",
@@ -2354,6 +2664,22 @@
         "Swamp (256 A)": "256",
         "Plains (250 A)": "250"
       },
+      "ignoredNames": [
+        "Angel Token",
+        "Demon Token",
+        "Homunculus Token",
+        "Ooze Token",
+        "Spider Token",
+        "Spirit Token",
+        "Zombie Token (#9)",
+        "Zombie Token (#8)",
+        "Vampire Token",
+        "Zombie Token (#7)",
+        "Wolf Token (Green)",
+        "Wolf Token (Deathtouch)",
+        "Checklist Card (Innistrad)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {
         "Cloistered Youth - Unholy Fiend": 221212,
         "Bloodline Keeper - Lord of Lineage": 227061,
@@ -2366,7 +2692,7 @@
         "Hanweir Watchkeep - Bane of Hanweir": 244683,
         "Instigator Gang - Wildblood Pack": 227415,
         "Kruin Outlaw - Terror of Kruin Pass": 227084,
-        "Ludevic\u0027s Test Subject - Ludevic\u0027s Abomination": 221179,
+        "Ludevic's Test Subject - Ludevic's Abomination": 221179,
         "Reckless Waif - Merciless Predator": 222111,
         "Mayor of Avabruck - Howlpack Alpha": 222189,
         "Tormented Pariah - Rampaging Werewolf": 222186,
@@ -2378,7 +2704,7 @@
       }
     },
     "JOU": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Minotaur Token",
         "Hydra Token",
@@ -2388,36 +2714,63 @@
         "Zombie Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "JUD": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
-        "Soulcatcher\u0027s Aerie": "Soulcatcher\u0027s Ærie"
+        "Soulcatcher's Aerie": "Soulcatcher's Ærie"
       },
-      "numberOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "KLD": {
+      "numberOverrides": {
+        "Chandra, Pyrogenius (Foil - Planeswalker Deck)": "265",
+        "Flame Lash (Planeswalker Deck)": "266",
+        "Forest (262 A)": "262",
+        "Forest (263 B)": "263",
+        "Forest (264 C)": "264",
+        "Guardian of the Great Conduit (Planeswalker Deck)": "271",
+        "Island (253 A)": "253",
+        "Island (254 B)": "254",
+        "Island (255 C)": "255",
+        "Liberating Combustion (Planeswalker Deck)": "267",
+        "Mountain (259 A)": "259",
+        "Mountain (260 B)": "260",
+        "Mountain (261 C)": "261",
+        "Nissa, Nature's Artisan (Foil - Planeswalker Deck)": "270",
+        "Plains (250 A)": "250",
+        "Plains (251 B)": "251",
+        "Plains (252 C)": "252",
+        "Renegade Firebrand (Planeswalker Deck)": "268",
+        "Stone Quarry (Planeswalker Deck)": "269",
+        "Swamp (256 A)": "256",
+        "Swamp (257 B)": "257",
+        "Swamp (258 C)": "258",
+        "Terrain Elemental (Planeswalker Deck)": "272",
+        "Verdant Crescendo (Planeswalker Deck)": "273",
+        "Woodland Stream (Planeswalker Deck)": "274"
+      },
+      "ignoredNames": [
+        "Beast Token",
+        "Construct Token (2 A)",
+        "Construct Token (3 B)",
+        "Emblem (Chandra, Torch of Defiance)",
+        "Emblem (Dovin)",
+        "Emblem (Nissa)",
+        "Energy Reserve Token",
+        "Servo Token (4 A)",
+        "Servo Token (5 B)",
+        "Servo Token (6 C)",
+        "Thopter Token (7 A)",
+        "Thopter Token (8 B)",
+        "Thopter Token (9 C)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "KTK": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Bird Token",
-        "Bear Token",
-        "Goblin Token",
-        "Morph Token",
-        "Spirit Token",
-        "Snake Token",
-        "Spirit Warrior Token",
-        "Warrior Token (Ryan Barger)",
-        "Vampire Token",
-        "Warrior Token (Yefim Kligerman)",
-        "Zombie Token",
-        "Emblem (Sorin, Solemn Visitor)",
-        "Emblem (Sarkhan, the Dragonspeaker)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (266 A)": "266",
         "Forest (267 B)": "267",
@@ -2440,82 +2793,61 @@
         "Swamp (260 C)": "260",
         "Swamp (261 D)": "261"
       },
+      "ignoredNames": [
+        "Bird Token",
+        "Bear Token",
+        "Goblin Token",
+        "Morph Token",
+        "Spirit Token",
+        "Snake Token",
+        "Spirit Warrior Token",
+        "Warrior Token (Ryan Barger)",
+        "Vampire Token",
+        "Warrior Token (Yefim Kligerman)",
+        "Zombie Token",
+        "Emblem (Sorin, Solemn Visitor)",
+        "Emblem (Sarkhan, the Dragonspeaker)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "LEA": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Island (A)",
-        "Island (B)",
-        "Mountain (A)",
-        "Plains (A)",
-        "Mountain (B)",
-        "Plains (B)",
-        "Swamp (A)",
-        "Swamp (B)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Will-O\u0027-The-Wisp": 91
+        "Forest (A)": 288,
+        "Forest (B)": 289,
+        "Island (A)": 292,
+        "Island (B)": 293,
+        "Mountain (A)": 290,
+        "Mountain (B)": 291,
+        "Plains (A)": 294,
+        "Plains (B)": 295,
+        "Swamp (A)": 277,
+        "Swamp (B)": 278,
+        "Will-O'-The-Wisp": 91
       }
     },
     "LEB": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Forest (C)",
-        "Island (A)",
-        "Island (B)",
-        "Island (C)",
-        "Mountain (A)",
-        "Mountain (B)",
-        "Mountain (C)",
-        "Plains (A)",
-        "Plains (B)",
-        "Plains (C)",
-        "Swamp (A)",
-        "Swamp (B)",
-        "Swamp (C)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Will-O\u0027-The-Wisp": 386
+        "Will-O'-The-Wisp": 386
       }
     },
     "LEG": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "AErathi Berserker": "Ærathi Berserker"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Evil Eye of Orms-By-Gore": 1436
       }
     },
     "LRW": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Avatar Token",
-        "Beast Token",
-        "Elemental Shaman Token",
-        "Elemental Token (Green)",
-        "Elemental Token (White)",
-        "Elf Warrior Token",
-        "Goblin Rogue Token",
-        "Kithkin Soldier Token",
-        "Merfolk Wizard Token",
-        "Shapeshifter Token",
-        "Wolf Token"
-      ],
-      "nameOverrides": {
-        "Aethersnipe": "Æthersnipe"
-      },
       "numberOverrides": {
         "Forest (299 B)": "299",
         "Mountain (297 D)": "297",
@@ -2538,10 +2870,47 @@
         "Forest (301 D)": "301",
         "Swamp (292 C)": "292"
       },
+      "ignoredNames": [
+        "Avatar Token",
+        "Beast Token",
+        "Elemental Shaman Token",
+        "Elemental Token (Green)",
+        "Elemental Token (White)",
+        "Elf Warrior Token",
+        "Goblin Rogue Token",
+        "Kithkin Soldier Token",
+        "Merfolk Wizard Token",
+        "Shapeshifter Token",
+        "Wolf Token"
+      ],
+      "nameOverrides": {
+        "Aethersnipe": "Æthersnipe"
+      },
       "multiverseOverrides": {}
     },
     "M10": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Forest (249 D)": "249",
+        "Forest (247 B)": "247",
+        "Forest (248 C)": "248",
+        "Island (235 B)": "235",
+        "Mountain (245 D)": "245",
+        "Island (234 A)": "234",
+        "Mountain (244 C)": "244",
+        "Forest (246 A)": "246",
+        "Mountain (243 B)": "243",
+        "Swamp (241 D)": "241",
+        "Plains (232 C)": "232",
+        "Swamp (240 C)": "240",
+        "Swamp (239 B)": "239",
+        "Mountain (242 A)": "242",
+        "Plains (233 D)": "233",
+        "Island (236 C)": "236",
+        "Island (237 D)": "237",
+        "Plains (231 B)": "231",
+        "Plains (230 A)": "230",
+        "Swamp (238 A)": "238"
+      },
       "ignoredNames": [
         "Avatar Token",
         "Beast Token",
@@ -2553,6 +2922,9 @@
         "Zombie Token"
       ],
       "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "M11": {
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -2575,10 +2947,6 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
-      "multiverseOverrides": {}
-    },
-    "M11": {
-      "unknownNames": [],
       "ignoredNames": [
         "Avatar Token",
         "Bird Token",
@@ -2590,6 +2958,9 @@
       "nameOverrides": {
         "Aether Adept": "Æther Adept"
       },
+      "multiverseOverrides": {}
+    },
+    "M12": {
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -2612,10 +2983,6 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
-      "multiverseOverrides": {}
-    },
-    "M12": {
-      "unknownNames": [],
       "ignoredNames": [
         "Bird Token",
         "Beast Token",
@@ -2628,6 +2995,9 @@
       "nameOverrides": {
         "Aether Adept": "Æther Adept"
       },
+      "multiverseOverrides": {}
+    },
+    "M13": {
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -2650,10 +3020,6 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
-      "multiverseOverrides": {}
-    },
-    "M13": {
-      "unknownNames": [],
       "ignoredNames": [
         "Cat Token",
         "Beast Token",
@@ -2668,6 +3034,9 @@
         "Zombie Token"
       ],
       "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "M14": {
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -2690,10 +3059,6 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
-      "multiverseOverrides": {}
-    },
-    "M14": {
-      "unknownNames": [],
       "ignoredNames": [
         "Cat Token",
         "Angel Token",
@@ -2710,86 +3075,53 @@
         "Zombie Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {
-        "Forest (249 D)": "249",
-        "Forest (247 B)": "247",
-        "Forest (248 C)": "248",
-        "Island (235 B)": "235",
-        "Mountain (245 D)": "245",
-        "Island (234 A)": "234",
-        "Mountain (244 C)": "244",
-        "Forest (246 A)": "246",
-        "Mountain (243 B)": "243",
-        "Swamp (241 D)": "241",
-        "Plains (232 C)": "232",
-        "Swamp (240 C)": "240",
-        "Swamp (239 B)": "239",
-        "Mountain (242 A)": "242",
-        "Plains (233 D)": "233",
-        "Island (236 C)": "236",
-        "Island (237 D)": "237",
-        "Plains (231 B)": "231",
-        "Plains (230 A)": "230",
-        "Swamp (238 A)": "238"
-      },
       "multiverseOverrides": {}
     },
     "M15": {
-      "unknownNames": [
-        "Forest (266 A)",
-        "Forest (267 B)",
-        "Forest (268 C)",
-        "Forest (269 D)",
-        "Mountain (262 A)",
-        "Mountain (263 B)",
-        "Mountain (264 C)",
-        "Mountain (265 D)",
-        "Island (254 A)",
-        "Island (255 B)",
-        "Island (256 C)",
-        "Island (257 D)",
-        "Plains (250 A)",
-        "Plains (251 B)",
-        "Plains (252 C)",
-        "Plains (253 D)",
-        "Swamp (258 A)",
-        "Swamp (259 B)",
-        "Swamp (260 C)",
-        "Swamp (261 D)"
-      ],
+      "numberOverrides": {
+        "Forest (266 A)": "266",
+        "Forest (267 B)": "267",
+        "Forest (268 C)": "268",
+        "Forest (269 D)": "269",
+        "Island (254 A)": "254",
+        "Island (255 B)": "255",
+        "Island (256 C)": "256",
+        "Island (257 D)": "257",
+        "Mountain (262 A)": "262",
+        "Mountain (263 B)": "263",
+        "Mountain (264 C)": "264",
+        "Mountain (265 D)": "265",
+        "Plains (250 A)": "250",
+        "Plains (251 B)": "251",
+        "Plains (252 C)": "252",
+        "Plains (253 D)": "253",
+        "Swamp (258 A)": "258",
+        "Swamp (259 B)": "259",
+        "Swamp (260 C)": "260",
+        "Swamp (261 D)": "261"
+      },
       "ignoredNames": [
-        "Beast Token (John Donahue)",
         "Beast Token (Dave Kendall)",
-        "Goblin Token",
+        "Beast Token (John Donahue)",
         "Dragon Token",
+        "Emblem (Ajani Steadfast)",
+        "Emblem (Garruk, Apex Predator)",
+        "Goblin Token",
         "Insect Token",
         "Land Mine Token",
-        "Soldier Token",
         "Sliver Token",
+        "Soldier Token",
         "Spirit Token",
         "Squid Token",
-        "Zombie Token",
         "Treefolk Warrior Token",
-        "Emblem (Ajani Steadfast)",
-        "Emblem (Garruk, Apex Predator)"
+        "Zombie Token"
       ],
       "nameOverrides": {
         "Aetherspouts": "Ætherspouts"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "MBS": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Golem Token",
-        "Germ Token",
-        "Horror Token",
-        "Poison Counter",
-        "Thopter Token",
-        "Zombie Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (155 B)": "155",
         "Island (148 A)": "148",
@@ -2802,49 +3134,36 @@
         "Swamp (150 A)": "150",
         "Island (149 B)": "149"
       },
+      "ignoredNames": [
+        "Golem Token",
+        "Germ Token",
+        "Horror Token",
+        "Poison Counter",
+        "Thopter Token",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "MD1": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
+        "Emblem (Elspeth, Knight Errant)/Soldier Token",
+        "Emblem (Elspeth, Knight Errant/Soldier Token)",
         "Myr Token/Spirit Token",
-        "Soldier Token/Spirit Token",
-        "Emblem (Elspeth, Knight Errant)/Soldier Token"
+        "Soldier Token/Spirit Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "MIR": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Forest (C)",
-        "Forest (D)",
-        "Mountain (A)",
-        "Mountain (B)",
-        "Mountain (C)",
-        "Mountain (D)",
-        "Island (A)",
-        "Island (B)",
-        "Island (C)",
-        "Island (D)",
-        "Plains (A)",
-        "Plains (B)",
-        "Plains (C)",
-        "Plains (D)",
-        "Swamp (A)",
-        "Swamp (D)",
-        "Swamp (B)",
-        "Swamp (C)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "MMA": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Bat Token",
         "Giant Warrior Token",
@@ -2868,13 +3187,9 @@
         "Aether Vial": "Æther Vial",
         "Aether Spellbomb": "Æther Spellbomb"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "MMQ": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (337 C)": "337",
         "Plains (331 A)": "331",
@@ -2897,26 +3212,21 @@
         "Mountain (344 B)": "344",
         "Mountain (343 A)": "343"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "MOR": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Giant Warrior Token",
         "Faerie Rogue Token",
         "Treefolk Shaman Token"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "MRD": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Gate to the Aether": "Gate to the Æther",
-        "Aether Spellbomb": "Æther Spellbomb"
-      },
       "numberOverrides": {
         "Mountain (299 A)": "299",
         "Plains (290 D)": "290",
@@ -2939,29 +3249,22 @@
         "Forest (306 D)": "306",
         "Island (294 D)": "294"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Gate to the Aether": "Gate to the Æther",
+        "Aether Spellbomb": "Æther Spellbomb"
+      },
       "multiverseOverrides": {}
     },
     "NMS": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Barrier": "Æther Barrier"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "NPH": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Beast Token",
-        "Goblin Token",
-        "Golem Token",
-        "Myr Token",
-        "Poison Counter"
-      ],
-      "nameOverrides": {
-        "Arm with Aether": "Arm with Æther"
-      },
       "numberOverrides": {
         "Swamp (170 A)": "170",
         "Swamp (171 B)": "171",
@@ -2974,14 +3277,71 @@
         "Island (169 B)": "169",
         "Island (168 A)": "168"
       },
+      "ignoredNames": [
+        "Beast Token",
+        "Goblin Token",
+        "Golem Token",
+        "Myr Token",
+        "Poison Counter"
+      ],
+      "nameOverrides": {
+        "Arm with Aether": "Arm with Æther"
+      },
       "multiverseOverrides": {}
     },
     "ODY": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Island (337 C)": "337",
+        "Plains (331 A)": "331",
+        "Island (336 B)": "336",
+        "Swamp (340 B)": "340",
+        "Island (338 D)": "338",
+        "Swamp (339 A)": "339",
+        "Plains (332 B)": "332",
+        "Forest (350 D)": "350",
+        "Plains (334 D)": "334",
+        "Plains (333 C)": "333",
+        "Forest (347 A)": "347",
+        "Forest (348 B)": "348",
+        "Mountain (345 C)": "345",
+        "Mountain (346 D)": "346",
+        "Swamp (341 C)": "341",
+        "Swamp (342 D)": "342",
+        "Forest (349 C)": "349",
+        "Island (335 A)": "335",
+        "Mountain (344 B)": "344",
+        "Mountain (343 A)": "343"
+      },
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Burst": "Æther Burst"
       },
+      "multiverseOverrides": {}
+    },
+    "OGW": {
+      "numberOverrides": {
+        "Wastes (183 A - Non-Full Art)": "183",
+        "Wastes (184 B - Non-Full Art)": "183"
+      },
+      "ignoredNames": [
+        "Angel Token",
+        "Eldrazi Scion Token (001 A)",
+        "Eldrazi Scion Token (002 B)",
+        "Eldrazi Scion Token (003 C)",
+        "Eldrazi Scion Token (004 D)",
+        "Eldrazi Scion Token (005 E)",
+        "Eldrazi Scion Token (006 F)",
+        "Elemental Token (Green)",
+        "Elemental Token (Red)",
+        "Plant Token",
+        "Wastes (183 A)",
+        "Wastes (184 B)",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
+    },
+    "ONS": {
       "numberOverrides": {
         "Island (337 C)": "337",
         "Plains (331 A)": "331",
@@ -3004,44 +3364,56 @@
         "Mountain (344 B)": "344",
         "Mountain (343 A)": "343"
       },
-      "multiverseOverrides": {}
-    },
-    "ONS": {
-      "unknownNames": [],
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Charge": "Æther Charge"
       },
+      "multiverseOverrides": {}
+    },
+    "ORI": {
       "numberOverrides": {
-        "Island (337 C)": "337",
-        "Plains (331 A)": "331",
-        "Island (336 B)": "336",
-        "Swamp (340 B)": "340",
-        "Island (338 D)": "338",
-        "Swamp (339 A)": "339",
-        "Plains (332 B)": "332",
-        "Forest (350 D)": "350",
-        "Plains (334 D)": "334",
-        "Plains (333 C)": "333",
-        "Forest (347 A)": "347",
-        "Forest (348 B)": "348",
-        "Mountain (345 C)": "345",
-        "Mountain (346 D)": "346",
-        "Swamp (341 C)": "341",
-        "Swamp (342 D)": "342",
-        "Forest (349 C)": "349",
-        "Island (335 A)": "335",
-        "Mountain (344 B)": "344",
-        "Mountain (343 A)": "343"
+        "Forest (269 A)": "269",
+        "Forest (270 B)": "270",
+        "Forest (271 C)": "271",
+        "Forest (272 D)": "272",
+        "Island (257 A)": "257",
+        "Island (258 B)": "258",
+        "Island (259 C)": "259",
+        "Island (260 D)": "260",
+        "Mountain (265 A)": "265",
+        "Mountain (266 B)": "266",
+        "Mountain (267 C)": "267",
+        "Mountain (268 D)": "268",
+        "Plains (253 A)": "253",
+        "Plains (254 B)": "254",
+        "Plains (255 C)": "255",
+        "Plains (256 D)": "256",
+        "Swamp (261 A)": "261",
+        "Swamp (262 B)": "262",
+        "Swamp (263 C)": "263",
+        "Swamp (264 D)": "264"
       },
+      "ignoredNames": [
+        "Angel Token",
+        "Ashaya, The Awoken World Token",
+        "Checklist Card (Magic Origins)",
+        "Demon Token",
+        "Elemental Token",
+        "Elf Warrior Token",
+        "Emblem (Chandra, Roaring Flame)",
+        "Emblem (Jace, Telepath Unbound)",
+        "Emblem (Liliana, Defiant Necromancer)",
+        "Goblin Token",
+        "Knight Token",
+        "Soldier Token",
+        "Thopter Token (10 A)",
+        "Thopter Token (11 B)",
+        "Zombie Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "PC2": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Chaotic Aether": "Chaotic Æther"
-      },
       "numberOverrides": {
         "Swamp (144 C)": "144",
         "Plains (135 D)": "135",
@@ -3070,40 +3442,174 @@
         "Swamp (142 A)": "142",
         "Okiba-gang Shinobi": "35"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Chaotic Aether": "Chaotic Æther"
+      },
+      "multiverseOverrides": {}
+    },
+    "PCA": {
+      "numberOverrides": {
+        "Academy at Tolaria West (Plane)": "9",
+        "Agyrem (Plane)": "11",
+        "Akoum (Plane)": "12",
+        "Aretopolis (Plane)": "13",
+        "Astral Arena (Plane)": "14",
+        "Bant (Plane)": "15",
+        "Bloodhill Bastion (Plane)": "16",
+        "Celestine Reef (Plane)": "17",
+        "Chaotic Aether (Plane)": "1",
+        "Edge of Malacol (Plane)": "20",
+        "Eloren Wilds (Plane)": "21",
+        "Feeding Grounds (Plane)": "23",
+        "Fields of Summer (Plane)": "24",
+        "Forest (151 A)": "151",
+        "Forest (152 B)": "152",
+        "Forest (153 C)": "153",
+        "Forest (154 D)": "154",
+        "Forest (155 E)": "155",
+        "Forest (156 F)": "156",
+        "Furnace Layer (Plane)": "26",
+        "Gavony (Plane)": "27",
+        "Glen Elendra (Plane)": "28",
+        "Glimmervoid Basin (Plane)": "29",
+        "Goldmeadow (Plane)": "30",
+        "Grand Ossuary (Plane)": "31",
+        "Grixis (Plane)": "33",
+        "Grove of the Dreampods (Plane)": "34",
+        "Hedron Fields of Agadeem (Plane)": "35",
+        "Horizon Boughs (Plane)": "37",
+        "Immersturm (Plane)": "38",
+        "Interplanar Tunnel (Plane)": "2",
+        "Island (137 A)": "137",
+        "Island (138 B)": "138",
+        "Island (139 C)": "139",
+        "Island (140 D)": "140",
+        "Isle of Vesuva (Plane)": "39",
+        "Island (141 E)": "141",
+        "Izzet Steam Maze (Plane)": "40",
+        "Jund (Plane)": "41",
+        "Kessig (Plane)": "42",
+        "Kharasha Foothills (Plane)": "43",
+        "Kilnspire District (Plane)": "44",
+        "Krosa (Plane)": "45",
+        "Lair of the Ashen Idol (Plane)": "46",
+        "Lethe Lake (Plane)": "47",
+        "Llanowar (Plane)": "48",
+        "Minamo (Plane)": "50",
+        "Mirrored Depths (Plane)": "51",
+        "Morphic Tide (Plane)": "3",
+        "Mount Keralia (Plane)": "52",
+        "Mountain (147 A)": "147",
+        "Mountain (148 B)": "148",
+        "Mountain (149 C)": "149",
+        "Mountain (150 D)": "150",
+        "Murasa (Plane)": "53",
+        "Mutual Epiphany (Plane)": "4",
+        "Naar Isle (Plane)": "54",
+        "Naya (Plane)": "55",
+        "Nephalia (Plane)": "56",
+        "Norn's Dominion (Plane)": "57",
+        "Okiba-gang Shinobi": "35",
+        "Onakke Catacomb (Plane)": "58",
+        "Orochi Colony (Plane)": "59",
+        "Orzhova (Plane)": "60",
+        "Otaria (Plane)": "61",
+        "Panopticon (Plane)": "62",
+        "Plains (132 A)": "132",
+        "Plains (133 B)": "133",
+        "Plains (135 D)": "135",
+        "Plains (136 E)": "136",
+        "Plains (134 C)": "134",
+        "Planewide Disaster (Plane)": "5",
+        "Pools of Becoming (Plane)": "63",
+        "Prahv (Plane)": "64",
+        "Quicksilver Sea (Plane)": "65",
+        "Raven's Run (Plane)": "66",
+        "Reality Shaping (Plane)": "6",
+        "Sanctum of Serra (Plane)": "67",
+        "Sea of Sand (Plane)": "68",
+        "Selesnya Loft Gardens (Plane)": "69",
+        "Shiv (Plane)": "70",
+        "Skybreen (Plane)": "71",
+        "Sokenzan (Plane)": "72",
+        "Spatial Merging (Plane)": "7",
+        "Stairs to Infinity (Plane)": "73",
+        "Stensia (Plane)": "74",
+        "Stronghold Furnace (Plane)": "75",
+        "Swamp (142 A)": "142",
+        "Takenuma (Plane)": "76",
+        "Talon Gates (Plane)": "77",
+        "Swamp (143 B)": "143",
+        "Swamp (144 C)": "144",
+        "Swamp (145 D)": "145",
+        "Swamp (146 E)": "146",
+        "Tazeem (Plane)": "78",
+        "Tember City (Plane)": "79",
+        "The Aether Flues (Plane)": "10",
+        "The Dark Barony (Plane)": "19",
+        "The Fourth Sphere (Plane)": "25",
+        "The Eon Fog (Plane)": "22",
+        "The Great Forest (Plane)": "32",
+        "The Hippodrome (Plane)": "36",
+        "The Maelstrom (Plane)": "49",
+        "The Zephyr Maze (Plane)": "86",
+        "Time Distortion (Plane)": "8",
+        "Trail of the Mage-Rings (Plane)": "80",
+        "Truga Jungle (Plane)": "81",
+        "Turri Island (Plane)": "82",
+        "Undercity Reaches (Plane)": "83",
+        "Velis Vel (Plane)": "84",
+        "Windriddle Palaces (Plane)": "85"
+      },
+      "ignoredNames": [
+        "Angel Token - Saproling",
+        "Beast Token - Saproling Token",
+        "Dragon Token - Saproling Token",
+        "Eldrazi Spawn Token (Briclot) - Eldrazi Token (Proce)",
+        "Eldrazi Spawn Token (Meignaud) - Eldrazi Token (Proce)",
+        "Eldrazi Spawn Token (Tedin) - Eldrazi Token (Proce)",
+        "Germ Token - Goblin Token",
+        "Goat Token - Insect Token",
+        "Goblin Token - Boar Token",
+        "Ooze Token (Swanland) - Ooze Token (Swanland)",
+        "Plant Token - Ooze Token (Swanland)",
+        "Saproling Token - Goblin Token",
+        "Spider Token - Saproling Token",
+        "Zombie Token - Hellion Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "PD2": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Mountain (31 A)": "31",
         "Mountain (32 B)": "32",
         "Mountain (33 C)": "33",
         "Mountain (34 D)": "34"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "PD3": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Swamp (30 D)": "30",
         "Swamp (29 C)": "29",
         "Swamp (27 A)": "27",
         "Swamp (28 B)": "28"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "PLC": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Frozen Aether": "Frozen Æther",
         "Aether Membrane": "Æther Membrane"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Boom-Bust": 126218,
         "Dead-Gone": 126419,
@@ -3111,64 +3617,37 @@
       }
     },
     "PO2": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Forest (C)",
-        "Mountain (A)",
-        "Mountain (B)",
-        "Mountain (C)",
-        "Island (A)",
-        "Island (B)",
-        "Island (C)",
-        "Plains (A)",
-        "Plains (B)",
-        "Plains (C)",
-        "Swamp (A)",
-        "Swamp (B)",
-        "Swamp (C)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
-        "Deja Vu": 6528
+        "Deja Vu": 6528,
+        "Forest (A)": 8408,
+        "Forest (B)": 8409,
+        "Forest (C)": 8410,
+        "Island (A)": 8387,
+        "Island (B)": 8390,
+        "Island (C)": 8391,
+        "Mountain (A)": 8395,
+        "Mountain (B)": 8406,
+        "Mountain (C)": 8407,
+        "Plains (A)": 8354,
+        "Plains (B)": 8374,
+        "Plains (C)": 8380,
+        "Swamp (A)": 8392,
+        "Swamp (B)": 8393,
+        "Swamp (C)": 8394
       }
     },
     "POR": {
-      "unknownNames": [
-        "Forest (A)",
-        "Forest (B)",
-        "Forest (C)",
-        "Forest (D)",
-        "Island (A)",
-        "Island (B)",
-        "Island (C)",
-        "Island (D)",
-        "Mountain (A)",
-        "Mountain (B)",
-        "Mountain (C)",
-        "Mountain (D)",
-        "Plains (A)",
-        "Plains (B)",
-        "Plains (C)",
-        "Plains (D)",
-        "Swamp (A)",
-        "Swamp (B)",
-        "Swamp (C)",
-        "Swamp (D)"
-      ],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Deja Vu": 4259
       }
     },
     "PTK": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Island (171 C)": "171",
         "Swamp (172 A)": "172",
@@ -3187,12 +3666,11 @@
         "Mountain (177 C)": "177",
         "Sun Ce, Young Conqueror": "55"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "RAV": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Mountain (299 A)": "299",
         "Plains (290 D)": "290",
@@ -3215,20 +3693,11 @@
         "Forest (306 D)": "306",
         "Island (294 D)": "294"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "ROE": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Eldrazi Spawn Token (Mark Tedin)",
-        "Eldrazi Spawn Token (Aleksi Briclot)",
-        "Elemental Token",
-        "Eldrazi Spawn Token (Veronique Meignaud)",
-        "Hellion Token",
-        "Ooze Token",
-        "Tuktuk the Returned Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (247 C)": "247",
         "Island (234 B)": "234",
@@ -3251,25 +3720,19 @@
         "Swamp (238 B)": "238",
         "Swamp (237 A)": "237"
       },
+      "ignoredNames": [
+        "Eldrazi Spawn Token (Mark Tedin)",
+        "Eldrazi Spawn Token (Aleksi Briclot)",
+        "Elemental Token",
+        "Eldrazi Spawn Token (Veronique Meignaud)",
+        "Hellion Token",
+        "Ooze Token",
+        "Tuktuk the Returned Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "RTR": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Bird Token",
-        "Centaur Token",
-        "Assassin Token",
-        "Elemental Token",
-        "Dragon Token",
-        "Goblin Token",
-        "Knight Token",
-        "Rhino Token",
-        "Ooze Token",
-        "Soldier Token",
-        "Saproling Token",
-        "Wurm Token"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Swamp (263 D)": "263",
         "Mountain (265 A)": "265",
@@ -3297,21 +3760,33 @@
         "Island (258 D)": "258",
         "Island (259 E)": "259"
       },
+      "ignoredNames": [
+        "Bird Token",
+        "Centaur Token",
+        "Assassin Token",
+        "Elemental Token",
+        "Dragon Token",
+        "Goblin Token",
+        "Knight Token",
+        "Rhino Token",
+        "Ooze Token",
+        "Soldier Token",
+        "Saproling Token",
+        "Wurm Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "S00": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
+        "Rhox (Foil)",
         "Rhox - Foil"
       ],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "S99": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "Mountain (168 C)": "168",
         "Mountain (167 B)": "167",
@@ -3334,27 +3809,11 @@
         "Plains (157 D)": "157",
         "Island (161 D)": "161"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "SHM": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Elemental Token (Red)",
-        "Giant Warrior Token",
-        "Elemental Token (Black/Red)",
-        "Elf Warrior Token (Green/White)",
-        "Elf Warrior Token (Green)",
-        "Faerie Rogue Token",
-        "Kithkin Soldier Token",
-        "Goblin Warrior Token",
-        "Rat Token",
-        "Spider Token",
-        "Spirit Token",
-        "Wolf Token"
-      ],
-      "nameOverrides": {
-        "Aethertow": "Æthertow"
-      },
       "numberOverrides": {
         "Forest (299 B)": "299",
         "Mountain (297 D)": "297",
@@ -3377,32 +3836,34 @@
         "Forest (301 D)": "301",
         "Swamp (292 C)": "292"
       },
+      "ignoredNames": [
+        "Elemental Token (Red)",
+        "Giant Warrior Token",
+        "Elemental Token (Black/Red)",
+        "Elf Warrior Token (Green/White)",
+        "Elf Warrior Token (Green)",
+        "Faerie Rogue Token",
+        "Kithkin Soldier Token",
+        "Goblin Warrior Token",
+        "Rat Token",
+        "Spider Token",
+        "Spirit Token",
+        "Wolf Token"
+      ],
+      "nameOverrides": {
+        "Aethertow": "Æthertow"
+      },
       "multiverseOverrides": {}
     },
     "SOK": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Shockwave": "Æther Shockwave"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "SOM": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Cat Token",
-        "Goblin Token",
-        "Golem Token",
-        "Insect Token",
-        "Myr Token",
-        "Poison Counter",
-        "Soldier Token",
-        "Wurm Token (Lifelink)",
-        "Wolf Token",
-        "Wurm Token (Deathtouch)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -3425,24 +3886,22 @@
         "Plains (230 A)": "230",
         "Swamp (238 A)": "238"
       },
+      "ignoredNames": [
+        "Cat Token",
+        "Goblin Token",
+        "Golem Token",
+        "Insect Token",
+        "Myr Token",
+        "Poison Counter",
+        "Soldier Token",
+        "Wurm Token (Lifelink)",
+        "Wolf Token",
+        "Wurm Token (Deathtouch)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "THS": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Boar Token",
-        "Bird Token",
-        "Cleric Token",
-        "Golem Token",
-        "Elemental Token",
-        "Emblem (Elspeth, Sun\u0027s Champion)",
-        "Harpy Token",
-        "Satyr Token",
-        "Soldier Token (Velinov)",
-        "Soldier Token (McKinnon)",
-        "Soldier Token (Bodin)"
-      ],
-      "nameOverrides": {},
       "numberOverrides": {
         "Forest (249 D)": "249",
         "Forest (247 B)": "247",
@@ -3466,13 +3925,26 @@
         "Swamp (238 A)": "238",
         "Nylea,God of the Hunt": "166"
       },
+      "ignoredNames": [
+        "Boar Token",
+        "Bird Token",
+        "Cleric Token",
+        "Golem Token",
+        "Elemental Token",
+        "Emblem (Elspeth, Sun's Champion)",
+        "Harpy Token",
+        "Satyr Token",
+        "Soldier Token (Velinov)",
+        "Soldier Token (McKinnon)",
+        "Soldier Token (Bodin)"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "TMP": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {},
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Forest (A)": 4926,
         "Forest (B)": 4927,
@@ -3497,24 +3969,16 @@
       }
     },
     "TSB": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Dandan": "Dandân"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Assault-Battery": 109704
       }
     },
     "TSP": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Aether Web": "Æther Web",
-        "Aetherflame Wall": "Ætherflame Wall",
-        "Lim-Dul the Necromancer": "Lim-Dûl the Necromancer"
-      },
       "numberOverrides": {
         "Forest (299 B)": "299",
         "Mountain (297 D)": "297",
@@ -3537,21 +4001,23 @@
         "Forest (301 D)": "301",
         "Swamp (292 C)": "292"
       },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Aether Web": "Æther Web",
+        "Aetherflame Wall": "Ætherflame Wall",
+        "Lim-Dul the Necromancer": "Lim-Dûl the Necromancer"
+      },
       "multiverseOverrides": {}
     },
     "UDS": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Sting": "Æther Sting"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "UGL": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {},
       "numberOverrides": {
         "BFM Left": "28",
         "BFM Right": "29",
@@ -3559,6 +4025,8 @@
         "Ghazban Ogress": "60",
         "The Ultimate Nightmare of WotC Customer Service": "53"
       },
+      "ignoredNames": [],
+      "nameOverrides": {},
       "multiverseOverrides": {
         "Goblin": 5503,
         "Soldier": 5472,
@@ -3569,72 +4037,77 @@
       }
     },
     "UNH": {
-      "unknownNames": [],
-      "ignoredNames": [],
-      "nameOverrides": {
-        "Yet Another Aether Vortex": "Yet Another Æther Vortex"
-      },
       "numberOverrides": {
         "Ach! Hans, Run!": "116",
         "Our Market Research": "107",
         "Saute": "88"
+      },
+      "ignoredNames": [],
+      "nameOverrides": {
+        "Yet Another Aether Vortex": "Yet Another Æther Vortex"
       },
       "multiverseOverrides": {
         "Who/What/When/Where/Why": 74358
       }
     },
     "USG": {
-      "unknownNames": [],
+      "numberOverrides": {
+        "Forest (347 A)": "347",
+        "Forest (348 B)": "348",
+        "Forest (349 C)": "349",
+        "Forest (350 D)": "350",
+        "Island (335 A)": "335",
+        "Island (336 B)": "336",
+        "Island (337 C)": "337",
+        "Island (338 D)": "338",
+        "Mountain (343 A)": "343",
+        "Mountain (344 B)": "344",
+        "Mountain (345 C)": "345",
+        "Mountain (346 D)": "346",
+        "Plains (331 A)": "331",
+        "Plains (332 B)": "332",
+        "Plains (333 C)": "333",
+        "Plains (334 D)": "334",
+        "Swamp (339 A)": "339",
+        "Swamp (340 B)": "340",
+        "Swamp (341 C)": "341",
+        "Swamp (342 D)": "342",
+        "Tainted AEther": "161"
+      },
       "ignoredNames": [],
       "nameOverrides": {
         "Tainted AEther": "Tainted Æther"
       },
-      "numberOverrides": {
-        "Island (337 C)": "337",
-        "Plains (331 A)": "331",
-        "Island (336 B)": "336",
-        "Swamp (340 B)": "340",
-        "Island (338 D)": "338",
-        "Swamp (339 A)": "339",
-        "Plains (332 B)": "332",
-        "Forest (350 D)": "350",
-        "Plains (334 D)": "334",
-        "Plains (333 C)": "333",
-        "Forest (347 A)": "347",
-        "Forest (348 B)": "348",
-        "Mountain (345 C)": "345",
-        "Mountain (346 D)": "346",
-        "Swamp (341 C)": "341",
-        "Swamp (342 D)": "342",
-        "Forest (349 C)": "349",
-        "Island (335 A)": "335",
-        "Mountain (344 B)": "344",
-        "Mountain (343 A)": "343"
-      },
       "multiverseOverrides": {}
     },
     "V10": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Vial": "Æther Vial"
       },
+      "multiverseOverrides": {}
+    },
+    "V16": {
       "numberOverrides": {},
+      "ignoredNames": [
+        "Marit Lage Token"
+      ],
+      "nameOverrides": {},
       "multiverseOverrides": {}
     },
     "WTH": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [],
       "nameOverrides": {
         "Aether Flash": "Æther Flash"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {
         "Bosium Strip": 4429
       }
     },
     "WWK": {
-      "unknownNames": [],
+      "numberOverrides": {},
       "ignoredNames": [
         "Construct Token",
         "Elephant Token",
@@ -3646,23 +4119,9 @@
       "nameOverrides": {
         "Aether Tradewinds": "Æther Tradewinds"
       },
-      "numberOverrides": {},
       "multiverseOverrides": {}
     },
     "XLN": {
-      "ignoredNames": [
-        "Checklist Card (Ixalan)",
-        "Dinosaur Token",
-        "Illusion Token",
-        "Merfolk Token",
-        "Plant Token",
-        "Pirate Token",
-        "Vampire Token",
-        "Treasure Token (007 A)",
-        "Treasure Token (008 B)",
-        "Treasure Token (009 C)",
-        "Treasure Token (010 D)"
-      ],
       "numberOverrides": {
         "Castaway's Despair (Planeswalker Deck)": "281",
         "Forest (276 A)": "276",
@@ -3694,26 +4153,24 @@
         "Swamp (270 C)": "270",
         "Swamp (271 D)": "271",
         "Woodland Stream (Planeswalker Deck)": "284"
-      }
+      },
+      "ignoredNames": [
+        "Checklist Card (Ixalan)",
+        "Dinosaur Token",
+        "Illusion Token",
+        "Merfolk Token",
+        "Plant Token",
+        "Pirate Token",
+        "Vampire Token",
+        "Treasure Token (007 A)",
+        "Treasure Token (008 B)",
+        "Treasure Token (009 C)",
+        "Treasure Token (010 D)"
+      ],
+      "nameOverrides": {},
+      "multiverseOverrides": {}
     },
     "ZEN": {
-      "unknownNames": [],
-      "ignoredNames": [
-        "Angel Token",
-        "Bird Token",
-        "Elemental Token",
-        "Beast Token",
-        "Illusion Token",
-        "Kor Soldier Token",
-        "Merfolk Token",
-        "Snake Token",
-        "Vampire Token",
-        "Wolf Token",
-        "Zombie Giant Token"
-      ],
-      "nameOverrides": {
-        "Aether Figment": "Æther Figment"
-      },
       "numberOverrides": {
         "Forest (246 A)": "246",
         "Forest (247 B)": "247",
@@ -3735,6 +4192,22 @@
         "Swamp (239 B)": "239",
         "Swamp (240 C)": "240",
         "Swamp (241 D)": "241"
+      },
+      "ignoredNames": [
+        "Angel Token",
+        "Bird Token",
+        "Elemental Token",
+        "Beast Token",
+        "Illusion Token",
+        "Kor Soldier Token",
+        "Merfolk Token",
+        "Snake Token",
+        "Vampire Token",
+        "Wolf Token",
+        "Zombie Giant Token"
+      ],
+      "nameOverrides": {
+        "Aether Figment": "Æther Figment"
       },
       "multiverseOverrides": {}
     }

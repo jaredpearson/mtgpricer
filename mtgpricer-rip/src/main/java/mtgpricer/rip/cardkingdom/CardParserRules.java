@@ -3,6 +3,8 @@ package mtgpricer.rip.cardkingdom;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 /**
  * Represents some special rules for when parsing a list of cards
@@ -57,6 +59,28 @@ public class CardParserRules {
 	 */
 	public static CardParserRules createEmpty() {
 		return new CardParserRules(null, null, null, null);
+	}
+	
+	/**
+	 * Creates the parser rules containing all of the parser rules from instances given in the args. The {@link CardParserRules}
+	 * are not modified during this operation.
+	 * @param cardParserRules the parser rules to merge together. The order of the merge is in ascending order (higher indexed rules get priority over lower indexed rules).
+	 * @return a new {@link CardParserRules} instance that contains the rules from the given parser rules.
+	 */
+	public static CardParserRules merge(CardParserRules... cardParserRules) {
+		final Map<String, String> numberOverrides = new TreeMap<>();
+		final Set<String> ignoredNames = new TreeSet<>();
+		final Map<String, String> nameOverrides = new TreeMap<>();
+		final Map<String, Integer> multiverseOverrides = new TreeMap<>();
+		
+		for (final CardParserRules thisCardParserRules : cardParserRules) {
+			numberOverrides.putAll(thisCardParserRules.numberOverrides);
+			ignoredNames.addAll(thisCardParserRules.ignoredNames);
+			nameOverrides.putAll(thisCardParserRules.nameOverrides);
+			multiverseOverrides.putAll(thisCardParserRules.multiverseOverrides);
+		}
+		
+		return new CardParserRules(numberOverrides, ignoredNames, nameOverrides, multiverseOverrides);
 	}
 
 	private static <T, S> Map<T, S> createImmutableOrEmpty(Map<T, ? extends S> map) {

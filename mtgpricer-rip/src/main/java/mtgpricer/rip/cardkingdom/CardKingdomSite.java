@@ -13,6 +13,7 @@ import mtgpricer.rip.CardSetPriceInfo;
 import mtgpricer.rip.SiteIndex;
 import mtgpricer.rip.SiteIndexCardSet;
 import mtgpricer.rip.PriceSiteInfo;
+import mtgpricer.rip.PriceSiteInfoBuilder;
 import mtgpricer.rip.http.PageRequester;
 
 /**
@@ -55,7 +56,11 @@ public class CardKingdomSite {
 			cardSets.add(cardSet);
 		}
 		
-		return new PriceSiteInfo(cardKingdomUrl, new Date(), cardSets);
+		return new PriceSiteInfoBuilder()
+				.setUrl(cardKingdomUrl)
+				.setRetrieved(new Date())
+				.setCardSets(cardSets)
+				.build();
 	}
 	
 	/**

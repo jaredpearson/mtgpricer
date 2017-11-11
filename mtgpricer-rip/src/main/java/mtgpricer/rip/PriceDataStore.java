@@ -13,5 +13,5 @@ public interface PriceDataStore {
 	/**
 	 * Persists the price information.
 	 */
-	public void persist(PriceSiteInfo priceSiteInfo) throws IOException;
+	long persist(PriceSiteInfo priceSiteInfo) throws IOException;
 }

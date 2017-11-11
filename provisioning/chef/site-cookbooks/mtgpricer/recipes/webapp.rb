@@ -18,7 +18,24 @@ file "/usr/share/mtgpricer/data/AllSets-x.json" do
     owner "root"
     group "root"
     mode 0755
-    content ::File.open(node['mtgpricer']['data']['sets_json']).read
+    content lazy { ::File.open(node['mtgpricer']['data']['sets_json']).read }
+end
+
+# create the directory for the priceData and copy any price data
+directory "Create the priceData directory" do
+    owner "root"
+    group "root"
+    mode 0755
+    path "/usr/share/mtgpricer/data/priceData"
+end
+
+Dir[ "#{node['mtgpricer']['data']['priceData']}/*" ].each do | curr_path |
+    file "/usr/share/mtgpricer/data/priceData/#{Pathname.new(curr_path).basename}" do
+        owner "root"
+        group "root"
+        mode 0755
+        content lazy { ::File.open(curr_path).read }
+    end if File.file?(curr_path)
 end
 
 # copy the JAR to the server

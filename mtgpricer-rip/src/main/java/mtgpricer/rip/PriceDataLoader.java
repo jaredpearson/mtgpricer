@@ -1,6 +1,5 @@
 package mtgpricer.rip;
 
-import java.io.File;
 import java.util.Set;
 
 /**
@@ -12,11 +11,14 @@ public interface PriceDataLoader {
 	/**
 	 * Loads the price data from the data directory for all files
 	 */
-	public Set<? extends PriceSiteInfo> loadPriceData();
+	Set<? extends PriceSiteInfo> loadPriceData();
 
 	/**
-	 * Loads the price data from the single file
+	 * Loads the price data for the given ID. Throws an exception if the data doesn't
+	 * exist for the given ID.
+	 * @param id the ID of the data to load.
+	 * @return the price data corresponding to the given ID.
 	 */
-	public PriceSiteInfo loadPriceDataForSingleFile(File file);
+	PriceSiteInfo loadPriceDataById(long id);
 
 }
