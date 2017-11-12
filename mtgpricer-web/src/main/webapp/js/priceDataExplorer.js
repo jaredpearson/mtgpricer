@@ -1,3 +1,9 @@
+Handlebars.registerHelper({
+    ge: function(v1, v2) {
+        return v1 > v2;
+    }
+});
+
 function convertMapToObject(map) {
     const result = {};
     for (let key of map.keys()) {
@@ -115,37 +121,121 @@ function onCardActionChange(e, cardSetCode, cardRawName) {
     }
 }
 
+// TODO move this template out of this JS file and precompile it
+const unusedCardRowTemplate = Handlebars.compile(`<tr data-raw-name="{{unknownCard.rawName}}">
+<td class="col-md-8">{{unknownCard.rawName}}</td>
+<td class="col-md-4">
+    <select name="action[{{unknownCard.rawName}}]" onchange="javascript: onCardActionChange(event, '{{cardSet.code}}', '{{unknownCard.rawName}}')">
+        <option value="_">No Action</option>
+        <option value="_ignore">Ignore</option>
+        {{#if (ge cardSet.unusedCards.length 0)}}
+            <option value="_"></option>
+        {{/if}}
+        {{#each cardSet.unusedCards}}
+            {{#if number}}
+                <option value="number_{{number}}">{{name}} ({{number}})</option>
+            {{else}}
+                <option value="multiverse_{{multiverseId}}">{{name}}</option>
+            {{/if}}
+        {{/each}}
+    </select>
+</td>
+</tr>`);
+
 function toggleCardSetTable(e, cardSetCode) {
     e.preventDefault();
     e.stopPropagation();
 
-    // toggle the table
-    const tableEl = document.querySelector(`[data-cardset-code="${cardSetCode}"] table`);
+    // toggle the table loading
+    const cardSetEl = document.querySelector(`[data-cardset-code="${cardSetCode}"]`);
     const chevronEl = document.querySelector(`[data-cardset-code="${cardSetCode}"] span.chevron`);
-    if (tableEl) {
-        if (tableEl.classList.contains('hide')) {
-            tableEl.classList.remove('hide');
-            chevronEl.classList.remove('glyphicon-chevron-right');
-            chevronEl.classList.add('glyphicon-chevron-down');
-        } else {
-            tableEl.classList.add('hide');
-            chevronEl.classList.add('glyphicon-chevron-right');
-            chevronEl.classList.remove('glyphicon-chevron-down');
-        }
+
+    const tableContainerEl = document.querySelector(`[data-cardset-code="${cardSetCode}"] .table-container`);
+    const expanded = cardSetEl.getAttribute('data-expanded');
+    if (!expanded) {
+        chevronEl.classList.remove('glyphicon-chevron-right', 'spinning');
+        chevronEl.classList.add('glyphicon-chevron-down');
+        tableContainerEl.classList.remove('hide');
+        cardSetEl.setAttribute('data-expanded', 'expanded');
+    } else {
+        chevronEl.classList.add('glyphicon-chevron-right', 'spinning');
+        chevronEl.classList.remove('glyphicon-chevron-down');
+        tableContainerEl.classList.add('hide');
+        cardSetEl.removeAttribute('data-expanded');
     }
+    
+    // load the card information if it hasn't been loaded already
+    if (!cardSetEl.getAttribute('data-loaded')) {
+        cardSetEl.setAttribute('data-loaded', 'loading');
+        chevronEl.classList.remove('glyphicon-chevron-down', 'glyphicon-chevron-right');
+        chevronEl.classList.add('glyphicon-refresh', 'spinning');
+
+        fetchCardSet(cardSetCode)
+            .then(cardSet => {
+                let rowsHtml = cardSet.unknownCards.reduce((out, unknownCard) => {
+                    return out + unusedCardRowTemplate({cardSet, unknownCard})
+                }, '');
+                
+                let tableEl = document.createElement('table');
+                tableEl.classList.add('table', 'table-bordered');
+                tableEl.style.marginBottom = '0px';
+                tableEl.innerHTML = rowsHtml;
+
+                // remove everything in the container
+                while (tableContainerEl.firstChild) {
+                    tableContainerEl.removeChild(tableContainerEl.firstChild);
+                }
+
+                // append the new table in the container
+                tableContainerEl.appendChild(tableEl);
+            })
+            .then(() => {
+                cardSetEl.setAttribute('data-loaded', 'loaded');
+                chevronEl.classList.remove('glyphicon-refresh', 'spinning');
+                
+                if (cardSetEl.getAttribute('data-expanded')) {
+                    chevronEl.classList.add('glyphicon-chevron-down');
+                } else {
+                    chevronEl.classList.add('glyphicon-chevron-right');
+                }
+            });
+
+    }
+}
+
+function displayFatalError(message, details) {
+    alert(message);
+    if (details) {
+        console.log(details);
+    }
+}
+
+function fetchCardSet(cardSetCode) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function(e) {
+            if (this.status === 200) {
+                const cardSet = JSON.parse(this.responseText);
+                resolve(cardSet);
+            } else {
+                reject('Failed to fetch card set information', this.responseText);
+            }
+        };
+        xhr.open('GET', `/settings/priceDataExplorer/${priceDataId}/sets/${cardSetCode}.json`, true);
+        xhr.send();
+    });
 }
 
 function saveParserRules(e) {
     e.preventDefault();
     e.stopPropagation();
     
-	var xhr = new XMLHttpRequest();
+	const xhr = new XMLHttpRequest();
 	xhr.onload = function(e) {
 		if (this.status === 204) {
             alert('Parser rules saved');
 		} else {
-			alert('Failed to save parser rules');
-			console.log(this.responseText);
+			displayFatalError('Failed to save parser rules', this.responseText);
 		}
 	};
 	xhr.open('PATCH', '/settings/priceDataExplorer/cardkingdom/parserRules.json', true);
@@ -157,4 +247,9 @@ function downloadParserRules(e) {
     e.stopPropagation();
 
     window.location = '/settings/priceDataExplorer/cardkingdom/parserRules.json';
+}
+
+let priceDataId = undefined;
+function startPriceDataExplorer(thisPriceDataId) {
+    priceDataId = thisPriceDataId;
 }

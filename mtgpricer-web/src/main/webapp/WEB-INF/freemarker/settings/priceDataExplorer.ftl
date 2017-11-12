@@ -17,32 +17,13 @@
                         <a href="#" onclick="javascript: toggleCardSetTable(event, '${cardSet.code?js_string}')">${cardSet.name}</a>
                         <span class="badge pull-right">${cardSet.unknownCards?size}</span>
                     </div>
-                    <table class="hide table table-bordered">
-                        <#list cardSet.unknownCards as unknownCard>
-                            <tr data-raw-name="${unknownCard.rawName}">
-                                <td class="col-md-8">${unknownCard.rawName}</td>
-                                <td class="col-md-4">
-                                    <select name="action[${unknownCard.rawName}]" onchange="javascript: onCardActionChange(event, '${cardSet.code?js_string}', '${unknownCard.rawName?js_string}')">
-                                        <option value="_">No Action</option>
-                                        <option value="_ignore">Ignore</option>
-                                        <#list cardSet.unusedCards>
-                                            <option value="_"></option>
-                                            <#items as unusedCard>
-                                                <#if unusedCard.number??>
-                                                    <option value="number_${unusedCard.number}">${unusedCard.name} (${unusedCard.number})</option>
-                                                <#elseif unusedCard.multiverseId??>
-                                                    <option value="multiverse_${unusedCard.multiverseId?c}">${unusedCard.name}</option>
-                                                </#if>
-                                            </#items>
-                                        </#list>
-                                    </select>
-                                </td>
-                            </tr>
-                        </#list>
-                    </table>
+                    <div class="table-container hide"></div>
                 </div>
             </#if>
         </#items>
     </#list>
     <script src="/js/priceDataExplorer.js"></script>
+    <script>
+    startPriceDataExplorer(${priceSiteInfo.id?c});
+    </script>
 </@settingsPage>
