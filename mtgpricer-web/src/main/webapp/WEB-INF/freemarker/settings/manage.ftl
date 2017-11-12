@@ -70,6 +70,8 @@ function updateRipRequestStatus(ripRequest) {
 		ripRequestStatusEl.innerHTML = 'Rip Successful';
 		
 		executeRipEl.removeAttribute('disabled');
+	} else if (ripRequest.progress || ripRequest.estimated_total) {
+		ripRequestStatusEl.innerText = 'Update in progress: ' + (ripRequest.progress || '?') + '/' + (ripRequest.estimatedTotal || '?');
 	}
 }
 

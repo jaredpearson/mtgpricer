@@ -1,24 +1,12 @@
 #!/bin/bash
 
 PID_PATH=/tmp/mtgpricer_webapp.pid
-LOG_FILE=<%= @log %>
 
 case $1 in
     start)
-        echo "Starting mtgpricer_webapp"
-        if [ ! -f $PID_PATH ]; then
-            nohup java -Dcatalog.catalogFilePath=/usr/share/mtgpricer/data/AllSets-x.json -Drip.outputDir=/usr/share/mtgpricer/data/priceData -jar /usr/share/mtgpricer/mtgpricer.jar > $LOG_FILE </dev/null &
-            echo $! > $PID_PATH
-            echo "mtgpricer_webapp started"
-        fi
+        sh /usr/share/mtgpricer/server-start.sh
     ;;
     stop)
-        if [ -f $PID_PATH ]; then
-            PID=$(cat $PID_PATH);
-            echo "Stopping mtgpricer_webapp"
-            kill $PID;
-            echo "Stopped mtgpricer_webapp"
-            rm $PID_PATH
-        fi
+        sh /usr/share/mtgpricer/server-stop.sh
     ;;
 esac

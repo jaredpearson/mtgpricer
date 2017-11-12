@@ -166,22 +166,41 @@ public class RipRequestQueue implements Closeable {
 	/**
 	 * Updates the finish date for the request at the given ID 
 	 */
-	private void updateRipRequestFinishDate(long id, Date finishDate) {
+	private void updateRipRequestFinishDate(long ripRequestId, Date finishDate) {
 		assert finishDate != null;
 		try {
 			try (final java.sql.Connection connection = dataSource.getConnection()) {
 				try (final PreparedStatement stmt = connection.prepareStatement("UPDATE mtgpricer.rip_request SET finish_date = ? WHERE rip_request_id = ?");) {
 					stmt.setTimestamp(1, new java.sql.Timestamp(finishDate.getTime()));
-					stmt.setLong(2, id);
+					stmt.setLong(2, ripRequestId);
 					
 					if (stmt.executeUpdate() != 1) {
-						throw new IllegalStateException("Unable to update rip_request: " + id);
+						throw new IllegalStateException("Unable to update rip_request: " + ripRequestId);
 					}
 					
 				}
 			}
 		} catch(SQLException exc) {
-			throw new IllegalStateException("Failed to update rip_request: " + id, exc);
+			throw new IllegalStateException("Failed to update rip_request: " + ripRequestId, exc);
+		}
+	}
+
+	/**
+	 * Updates the progress in the rip request record
+	 */
+	private void updateRipRequestProgress(long ripRequestId, int progress, int estimatedTotal) {
+		try (final java.sql.Connection connection = dataSource.getConnection()) {
+			try (final PreparedStatement stmt = connection.prepareStatement("UPDATE mtgpricer.rip_request SET progress = ?, estimated_total = ? WHERE rip_request_id = ?")) {
+				stmt.setInt(1, progress);
+				stmt.setInt(2, estimatedTotal);
+				stmt.setLong(3, ripRequestId);
+				
+				if (stmt.executeUpdate() != 1) {
+					throw new IllegalStateException("Unable to update rip_request: " + ripRequestId);
+				}
+			}
+		} catch (SQLException exc) {
+			throw new IllegalStateException("Failed to update rip_request: " + ripRequestId, exc);
 		}
 	}
 	
@@ -205,6 +224,8 @@ public class RipRequestQueue implements Closeable {
 				builder.setId(thisRequestId);
 				builder.setStartDate(rst.getTimestamp("start_date"));
 				builder.setFinishDate(rst.getTimestamp("finish_date"));
+				builder.setProgress(getInteger(rst, "progress"));
+				builder.setEstimatedTotal(getInteger(rst, "estimated_total"));
 			}
 			
 			final long requestLogId = rst.getLong("rip_request_log_id");
@@ -226,6 +247,14 @@ public class RipRequestQueue implements Closeable {
 		return ripRequests;
 	}
 	
+	private static Integer getInteger(ResultSet rst, String column) throws SQLException {
+		final int value = rst.getInt(column);
+		if (rst.wasNull()) {
+			return null;
+		}
+		return value;
+	}
+	
 	/**
 	 * Builds the query to select the rip request with a rip request ID.
 	 * <p>
@@ -236,7 +265,7 @@ public class RipRequestQueue implements Closeable {
 	 */
 	private static String buildSelectByIdQuery() {
 		final StringBuilder sql = new StringBuilder();
-		sql.append("SELECT r.rip_request_id, r.start_date, r.finish_date, l.rip_request_log_id, l.date, l.value ");
+		sql.append("SELECT r.rip_request_id, r.start_date, r.finish_date, r.progress, r.estimated_total, l.rip_request_log_id, l.date, l.value ");
 		sql.append("FROM mtgpricer.rip_request r LEFT OUTER JOIN mtgpricer.rip_request_log l ON (r.rip_request_id = l.rip_request_id) ");
 		sql.append("WHERE r.rip_request_id = ?");
 		return sql.toString();
@@ -247,7 +276,7 @@ public class RipRequestQueue implements Closeable {
 	 */
 	private static String buildSelectLatestQuery() {
 		final StringBuilder sql = new StringBuilder();
-		sql.append("SELECT r.rip_request_id, r.start_date, r.finish_date, l.rip_request_log_id, l.date, l.value ");
+		sql.append("SELECT r.rip_request_id, r.start_date, r.finish_date, r.progress, r.estimated_total, l.rip_request_log_id, l.date, l.value ");
 		sql.append("FROM mtgpricer.rip_request r LEFT OUTER JOIN mtgpricer.rip_request_log l ON (r.rip_request_id = l.rip_request_id) ");
 		sql.append("ORDER BY r.start_date DESC ");
 		sql.append("LIMIT 1");
@@ -268,6 +297,11 @@ public class RipRequestQueue implements Closeable {
 		public void onFinished() {
 			// update the rip request when finished
 			ripRequestQueue.updateRipRequestFinishDate(ripRequestId, Calendar.getInstance(TimeZone.getTimeZone("GMT")).getTime());
+		}
+		
+		@Override
+		public void onProgressUpdate(int progress, int estimatedTotal) {
+			ripRequestQueue.updateRipRequestProgress(ripRequestId, progress, estimatedTotal);
 		}
 		
 		@Override

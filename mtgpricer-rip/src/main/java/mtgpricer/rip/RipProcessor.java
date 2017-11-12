@@ -39,20 +39,34 @@ public class RipProcessor {
 	 * Rips the site information to the standard price data store.
 	 */
 	public void rip(Display display) throws IOException {
+		assert display != null;
+
+		this.rip(display, new RequestSiteListenerBase() {});
+	}
+
+	/**
+	 * Rips the site information to the standard price data store.
+	 */
+	public void rip(Display display, RequestSiteListener listener) throws IOException {
+		assert display != null;
+		assert listener != null;
 		try (final PageRequester pageRequester = pageRequesterFactory.create()) {
-			this.rip(display, pageRequester);
+			this.rip(display, pageRequester, listener);
 		}
 	}
 
 	/**
 	 * Rips the site information to the standard price data store with the given page requester.
 	 */
-	public void rip(Display display, PageRequester pageRequester) throws IOException {
+	public void rip(Display display, PageRequester pageRequester, RequestSiteListener listener) throws IOException {
+		assert display != null;
+		assert listener != null;
+
 		final CardCatalog cardCatalog = cardCatalogService.loadCardCatalog();
 		final CardKingdomSite site = cardKingdomSiteFactory.createSite(cardCatalog, pageRequester);
 		assert site != null;
 		
-		final PriceSiteInfo siteInfo = site.requestSiteInfo();
+		final PriceSiteInfo siteInfo = site.requestSiteInfo(listener);
 		assert siteInfo != null;
 		
 		priceDataStore.persist(siteInfo);

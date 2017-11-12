@@ -14,6 +14,8 @@ import mtgpricer.rip.SiteIndex;
 import mtgpricer.rip.SiteIndexCardSet;
 import mtgpricer.rip.PriceSiteInfo;
 import mtgpricer.rip.PriceSiteInfoBuilder;
+import mtgpricer.rip.RequestSiteListener;
+import mtgpricer.rip.RequestSiteListenerBase;
 import mtgpricer.rip.http.PageRequester;
 
 /**
@@ -42,16 +44,26 @@ public class CardKingdomSite {
 		this.cardSetIndexParser = new CardKingdomSiteIndexParser(cardCatalog, siteParserRules);
 		this.cardSetParser = new CardKingdomCardSetPageParser();
 	}
-	
+
 	/**
 	 * Requests the site info for all card sets.
 	 */
 	public PriceSiteInfo requestSiteInfo() throws IOException {
+		return requestSiteInfo(new RequestSiteListenerBase() {});
+	}
+	
+	/**
+	 * Requests the site info for all card sets.
+	 */
+	public PriceSiteInfo requestSiteInfo(RequestSiteListener listener) throws IOException {
 		final SiteIndex siteIndex = requestSiteIndex();
 		logger.info("Site index retrieved. Getting set information for " + siteIndex.getCardSets().size() + " sets.");
 
 		final List<CardSetPriceInfo> cardSets = new ArrayList<>();
-		for (SiteIndexCardSet cardSetIndex : siteIndex.getCardSets()) {
+		final int numberOfCardSets = siteIndex.getCardSets().size();
+		for (int index = 0; index < numberOfCardSets; index++) {
+			listener.onProgressUpdate(index, numberOfCardSets);
+			final SiteIndexCardSet cardSetIndex = siteIndex.getCardSets().get(index);
 			final CardSetPriceInfo cardSet = requestCardSetInfo(cardSetIndex);
 			cardSets.add(cardSet);
 		}

@@ -64,3 +64,22 @@ template "mtgpricer service conf" do
     notifies :enable, "service[mtgpricer_webapp]"
     notifies :start, "service[mtgpricer_webapp]"
 end
+
+# install the server helper scripts
+cookbook_file '/usr/share/mtgpricer/server-stop.sh' do
+    source "server-stop.sh"
+    owner "root"
+    group "root"
+    mode "0755"
+    action :create
+end
+template "mtgpricer service conf" do
+    path "/usr/share/mtgpricer/server-start.sh"
+    source "server-start.sh.erb"
+    owner "root"
+    group "root"
+    mode "0755"
+    variables({
+        log: node['mtgpricer']['webapp']['log']
+    })
+end

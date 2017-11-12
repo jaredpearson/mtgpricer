@@ -43,6 +43,29 @@ $ vagrant ssh web
 $ tail -n 200 -f /var/log/mtgpricer.log
 ```
 
+### Copy Price Data from Host
+When running the site with Vagrant, any site data that is ripped though the web server UI will be saved to a file. When
+the VM is destroyed, the data will be removed too. If you want to backup the data, use the command below to copy the 
+files from the VM into the host.
+
+```
+$ scp vagrant@192.168.37.12:/usr/share/mtgpricer/data/priceData/cardkingdom-*.json data/priceData/
+```
+
+When prompted, the default Vagrant password is `vagrant`.
+
+### Debugging
+To start the server in debug mode:
+
+```
+$ vagrant ssh web
+$ sudo su
+$ sh /usr/share/mtgpricer/server-stop.sh
+$ sh /usr/share/mtgpricer/server-start.sh -d
+```
+
+Then use Eclipse to connect a Java Remote Application to `192.168.37.12`, port `8888`.
+
 ## Magic the Gathering Fan Site License
 This website is not affiliated with, endorsed, sponsored, or specifically approved by Wizards of the Coast LLC. This website may use the trademarks and other intellectual property of Wizards of the Coast LLC, which is permitted under Wizards' Fan Site Policy http://company.wizards.com/fankit. For example, MAGIC: THE GATHERING® is a trademark[s] of Wizards of the Coast. For more information about Wizards of the Coast or any of Wizards' trademarks or other intellectual property, please visit their website at (www.wizards.com).
 

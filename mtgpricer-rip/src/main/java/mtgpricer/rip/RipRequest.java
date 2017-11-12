@@ -13,13 +13,23 @@ public class RipRequest {
 	private final Date startDate;
 	private final Date finishDate;
 	private final List<RipRequestLogLine> logLines;
+	private final Integer progress;
+	private final Integer estimatedTotal;
 	
-	public RipRequest(long id, Date startDate, Date finishDate, List<? extends RipRequestLogLine> logLines) {
+	public RipRequest(
+			long id,
+			Date startDate,
+			Date finishDate,
+			List<? extends RipRequestLogLine> logLines,
+			Integer progress,
+			Integer estimatedTotal) {
 		assert startDate != null;
 		this.id = id;
 		this.startDate = copyDate(startDate);
 		this.finishDate = copyDate(finishDate);
 		this.logLines = (logLines == null) ? Collections.<RipRequestLogLine>emptyList() : Collections.unmodifiableList(logLines);
+		this.progress = progress;
+		this.estimatedTotal = estimatedTotal;
 	}
 	
 	public long getId() {
@@ -36,6 +46,14 @@ public class RipRequest {
 	
 	public List<RipRequestLogLine> getLogLines() {
 		return logLines;
+	}
+
+	public Integer getProgress() {
+		return progress;
+	}
+
+	public Integer getEstimatedTotal() {
+		return estimatedTotal;
 	}
 
 	private static Date copyDate(Date finished) {

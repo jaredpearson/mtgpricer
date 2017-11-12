@@ -20,10 +20,10 @@ public class RipRequestProcessor implements Runnable {
 	private final ProcessRipRequestListener listener;
 	
 	public RipRequestProcessor(
-			RipProcessor ripProcessor, 
-			Bridge bridge,
-			long ripRequestId,
-			ProcessRipRequestListener listener) {
+			final RipProcessor ripProcessor, 
+			final Bridge bridge,
+			final long ripRequestId,
+			final ProcessRipRequestListener listener) {
 		assert ripProcessor != null;
 		assert bridge != null;
 		this.ripProcessor = ripProcessor;
@@ -37,7 +37,12 @@ public class RipRequestProcessor implements Runnable {
 		final Display display = Displays.createForPrintStream(System.out);
 		
 		try {
-			ripProcessor.rip(display);
+			ripProcessor.rip(display, new RequestSiteListener() {
+				@Override
+				public void onProgressUpdate(int progress, int estimatedTotal) {
+					RipRequestProcessor.this.listener.onProgressUpdate(progress, estimatedTotal);
+				}
+			});
 		} catch(IOException exc) {
 			logger.log(Level.WARNING, "Failed while ripping: " + id, exc);
 			listener.onFailed("Failed while ripping: " + id, exc);
@@ -62,6 +67,7 @@ public class RipRequestProcessor implements Runnable {
 	public interface ProcessRipRequestListener {
 		void onFinished();
 		void onFailed(String message, Throwable throwable);
+		void onProgressUpdate(int progress, int estimatedTotal);
 	}
 	
 	/**
@@ -73,6 +79,7 @@ public class RipRequestProcessor implements Runnable {
 		/**
 		 * Provides a no-op; feel free to override.
 		 */
+		@Override
 		public void onFinished() {
 			// no-op
 		}
@@ -80,7 +87,16 @@ public class RipRequestProcessor implements Runnable {
 		/**
 		 * Provides a no-op; feel free to override.
 		 */
+		@Override
 		public void onFailed(String message, Throwable throwable) {
+			// no-op
+		}
+
+		/**
+		 * Provides a no-op; feel free to override.
+		 */
+		@Override
+		public void onProgressUpdate(int progress, int estimatedTotal) {
 			// no-op
 		}
 	}

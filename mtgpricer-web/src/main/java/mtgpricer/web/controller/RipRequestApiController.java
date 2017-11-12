@@ -57,6 +57,8 @@ public class RipRequestApiController {
 		jsonObject.addProperty("id", ripRequest.getId());
 		jsonObject.addProperty("startDate", (ripRequest.getStartDate() != null) ? ripRequest.getStartDate().getTime() : null);
 		jsonObject.addProperty("finishDate", (ripRequest.getFinishDate() != null) ? ripRequest.getFinishDate().getTime() : null);
+		jsonObject.addProperty("progress", ripRequest.getProgress());
+		jsonObject.addProperty("estimatedTotal", ripRequest.getEstimatedTotal());
 		return gson.toJson(jsonObject);
 	}
 	

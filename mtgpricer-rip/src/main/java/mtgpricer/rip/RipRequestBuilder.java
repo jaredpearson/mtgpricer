@@ -13,12 +13,14 @@ class RipRequestBuilder {
 	private Date startDate = null;
 	private Date finishDate = null;
 	private List<RipRequestLogLine> logLines = new ArrayList<RipRequestLogLine>();
+	private Integer progress;
+	private Integer estimatedTotal;
 	
 	/**
 	 * Creates a new {@link RipRequest} instance
 	 */
 	public RipRequest build() {
-		return new RipRequest(id, startDate, finishDate, logLines);
+		return new RipRequest(id, startDate, finishDate, logLines, progress, estimatedTotal);
 	}
 	
 	public long getId() {
@@ -41,5 +43,13 @@ class RipRequestBuilder {
 		if (logLine != null) {
 			this.logLines.add(logLine);
 		}
+	}
+	
+	public void setProgress(Integer progress) {
+		this.progress = progress;
+	}
+	
+	public void setEstimatedTotal(Integer estimatedTotal) {
+		this.estimatedTotal = estimatedTotal;
 	}
 }

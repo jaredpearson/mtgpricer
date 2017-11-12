@@ -32,7 +32,7 @@ public class Main implements CommandLineTool {
 		
 		final Display display = Displays.createForPrintStream(System.out);
 		try (final PageRequester pageRequester = createPageRequester(useCache)) {
-			ripProcessor.rip(display, pageRequester);
+			ripProcessor.rip(display, pageRequester, new RequestSiteListenerBase() {});
 		}
 	}
 	
