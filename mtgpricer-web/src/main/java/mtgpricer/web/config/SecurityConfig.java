@@ -15,12 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebMvcSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	private DataSource dataSource;
-	
-	@Autowired
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -49,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	public void configureGlobal(AuthenticationManagerBuilder auth, DataSource dataSource) throws Exception {
 		auth.jdbcAuthentication()
 			.passwordEncoder(passwordEncoder())
 			.dataSource(dataSource)
