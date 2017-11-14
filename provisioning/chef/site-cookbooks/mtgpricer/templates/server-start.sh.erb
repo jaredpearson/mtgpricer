@@ -17,13 +17,16 @@ JAR=/usr/share/mtgpricer/mtgpricer.jar
 PORT=<%= @port %>
 SESSION_STORE_DIR=<%= @sessionStoreDir %>
 
+<% options = " -Dcatalog.catalogFilePath=$CATALOG -Drip.outputDir=$OUTPUT_DIR " -%>
+<% args = " --port $PORT --sessionStoreDirectory $SESSION_STORE_DIR " -%>
+
 echo "Starting mtgpricer_webapp"
 if [ ! -f $PID_PATH ]; then
     if [ $debug = 1 ]; then
         echo "Starting server on debug port 8888"
-        nohup java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888 -Dcatalog.catalogFilePath=$CATALOG -Drip.outputDir=$OUTPUT_DIR -jar $JAR --port $PORT --sessionStoreDirectory $SESSION_STORE_DIR > $LOG_FILE </dev/null &
+        nohup java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888 <%= options %> -jar $JAR <%= args %> $LOG_FILE </dev/null &
     else
-        nohup java -Dcatalog.catalogFilePath=$CATALOG -Drip.outputDir=$OUTPUT_DIR -jar $JAR --port $PORT --sessionStoreDirectory $SESSION_STORE_DIR > $LOG_FILE </dev/null &
+        nohup java <%= options %> -jar $JAR <%= args %> > $LOG_FILE </dev/null &
     fi 
     echo $! > $PID_PATH
     echo "mtgpricer_webapp started"
