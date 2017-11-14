@@ -48,6 +48,16 @@ file "/usr/share/mtgpricer/mtgpricer.jar" do
     notifies :restart, "service[mtgpricer_webapp]"
 end
 
+# create the directory for the sessions
+directory "Create the session directory" do
+    owner "root"
+    group "root"
+    mode 0755
+    path node['mtgpricer']['webapp']['sessionStoreDir']
+    recursive true
+    action :create
+end
+
 service "mtgpricer_webapp" do
     supports :start => true, :stop => true
     action :nothing
@@ -58,9 +68,6 @@ template "mtgpricer service conf" do
     owner "root"
     group "root"
     mode "0755"
-    variables({
-        log: node['mtgpricer']['webapp']['log']
-    })
     notifies :enable, "service[mtgpricer_webapp]"
     notifies :start, "service[mtgpricer_webapp]"
 end
@@ -79,7 +86,9 @@ template "mtgpricer service conf" do
     owner "root"
     group "root"
     mode "0755"
-    variables({
-        log: node['mtgpricer']['webapp']['log']
-    })
+    variables(
+        :port => node['mtgpricer']['webapp']['port'],
+        :log => node['mtgpricer']['webapp']['log'],
+        :sessionStoreDir => node['mtgpricer']['webapp']['sessionStoreDir']
+    )
 end
