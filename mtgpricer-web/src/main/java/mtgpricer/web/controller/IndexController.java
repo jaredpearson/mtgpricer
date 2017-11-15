@@ -28,5 +28,4 @@ public class IndexController {
 		model.addObject("topPositiveCardsStandard", priceService.getTopPositiveCardPriceDiffSevenDaysStandard());
 		return model;
 	}
-	
 }

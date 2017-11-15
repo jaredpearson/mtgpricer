@@ -21,7 +21,7 @@ public class CardCatalog {
 			final Collection<? extends CardSetInfo> cardSetInfos,
 			final Map<String, Set<TournamentFormat>> setCodeToFormats) {
 		assert cardSetInfos != null;
-		final Set<CardSet> newCardSetsSet = new TreeSet<>();
+		final Set<CardSet> newCardSetsSet = new TreeSet<>((cs1, cs2) -> cs1.getName().compareTo(cs2.getName()));
 		final Map<String, CardSet> cardSetByCodeCopy = new HashMap<>();
 		final Map<String, CardSet> cardSetByName = new HashMap<>(cardSetByCodeCopy.size());
 		
