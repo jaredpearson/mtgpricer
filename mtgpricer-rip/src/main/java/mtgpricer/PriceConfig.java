@@ -2,7 +2,8 @@ package mtgpricer;
 
 import mtgpricer.catalog.CatalogConfig;
 import mtgpricer.redis.RedisConfig;
-import org.springframework.beans.factory.annotation.Autowired;
+import mtgpricer.rip.PriceDataLoader;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,27 +17,19 @@ import org.springframework.context.annotation.Lazy;
 @ComponentScan
 public class PriceConfig {
 	
-	@Autowired
-	UtilConfig utilConfig;
-	
-	@Autowired
-	RedisConfig redisConfig;
-	
-	@Autowired
-	CatalogConfig catalogConfig;
-	
 	@Bean
 	@Lazy
-	public RedisPriceService redisPriceService() {
+	public RedisPriceService redisPriceService(RedisConfig redisConfig, CatalogConfig catalogConfig) {
 		return new RedisPriceService(redisConfig.redisConnectionProvider(), catalogConfig.cardCatalogProvider());
 	}
 	
 	@Bean
 	@Lazy
-	public PriceServiceProvider priceServiceProvider() {
+	public PriceServiceProvider priceServiceProvider(PriceDataLoader priceDataLoader) {
+		final PriceServiceImpl priceServiceImpl = new PriceServiceImpl(priceDataLoader);
 		return new PriceServiceProvider() {
 			public PriceService getPriceService() {
-				return redisPriceService();
+				return priceServiceImpl;
 			}
 		};
 	}

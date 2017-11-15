@@ -27,7 +27,7 @@ class CardPriceComparator implements Comparator<CardPrice> {
 		}
 
 		if (orderDirection.equals(OrderDirection.DESC)) {
-			return -1;
+			return -value;
 		} else {
 			return value;
 		}

@@ -14,7 +14,7 @@ public class CardPrice {
 	
 	public CardPrice(Date retrieved, CardPriceInfo cardPriceInfo) {
 		this.retrieved = retrieved;
-		this.price = new Money(Double.toString(cardPriceInfo.getPrice()));
+		this.price = cardPriceInfo.getPrice() == null ? null : new Money(Double.toString(cardPriceInfo.getPrice()));
 	}
 	
 	public CardPrice(Date retrieved, Double price) {

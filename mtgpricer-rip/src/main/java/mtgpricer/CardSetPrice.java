@@ -22,6 +22,9 @@ class CardSetPrice {
 		this.numberToCardPrice = new HashMap<String, CardPrice>();
 		this.multiverseIdToCardPrice = new HashMap<Integer, CardPrice>();
 		for (final CardPriceInfo cardPriceInfo : cardSetPriceInfo.getCards()) {
+			if (cardPriceInfo == null) {
+				throw new IllegalStateException("CardSetPriceInfo for " + cardSetPriceInfo.getRawName() + " contains a null card");
+			}
 			final CardPrice cardPrice = new CardPrice(cardSetPriceInfo.getRetrieved(), cardPriceInfo);
 			
 			if (cardPriceInfo.getNumber() != null) {

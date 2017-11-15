@@ -76,7 +76,8 @@ public class SetViewController {
 			this.name = card.getName();
 			this.multiverseId = card.getMultiverseId();
 			if (cardPrices != null && !cardPrices.isEmpty()) {
-				this.latestPrice = cardPrices.get(cardPrices.size() - 1).getPrice().doubleValue();
+				// assume that card prices are ordered by retrieved in descending
+				this.latestPrice = cardPrices.get(0).getPrice().doubleValue();
 			} else {
 				this.latestPrice = null;
 			}

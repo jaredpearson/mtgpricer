@@ -11,6 +11,7 @@ import java.util.TreeMap;
 
 import mtgpricer.catalog.Card;
 import mtgpricer.catalog.CardSet;
+import mtgpricer.rip.PriceDataLoader;
 import mtgpricer.rip.PriceSiteInfo;
 
 /**
@@ -19,19 +20,16 @@ import mtgpricer.rip.PriceSiteInfo;
  * @author jared.pearson
  */
 public class PriceServiceImpl implements PriceService {
-	private TreeMap<Date, PriceSite> dateRetrievedByPriceSite;
+	private final TreeMap<Date, PriceSite> dateRetrievedByPriceSite;
 	
-	public PriceServiceImpl(final Set<PriceSiteInfo> priceSiteInfos) {
-		this.dateRetrievedByPriceSite = new TreeMap<Date, PriceSite>();
-		if (priceSiteInfos != null) {
-			for (PriceSiteInfo priceSiteInfo : priceSiteInfos) {
-				if (priceSiteInfo.getRetrieved() != null) {
-					this.dateRetrievedByPriceSite.put(priceSiteInfo.getRetrieved(), new PriceSite(priceSiteInfo));
-				}
-			}
-		}
+	public PriceServiceImpl(final PriceDataLoader priceDataLoader) {
+		this.dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
 	}
 	
+	public PriceServiceImpl(final Set<PriceSiteInfo> priceSiteInfos) {
+		this.dateRetrievedByPriceSite = createDateRetrievedMap(priceSiteInfos);
+	}
+
 	@Override
 	public CardPrice getCurrentPriceForCard(Card card) {
 		assert card != null;
@@ -66,10 +64,13 @@ public class PriceServiceImpl implements PriceService {
 			}
 		}
 		history.trimToSize();
+		if (history.isEmpty()) {
+			return Collections.emptyList();
+		}
 		
 		Collections.sort(history, new CardPriceComparator(params.getOrder(), params.getOrderDirection()));
 		
-		return Collections.unmodifiableList(history);
+		return Collections.unmodifiableList(history.subList(0, Math.min(params.getLimit(), history.size())));
 	}
 	
 	@Override
@@ -97,5 +98,17 @@ public class PriceServiceImpl implements PriceService {
 	public List<CardPriceDiff> getTopPositiveCardPriceDiffSevenDaysStandard() {
 		// this is not implemented for the in-memory service
 		return Collections.emptyList();
+	}
+
+	private static TreeMap<Date, PriceSite> createDateRetrievedMap(final Set<? extends PriceSiteInfo> priceSiteInfos) {
+		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = new TreeMap<Date, PriceSite>();
+		if (priceSiteInfos != null) {
+			for (final PriceSiteInfo priceSiteInfo : priceSiteInfos) {
+				if (priceSiteInfo.getRetrieved() != null) {
+					dateRetrievedByPriceSite.put(priceSiteInfo.getRetrieved(), new PriceSite(priceSiteInfo));
+				}
+			}
+		}
+		return dateRetrievedByPriceSite;
 	}
 }
