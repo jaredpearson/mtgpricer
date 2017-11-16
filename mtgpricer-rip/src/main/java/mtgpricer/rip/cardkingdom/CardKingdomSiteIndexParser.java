@@ -6,9 +6,6 @@ import java.util.logging.Logger;
 
 import mtgpricer.catalog.CardCatalog;
 import mtgpricer.catalog.CardSet;
-import mtgpricer.rip.SiteIndex;
-import mtgpricer.rip.SiteIndexCardSet;
-import mtgpricer.rip.SiteIndexParser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,7 +16,7 @@ import org.jsoup.select.Elements;
  * Site index parser for Card Kingdom
  * @author jared.pearson
  */
-class CardKingdomSiteIndexParser implements SiteIndexParser {
+class CardKingdomSiteIndexParser {
 	private static final Logger logger = Logger.getLogger(CardKingdomSiteIndexParser.class.getName());
 	private final CardCatalog cardCatalog;
 	private final SiteParserRules parserRules;
@@ -33,7 +30,6 @@ class CardKingdomSiteIndexParser implements SiteIndexParser {
 		this.parserRules = siteParserRules;
 	}
 
-	@Override
 	public SiteIndex parseHtml(final String html) {
 		final Document doc = Jsoup.parse(html);
 		final String selector = ".anchorList td a";

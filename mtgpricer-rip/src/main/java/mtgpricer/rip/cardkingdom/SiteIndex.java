@@ -1,4 +1,4 @@
-package mtgpricer.rip;
+package mtgpricer.rip.cardkingdom;
 
 import java.util.Collections;
 import java.util.List;

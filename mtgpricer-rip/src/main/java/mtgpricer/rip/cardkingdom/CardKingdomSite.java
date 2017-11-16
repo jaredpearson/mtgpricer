@@ -10,8 +10,6 @@ import mtgpricer.catalog.CardCatalog;
 import mtgpricer.catalog.CardSet;
 import mtgpricer.rip.CardPriceInfo;
 import mtgpricer.rip.CardSetPriceInfo;
-import mtgpricer.rip.SiteIndex;
-import mtgpricer.rip.SiteIndexCardSet;
 import mtgpricer.rip.PriceSiteInfo;
 import mtgpricer.rip.PriceSiteInfoBuilder;
 import mtgpricer.rip.RequestSiteListener;
@@ -27,7 +25,7 @@ public class CardKingdomSite {
 	private static final String cardKingdomUrl = "https://www.cardkingdom.com/";
 	private final CardCatalog cardCatalog;
 	private final PageRequester pageRequester;
-	private final CardKingdomSiteIndexParser cardSetIndexParser;
+	private final CardKingdomSiteIndexParser siteIndexParser;
 	private final CardKingdomCardSetPageParser cardSetParser;
 	private final SiteParserRules siteParserRules;
 	
@@ -41,7 +39,7 @@ public class CardKingdomSite {
 		this.siteParserRules = siteParserRulesFactory.loadSiteParserRules();
 		
 		// create the parsers
-		this.cardSetIndexParser = new CardKingdomSiteIndexParser(cardCatalog, siteParserRules);
+		this.siteIndexParser = new CardKingdomSiteIndexParser(cardCatalog, siteParserRules);
 		this.cardSetParser = new CardKingdomCardSetPageParser();
 	}
 
@@ -80,7 +78,7 @@ public class CardKingdomSite {
 	 */
 	private SiteIndex requestSiteIndex() throws IOException {
 		final String html = pageRequester.getHtml("https://www.cardkingdom.com/catalog/magic_the_gathering/by_az");
-		return cardSetIndexParser.parseHtml(html);
+		return siteIndexParser.parseHtml(html);
 	}
 	
 	/**
@@ -97,35 +95,40 @@ public class CardKingdomSite {
 			allCards.addAll(page.getCards());
 		}
 		
-		return new CardSetPriceInfo(cardSetIndex, new Date(), allCards);
+		return new CardSetPriceInfo(
+				cardSetIndex.getName(),
+				cardSetIndex.getRawName(),
+				cardSetIndex.getSetCode(),
+				cardSetIndex.getUrl(),
+				new Date(),
+				allCards);
 	}
 
 	/**
 	 * Gets all of the pages of cards for the given set.
 	 */
-	private List<CardKindgomCardSetPage> requestPages(final SiteIndexCardSet cardSet) throws IOException {
-		assert cardSet != null;
+	private List<CardKindgomCardSetPage> requestPages(final SiteIndexCardSet cardSetIndex) throws IOException {
+		assert cardSetIndex != null;
 		
 		// attempt to find the card set from the catalog
 		final CardSet cardSetInfo;
-		if (cardSet != null) { 
-			cardSetInfo = this.cardCatalog.getCardSetByCode(cardSet.getSetCode());
+		if (cardSetIndex != null) { 
+			cardSetInfo = this.cardCatalog.getCardSetByCode(cardSetIndex.getSetCode());
 		} else {
 			cardSetInfo = null;
 		}
 		
+		// attempt to find the parser rules corresponding to the card set
+		final CardParserRules cardSetParserRule;
+		if (cardSetInfo != null) { 
+			cardSetParserRule = siteParserRules.getParserRuleForCardSetCode(cardSetInfo.getCode());
+		} else {
+			cardSetParserRule = CardParserRules.createEmpty();
+		}
+		
 		final List<CardKindgomCardSetPage> pages = new ArrayList<CardKindgomCardSetPage>();
-		String url = cardSet.getUrl();
+		String url = cardSetIndex.getUrl();
 		while(url != null) {
-			
-			// attempt to find the parser rules corresponding to the card set
-			final CardParserRules cardSetParserRule;
-			if (cardSetInfo != null) { 
-				cardSetParserRule = siteParserRules.getParserRuleForCardSetCode(cardSetInfo.getCode());
-			} else {
-				cardSetParserRule = CardParserRules.createEmpty();
-			}
-			
 			// request the real page that we want
 			final String cardSetHtml = pageRequester.getHtml(url);
 			final CardKindgomCardSetPage page = cardSetParser.parseHtml(url, cardSetHtml, cardSetInfo, cardSetParserRule);

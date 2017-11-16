@@ -19,57 +19,43 @@ public class CardSetPriceInfo {
 	private final Date retrieved;
 	private final List<CardPriceInfo> cards;
 	
-	public CardSetPriceInfo(SiteIndexCardSet cardSetIndex, Date retrieved, List<? extends CardPriceInfo> cards) {
-		assert cardSetIndex != null;
+	public CardSetPriceInfo(
+			final String name,
+			final String rawName,
+			final String code,
+			final String url,
+			final Date retrieved,
+			final List<? extends CardPriceInfo> cards) {
 		assert cards != null;
-		this.name = cardSetIndex.getName();
-		this.rawName = cardSetIndex.getRawName();
-		this.code = cardSetIndex.getSetCode();
-		this.url = cardSetIndex.getUrl();
-		this.cards = Collections.unmodifiableList(cards);
+		this.name = name;
+		this.rawName = rawName;
+		this.code = code;
+		this.url = url;
 		this.retrieved = new Date(retrieved.getTime());
+		this.cards = Collections.unmodifiableList(cards);
 	}
 
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getCode()
-	 */
 	public String getCode() {
 		return this.code;
 	}
 	
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getName()
-	 */
 	public String getName() {
 		return name;
 	}
 	
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getRawName()
-	 */
 	public String getRawName() {
 		return rawName;
 	}
 	
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getUrl()
-	 */
 	public String getUrl() {
 		return url;
 	}
 	
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getRetrieved()
-	 */
 	public Date getRetrieved() {
 		return retrieved;
 	}
 
-	/* (non-Javadoc)
-	 * @see mtgpricer.rip.CardSetPriceInfo#getCards()
-	 */
 	public List<CardPriceInfo> getCards() {
 		return cards;
 	}
-	
 }

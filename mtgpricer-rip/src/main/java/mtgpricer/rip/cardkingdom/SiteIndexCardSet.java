@@ -1,4 +1,4 @@
-package mtgpricer.rip;
+package mtgpricer.rip.cardkingdom;
 
 /**
  * Represents a card set represented on a site index. This is a reference/link
