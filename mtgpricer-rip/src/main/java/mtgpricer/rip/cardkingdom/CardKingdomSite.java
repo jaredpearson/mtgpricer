@@ -1,9 +1,12 @@
 package mtgpricer.rip.cardkingdom;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import mtgpricer.catalog.CardCatalog;
@@ -88,7 +91,7 @@ public class CardKingdomSite {
 		assert cardSetIndex != null;
 
 		logger.info("Requesting information for set " + cardSetIndex.getName());
-		final List<CardKindgomCardSetPage> pages = requestPages(cardSetIndex);
+		final List<CardKindgomCardSetPage> pages = requestCardSetPages(cardSetIndex);
 		
 		final List<CardPriceInfo> allCards = new ArrayList<CardPriceInfo>();
 		for (CardKindgomCardSetPage page : pages) {
@@ -107,7 +110,7 @@ public class CardKingdomSite {
 	/**
 	 * Gets all of the pages of cards for the given set.
 	 */
-	private List<CardKindgomCardSetPage> requestPages(final SiteIndexCardSet cardSetIndex) throws IOException {
+	private List<CardKindgomCardSetPage> requestCardSetPages(final SiteIndexCardSet cardSetIndex) throws IOException {
 		assert cardSetIndex != null;
 		
 		// attempt to find the card set from the catalog
@@ -125,15 +128,33 @@ public class CardKingdomSite {
 		} else {
 			cardSetParserRule = CardParserRules.createEmpty();
 		}
+
+		// request the set index page to retrieve all of the referenced pages
+		// CardKingdom's set index page includes links to different URLs than the first page URLs provided by the 
+		// set pagination. We will fetch the page for the set index, ignore the cards but retrieve the pagination.
+		final String cardSetIndexHtml = pageRequester.getHtml(cardSetIndex.getUrl());
+		final CardKindgomCardSetPage indexPage = cardSetParser.parseHtml(cardSetIndex.getUrl(), cardSetIndexHtml, cardSetInfo, cardSetParserRule);
+		
+		// loop over all of the pages retrieved from the card set index page
+		final ArrayDeque<String> unvisitedUrls = new ArrayDeque<>(indexPage.getReferencedSetPageUrls());
+		final Set<String> visitedUrls = new HashSet<>();
 		
 		final List<CardKindgomCardSetPage> pages = new ArrayList<CardKindgomCardSetPage>();
-		String url = cardSetIndex.getUrl();
-		while(url != null) {
-			// request the real page that we want
+		while(!unvisitedUrls.isEmpty()) {
+			final String url = unvisitedUrls.pop();
+			if (visitedUrls.contains(url)) {
+				continue;
+			}
+			visitedUrls.add(url);
+			
+			// request the set page
 			final String cardSetHtml = pageRequester.getHtml(url);
 			final CardKindgomCardSetPage page = cardSetParser.parseHtml(url, cardSetHtml, cardSetInfo, cardSetParserRule);
 			pages.add(page);
-			url = page.getNextPageUrl();
+			
+			// each page may have more additional pages referenced (that weren't included on the first page retrieval) so
+			// add these to the list of unvisited pages.
+			unvisitedUrls.addAll(page.getReferencedSetPageUrls());
 		}
 		
 		return pages;

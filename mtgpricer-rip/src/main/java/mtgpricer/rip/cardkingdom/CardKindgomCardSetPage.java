@@ -2,6 +2,7 @@ package mtgpricer.rip.cardkingdom;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 import mtgpricer.rip.CardPriceInfo;
 
@@ -10,11 +11,11 @@ import mtgpricer.rip.CardPriceInfo;
  * @author jared.pearson
  */
 class CardKindgomCardSetPage {
-	private final String nextPageUrl;
+	private final Set<String> referencedSetPageUrls;
 	private final List<CardPriceInfo> cards;
 	
-	public CardKindgomCardSetPage(String nextPageUrl, List<CardPriceInfo> cards) {
-		this.nextPageUrl = nextPageUrl;
+	public CardKindgomCardSetPage(Set<String> referencedSetPageUrls, List<CardPriceInfo> cards) {
+		this.referencedSetPageUrls = Collections.unmodifiableSet(referencedSetPageUrls);
 		this.cards = Collections.unmodifiableList(cards);
 	}
 	
@@ -26,11 +27,10 @@ class CardKindgomCardSetPage {
 	}
 	
 	/**
-	 * Gets the URL of the next page. If this is the last page, then a null
-	 * reference is returned.
-	 * @return the URL of the next page or null if on the last page.
+	 * Gets the set pages that are referenced by this page from the pagination on the page.
+	 * @return the URLs referenced in this page's pagination or empty set if no pages are referenced.
 	 */
-	public String getNextPageUrl() {
-		return nextPageUrl;
+	public Set<String> getReferencedSetPageUrls() {
+		return referencedSetPageUrls;
 	}
 }

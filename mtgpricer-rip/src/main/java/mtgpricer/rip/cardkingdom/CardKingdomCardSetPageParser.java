@@ -1,6 +1,7 @@
 package mtgpricer.rip.cardkingdom;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,7 +41,6 @@ class CardKingdomCardSetPageParser {
 			final CardParserRules parserRule) {
 		try {
 			final Document doc = Jsoup.parse(html);
-			final String nextPageUrl = getNextPageUrl(doc);
 			
 			final Set<String> unknownCardNames = new HashSet<>(); 
 			
@@ -99,8 +99,9 @@ class CardKingdomCardSetPageParser {
 			}
 			
 			logUnknownCards(url, cardSet, unknownCardNames);
-			
-			return new CardKindgomCardSetPage(nextPageUrl, cards);
+
+			final Set<String> referencedSetPageUrls = getSetPageUrls(doc);
+			return new CardKindgomCardSetPage(referencedSetPageUrls, cards);
 		} catch (Throwable t) {
 			throw new RuntimeException("Exception thrown while parsing page: " + url, t);
 		}
@@ -166,19 +167,27 @@ class CardKingdomCardSetPageParser {
 		return card;
 	}
 	
-	private String getNextPageUrl(final Document doc) {
+	private Set<String> getSetPageUrls(final Document doc) {
 		assert doc != null;
+
 		final Elements nextPageElements = doc.select(".pagination li");
 		if (nextPageElements.isEmpty()) {
 			logger.warning("Page does not contain pagination: " + doc.location());
-			return null;
+			return Collections.emptySet();
 		}
-		final Element lastEl = nextPageElements.last();
-		if (lastEl.classNames().contains("active")) {
-			return null;
-		} else {
-			return lastEl.select("a").attr("href");
+
+		final Set<String> urls = new HashSet<>(nextPageElements.size());
+		for (Element nextPageElement : nextPageElements) {
+			
+			// ignore "previous page", "next page" and "..." pagination elements
+			final String text = nextPageElement.select("a").text().trim();
+			if (!Pattern.matches("^[0-9]+$", text)) {
+				continue;
+			}
+			
+			urls.add(nextPageElement.select("a").attr("href"));
 		}
+		return urls;
 	}
 	
 	private static Double parsePriceValue(String rawValue) {
