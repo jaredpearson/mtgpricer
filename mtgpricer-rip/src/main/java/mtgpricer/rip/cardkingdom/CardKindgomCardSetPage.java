@@ -11,12 +11,24 @@ import mtgpricer.rip.CardPriceInfo;
  * @author jared.pearson
  */
 class CardKindgomCardSetPage {
+	private final String url;
 	private final Set<String> referencedSetPageUrls;
 	private final List<CardPriceInfo> cards;
 	
-	public CardKindgomCardSetPage(Set<String> referencedSetPageUrls, List<CardPriceInfo> cards) {
+	public CardKindgomCardSetPage(
+			final String url,
+			final Set<String> referencedSetPageUrls,
+			final List<CardPriceInfo> cards) {
+		this.url = url;
 		this.referencedSetPageUrls = Collections.unmodifiableSet(referencedSetPageUrls);
 		this.cards = Collections.unmodifiableList(cards);
+	}
+	
+	/**
+	 * Gets the URL that was used to create this page.
+	 */
+	public String getUrl() {
+		return url;
 	}
 	
 	/**

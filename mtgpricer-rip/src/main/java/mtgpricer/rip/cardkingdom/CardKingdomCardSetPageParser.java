@@ -101,7 +101,7 @@ class CardKingdomCardSetPageParser {
 			logUnknownCards(url, cardSet, unknownCardNames);
 
 			final Set<String> referencedSetPageUrls = getSetPageUrls(doc);
-			return new CardKindgomCardSetPage(referencedSetPageUrls, cards);
+			return new CardKindgomCardSetPage(url, referencedSetPageUrls, cards);
 		} catch (Throwable t) {
 			throw new RuntimeException("Exception thrown while parsing page: " + url, t);
 		}
