@@ -227,7 +227,7 @@ public class CardKingdomSite {
 				// CardKingdom's set index page includes links to different URLs than the first page URLs provided by the 
 				// set pagination. We will fetch the page for the set index, ignore the cards but retrieve the pagination.
 				final String cardSetIndexHtml = pageRequester.getHtml(cardSetIndex.getUrl());
-				final CardKindgomCardSetPage indexPage = cardSetParser.parseHtml(cardSetIndex.getUrl(), cardSetIndexHtml, cardSetInfo, cardSetParserRules);
+				final CardKingdomCardSetPage indexPage = cardSetParser.parseHtml(cardSetIndex.getUrl(), cardSetIndexHtml, cardSetInfo, cardSetParserRules);
 				
 				final PageExecutorService<RequestCardSetPageResult> pageExecutorService = new PageExecutorService<>(executorService, phaser);
 				
@@ -286,7 +286,7 @@ public class CardKingdomSite {
 		@Override
 		public RequestCardSetPageResult call() throws Exception {
 			final String cardSetHtml = pageRequester.getHtml(url);
-			final CardKindgomCardSetPage page = cardSetParser.parseHtml(url, cardSetHtml, cardSetInfo, cardSetParserRules);
+			final CardKingdomCardSetPage page = cardSetParser.parseHtml(url, cardSetHtml, cardSetInfo, cardSetParserRules);
 			
 			final List<ListenableFuture<RequestCardSetPageResult>> referencedPages = new ArrayList<>(page.getReferencedSetPageUrls().size());
 			for (final String referencedSetPageUrls : page.getReferencedSetPageUrls()) {
@@ -341,7 +341,7 @@ public class CardKingdomSite {
 		private final List<ListenableFuture<RequestCardSetPageResult>> referencedPages;
 
 		public RequestCardSetPageResult(
-				final CardKindgomCardSetPage page,
+				final CardKingdomCardSetPage page,
 				final List<ListenableFuture<RequestCardSetPageResult>> referencedPages) {
 			this.cards = page.getCards();
 			this.url = page.getUrl();

@@ -10,12 +10,12 @@ import mtgpricer.rip.CardPriceInfo;
  * Represents a page of cards from Card Kingdom
  * @author jared.pearson
  */
-class CardKindgomCardSetPage {
+class CardKingdomCardSetPage {
 	private final String url;
 	private final Set<String> referencedSetPageUrls;
 	private final List<CardPriceInfo> cards;
 	
-	public CardKindgomCardSetPage(
+	public CardKingdomCardSetPage(
 			final String url,
 			final Set<String> referencedSetPageUrls,
 			final List<CardPriceInfo> cards) {

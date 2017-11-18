@@ -34,7 +34,7 @@ class CardKingdomCardSetPageParser {
 	 * @param parserRule
 	 * @return
 	 */
-	public CardKindgomCardSetPage parseHtml(
+	public CardKingdomCardSetPage parseHtml(
 			final String url,
 			final String html,
 			final CardSet cardSet,
@@ -101,7 +101,7 @@ class CardKingdomCardSetPageParser {
 			logUnknownCards(url, cardSet, unknownCardNames);
 
 			final Set<String> referencedSetPageUrls = getSetPageUrls(doc);
-			return new CardKindgomCardSetPage(url, referencedSetPageUrls, cards);
+			return new CardKingdomCardSetPage(url, referencedSetPageUrls, cards);
 		} catch (Throwable t) {
 			throw new RuntimeException("Exception thrown while parsing page: " + url, t);
 		}
