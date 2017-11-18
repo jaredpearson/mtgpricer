@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +21,7 @@ import mtgpricer.rip.cardkingdom.CardParserRules;
 import mtgpricer.rip.cardkingdom.SiteParserRules;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -34,6 +36,13 @@ public class UpdateRipFileTool implements CommandLineTool {
 	private CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory;
 	private File outputDir;
 	private Gson gson;
+	private Supplier<GsonBuilder> gsonBuilderSupplier;
+	
+	@Autowired
+	public UpdateRipFileTool(Supplier<GsonBuilder> gsonBuilderSupplier) {
+		this.gsonBuilderSupplier = gsonBuilderSupplier;
+		this.gson = gsonBuilderSupplier.get().create();
+	}
 	
 	@Autowired
 	public void setCardCatalogProvider(CardCatalogProvider cardCatalogProvider) {
@@ -51,18 +60,13 @@ public class UpdateRipFileTool implements CommandLineTool {
 		this.outputDir = outputDir;
 	}
 	
-	@Autowired
-	public void setGson(Gson gson) {
-		this.gson = gson;
-	}
-	
 	@Override
 	public void run(String[] args) throws Exception {
 		if (outputDir == null) {
 			throw new IllegalStateException("outputDir must be set before invoking run");
 		}
 		
-		final FilePriceDataStore priceDataLoader = new FilePriceDataStore(outputDir, gson);
+		final FilePriceDataStore priceDataLoader = new FilePriceDataStore(outputDir, gsonBuilderSupplier);
 		for (final File file : priceDataLoader.getDataFiles()) {
 			final JsonObject priceSiteJson = loadFile(file);
 			if (processCardSet(priceSiteJson, file.getName())) {

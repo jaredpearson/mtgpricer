@@ -8,10 +8,12 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
 /**
@@ -23,11 +25,11 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 	private final File outputDir;
 	private final Gson gson;
 	
-	public FilePriceDataStore(File outputDir, Gson gson) {
+	public FilePriceDataStore(File outputDir, Supplier<GsonBuilder> gsonBuilderSupplier) {
 		assert outputDir != null;
-		assert gson != null;
+		assert gsonBuilderSupplier != null;
 		this.outputDir = outputDir;
-		this.gson = gson;
+		this.gson = gsonBuilderSupplier.get().create();
 	}
 	
 	@Override

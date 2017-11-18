@@ -1,6 +1,7 @@
 package mtgpricer.rip;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 import mtgpricer.ConfigPropertyUtils;
 import mtgpricer.Resource;
@@ -17,6 +18,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
+import com.google.gson.GsonBuilder;
+
 @Configuration
 @ComponentScan
 public class RipConfig {
@@ -29,12 +32,6 @@ public class RipConfig {
 	
 	@Value("${rip.outputDir}")
 	String outputDir;
-	
-	@Autowired
-	PageRequesterFactory pageRequesterFactory;
-	
-	@Autowired
-	CardCatalogService cardCatalogService;
 	
 	@Bean
 	@Lazy
@@ -50,42 +47,46 @@ public class RipConfig {
 	
 	@Bean
 	@Lazy
-	public UpdateRipFileTool updateRipFileTool() {
-		return new UpdateRipFileTool();
+	public UpdateRipFileTool updateRipFileTool(Supplier<GsonBuilder> gsonBuilderSupplier) {
+		return new UpdateRipFileTool(gsonBuilderSupplier);
 	}
 	
 	@Bean
 	@Lazy
-	public CardKingdomSiteFactory cardKingdomSiteFactory() {
-		return new CardKingdomSiteFactory(cardKingdomSiteParserRulesFactory());
+	public CardKingdomSiteFactory cardKingdomSiteFactory(CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory) {
+		return new CardKingdomSiteFactory(cardKingdomSiteParserRulesFactory);
 	}
 	
 	@Bean
 	@Lazy
-	public CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory() {
+	public CardKingdomSiteParserRulesFactory cardKingdomSiteParserRulesFactory(Supplier<GsonBuilder> gsonBuilderSupplier) {
 		final Resource parserRulesResource = ConfigPropertyUtils.createResource("rip.cardKingdom.parserRulesFilePath", cardKingdomParserRulesFilePath);
-		return new CardKingdomSiteParserRulesFactory(parserRulesResource, utilConfig.standardGson());
+		return new CardKingdomSiteParserRulesFactory(parserRulesResource, gsonBuilderSupplier);
 	}
 
 	@Bean
 	@Lazy
-	public PriceDataLoader priceDataLoader() {
-		return new FilePriceDataStore(ripOutputDir(), utilConfig.standardGson());
+	public PriceDataLoader priceDataLoader(Supplier<GsonBuilder> gsonBuilderSupplier) {
+		return new FilePriceDataStore(ripOutputDir(), gsonBuilderSupplier);
 	}
 	
 	@Bean
 	@Lazy
-	public PriceDataStore priceDataStore() {
-		return (FilePriceDataStore) priceDataLoader();
+	public PriceDataStore priceDataStore(PriceDataLoader priceDataLoader) {
+		return (FilePriceDataStore) priceDataLoader;
 	}
 	
 	@Bean
 	@Lazy
-	public RipProcessor ripProcessor() {
+	public RipProcessor ripProcessor(
+			CardKingdomSiteFactory cardKingdomSiteFactory,
+			PriceDataStore priceDataStore,
+			PageRequesterFactory pageRequesterFactory,
+			CardCatalogService cardCatalogService) {
 		return new RipProcessor(
 				pageRequesterFactory, 
 				cardCatalogService, 
-				cardKingdomSiteFactory(), 
-				priceDataStore());
+				cardKingdomSiteFactory, 
+				priceDataStore);
 	}
 }

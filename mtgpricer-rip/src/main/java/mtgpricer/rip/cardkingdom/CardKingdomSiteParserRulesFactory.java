@@ -5,8 +5,10 @@ import java.io.Reader;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Supplier;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import mtgpricer.Resource;
 
@@ -21,11 +23,13 @@ public class CardKingdomSiteParserRulesFactory implements SiteParserRulesFactory
 	private final Lock lock = new ReentrantLock();
 	private SiteParserRules siteParserRules;
 	
-	public CardKingdomSiteParserRulesFactory(final Resource parserRulesResource, final Gson gson) {
+	public CardKingdomSiteParserRulesFactory(
+			final Resource parserRulesResource,
+			final Supplier<GsonBuilder> gsonBuilderSupplier) {
 		assert parserRulesResource != null;
-		assert gson != null;
+		assert gsonBuilderSupplier != null;
 		this.parserRulesResource = parserRulesResource;
-		this.gson = gson;
+		this.gson = gsonBuilderSupplier.get().create();
 	}
 	
 	/**

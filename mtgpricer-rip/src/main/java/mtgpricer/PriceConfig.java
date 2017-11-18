@@ -1,6 +1,6 @@
 package mtgpricer;
 
-import mtgpricer.catalog.CatalogConfig;
+import mtgpricer.catalog.CardCatalogProvider;
 import mtgpricer.redis.RedisConfig;
 import mtgpricer.rip.PriceDataLoader;
 
@@ -19,8 +19,8 @@ public class PriceConfig {
 	
 	@Bean
 	@Lazy
-	public RedisPriceService redisPriceService(RedisConfig redisConfig, CatalogConfig catalogConfig) {
-		return new RedisPriceService(redisConfig.redisConnectionProvider(), catalogConfig.cardCatalogProvider());
+	public RedisPriceService redisPriceService(RedisConfig redisConfig, CardCatalogProvider cardCatalogProvider) {
+		return new RedisPriceService(redisConfig.redisConnectionProvider(), cardCatalogProvider);
 	}
 	
 	@Bean

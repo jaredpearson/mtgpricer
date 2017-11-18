@@ -13,6 +13,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
+import com.google.gson.Gson;
+
 @Configuration
 @ComponentScan
 public class CatalogConfig {
@@ -37,21 +39,21 @@ public class CatalogConfig {
 	
 	@Bean
 	@Lazy
-	public CardCatalogService cardCatalogService() {
+	public CardCatalogService cardCatalogService(Gson gson) {
 		final Resource catalogResource = ConfigPropertyUtils.createResource("catalog.catalogFilePath", catalogFilePath);
 		final Resource formatSetResource = ConfigPropertyUtils.createResource("catalog.formatSetFilePath", formatSetFilePath);
-		return new CardCatalogService(utilConfig.standardGson(), catalogResource, formatSetResource);
+		return new CardCatalogService(gson, catalogResource, formatSetResource);
 	}
 	
 	@Bean
 	@Lazy
-	public CardCatalogProvider cardCatalogProvider() {
+	public CardCatalogProvider cardCatalogProvider(CardCatalogService cardCatalogService) {
 		return new CardCatalogProvider() {
 			private CardCatalog cardCatalog = null;
 			
 			public CardCatalog getCardCatalog() {
 				if (cardCatalog == null) {
-					cardCatalog = cardCatalogService().loadCardCatalog();
+					cardCatalog = cardCatalogService.loadCardCatalog();
 				}
 				return cardCatalog;
 			}

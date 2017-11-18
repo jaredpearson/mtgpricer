@@ -1,5 +1,7 @@
 package mtgpricer;
 
+import java.util.function.Supplier;
+
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -34,10 +36,15 @@ public class UtilConfig {
 	
 	@Bean
 	@Lazy
-	public Gson standardGson() {
-		return new GsonBuilder()
-				.setDateFormat("yyyy/MM/dd kk:mm:ss Z")
-				.create();
+	public Gson standardGson(Supplier<GsonBuilder> gsonBuilder) {
+		return gsonBuilder.get().create();
+	}
+	
+	@Bean
+	@Lazy
+	public Supplier<GsonBuilder> standardGsonBuilder() {
+		return () -> new GsonBuilder()
+				.setDateFormat("yyyy/MM/dd kk:mm:ss Z");
 	}
 
 	@Bean
