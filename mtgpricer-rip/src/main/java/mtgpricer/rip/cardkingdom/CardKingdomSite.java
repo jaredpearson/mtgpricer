@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Phaser;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 import com.google.common.base.Throwables;
@@ -81,20 +82,11 @@ public class CardKingdomSite {
 			// request each of the sets and their pages
 			final List<ListenableFuture<RequestCardSetResult>> cardSetResultFutures = new ArrayList<>();
 			final int numberOfCardSets = siteIndex.getCardSets().size();
+			final CardSetCompletionCallback updateListener = new CardSetCompletionCallback(listener, numberOfCardSets);
 			for (int index = 0; index < numberOfCardSets; index++) {
-				final int finalIndex = index;
 				final SiteIndexCardSet cardSetIndex = siteIndex.getCardSets().get(index);
 				final ListenableFuture<RequestCardSetResult> cardSetResultFuture = executorService.submit(new RequestCardSetTask(phaser, executorService, cardCatalog, cardSetIndex));
-				Futures.addCallback(cardSetResultFuture, new FutureCallback<RequestCardSetResult>() {
-					@Override
-					public void onFailure(Throwable t) {
-						listener.onProgressUpdate(finalIndex, numberOfCardSets);
-					}
-					@Override
-					public void onSuccess(RequestCardSetResult result) {
-						listener.onProgressUpdate(finalIndex, numberOfCardSets);
-					}
-				});
+				Futures.addCallback(cardSetResultFuture, updateListener);
 				cardSetResultFutures.add(cardSetResultFuture);
 			}
 			phaser.arriveAndAwaitAdvance();
@@ -116,6 +108,8 @@ public class CardKingdomSite {
 			throw Throwables.propagate(exc);
 		}
 	}
+	
+	
 	
 	/**
 	 * Request the site index from Card Kingdom.
@@ -162,6 +156,33 @@ public class CardKingdomSite {
 		return cardPriceInfos;
 	}
 	
+	private static final class CardSetCompletionCallback implements FutureCallback<RequestCardSetResult> {
+		private final RequestSiteListener listener;
+		private final AtomicInteger progress = new AtomicInteger();
+		private final int numberOfCardSets;
+
+		private CardSetCompletionCallback(RequestSiteListener listener, int numberOfCardSets) {
+			this.listener = listener;
+			this.numberOfCardSets = numberOfCardSets;
+		}
+
+		@Override
+		public void onFailure(Throwable t) {
+			this.incrementAndUpdate();
+		}
+
+		@Override
+		public void onSuccess(RequestCardSetResult result) {
+			this.incrementAndUpdate();
+		}
+		
+		private void incrementAndUpdate() {
+			// after completion of the card set, increment the completion counter and then
+			// tell the listener that we completed another task
+			listener.onProgressUpdate(progress.incrementAndGet(), numberOfCardSets);
+		}
+	}
+
 	private class RequestCardSetTask implements Callable<RequestCardSetResult> {
 		final Phaser phaser;
 		final ListeningExecutorService executorService;
