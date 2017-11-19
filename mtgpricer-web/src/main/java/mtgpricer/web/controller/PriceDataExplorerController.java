@@ -160,6 +160,8 @@ public class PriceDataExplorerController {
 			final PriceSiteInfo priceSiteInfo,
 			final CardCatalog catalog,
 			final SiteParserRules parserRules) {
+		final Map<String, List<CardPriceInfo>> setCodeToCardPriceInfo = priceDataLoader.loadCardPriceInfos(priceSiteInfo);
+		
 		// using ordered collection to ensure that card sets are ordered in the UI
 		final PriorityQueue<CardSetEntry> cardSets = new PriorityQueue<>((cs1, cs2) -> cs1.getName().compareTo(cs2.getName()));
 		for (final CardSetPriceInfo cardSetPriceInfo : priceSiteInfo.getCardSets()) {
@@ -171,6 +173,11 @@ public class PriceDataExplorerController {
 				continue;
 			}
 			
+			// if the card set isn't found in the pricing information, then just skip it
+			if (!setCodeToCardPriceInfo.containsKey(cardSetPriceInfo.getCode())) {
+				continue;
+			}
+			
 			final CardParserRules cardSetParserRules = parserRules.getParserRuleForCardSetCode(cardSet.getCode());
 			
 			// unused cards will be used in the UI for selection
@@ -178,7 +185,7 @@ public class PriceDataExplorerController {
 
 			// using ordered collection to ensure that cards are ordered in the UI
 			final UnknownCardEntryCollection unknownCardCollection = new UnknownCardEntryCollection();
-			for (final CardPriceInfo cardPriceInfo : cardSetPriceInfo.getCards()) {
+			for (final CardPriceInfo cardPriceInfo : setCodeToCardPriceInfo.get(cardSetPriceInfo.getCode())) {
 				final Card card = findCard(cardPriceInfo, cardSet, cardSetParserRules);
 				if (card == null) {
 					

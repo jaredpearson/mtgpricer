@@ -3,7 +3,8 @@ package mtgpricer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.TreeMap;
 
 import mtgpricer.catalog.Card;
 import mtgpricer.catalog.CardSet;
+import mtgpricer.rip.CardPriceInfo;
 import mtgpricer.rip.PriceDataLoader;
 import mtgpricer.rip.PriceSiteInfo;
 
@@ -20,26 +22,10 @@ import mtgpricer.rip.PriceSiteInfo;
  * @author jared.pearson
  */
 public class PriceServiceImpl implements PriceService {
-	private final TreeMap<Date, PriceSite> dateRetrievedByPriceSite;
+	private final PriceDataLoader priceDataLoader;
 	
 	public PriceServiceImpl(final PriceDataLoader priceDataLoader) {
-		this.dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
-	}
-	
-	public PriceServiceImpl(final Set<PriceSiteInfo> priceSiteInfos) {
-		this.dateRetrievedByPriceSite = createDateRetrievedMap(priceSiteInfos);
-	}
-
-	@Override
-	public CardPrice getCurrentPriceForCard(Card card) {
-		assert card != null;
-		
-		if (dateRetrievedByPriceSite.isEmpty()) {
-			return null;
-		}
-		
-		final PriceSite priceSite = dateRetrievedByPriceSite.lastEntry().getValue();
-		return priceSite.getCardPriceByMultiverseId(card.getMultiverseId());
+		this.priceDataLoader = priceDataLoader;
 	}
 	
 	@Override
@@ -52,14 +38,17 @@ public class PriceServiceImpl implements PriceService {
 		assert card != null;
 		assert params != null;
 		
+		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
 		if (dateRetrievedByPriceSite.isEmpty()) {
 			return Collections.emptyList();
 		}
+		final CardPriceComparator priceComparator = new CardPriceComparator(params.getOrder(), params.getOrderDirection());
 		
 		final ArrayList<CardPrice> history = new ArrayList<CardPrice>();
 		for (final PriceSite priceSite : dateRetrievedByPriceSite.values()) {
-			final CardPrice cardPrice = priceSite.getCardPriceByMultiverseId(card.getMultiverseId());
-			if (cardPrice != null) {
+			final CardPriceInfo cardPriceInfo = priceDataLoader.loadCardPriceInfoByMultiverseId(priceSite.getId(), card.getMultiverseId());
+			if (cardPriceInfo != null) {
+				final CardPrice cardPrice = new CardPrice(priceSite.getRetrieved(), cardPriceInfo);
 				history.add(cardPrice);
 			}
 		}
@@ -68,17 +57,61 @@ public class PriceServiceImpl implements PriceService {
 			return Collections.emptyList();
 		}
 		
-		Collections.sort(history, new CardPriceComparator(params.getOrder(), params.getOrderDirection()));
+		Collections.sort(history, priceComparator);
 		
 		return Collections.unmodifiableList(history.subList(0, Math.min(params.getLimit(), history.size())));
 	}
 	
 	@Override
 	public Map<Card, List<CardPrice>> getPriceHistoryForCards(CardSet cardSet) {
-		final Map<Card, List<CardPrice>> priceHistories = new LinkedHashMap<Card, List<CardPrice>>();
-		for (Card card : cardSet.getCards()) {
-			priceHistories.put(card, getPriceHistoryForCard(card));
+		assert cardSet != null;
+		
+		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
+		if (dateRetrievedByPriceSite.isEmpty()) {
+			return Collections.emptyMap();
 		}
+		final CardPriceQueryParams params = new CardPriceQueryParams();
+		final CardPriceComparator priceComparator = new CardPriceComparator(params.getOrder(), params.getOrderDirection());
+
+		final Map<Integer, LinkedList<CardPrice>> multiverseIdToCardPrices = new HashMap<>();
+		for (final PriceSite priceSite : dateRetrievedByPriceSite.values()) {
+			final List<CardPriceInfo> cardPriceInfos = priceDataLoader.loadCardPriceInfos(priceSite.getId(), cardSet.getCode());
+			
+			for (final CardPriceInfo cardPriceInfo : cardPriceInfos) {
+				if (cardPriceInfo.getMultiverseId() == null) {
+					continue;
+				}
+				
+				final LinkedList<CardPrice> cardPrices;
+				if (!multiverseIdToCardPrices.containsKey(cardPriceInfo.getMultiverseId())) {
+					cardPrices = new LinkedList<>();
+					multiverseIdToCardPrices.put(cardPriceInfo.getMultiverseId(), cardPrices);
+				} else {
+					cardPrices = multiverseIdToCardPrices.get(cardPriceInfo.getMultiverseId());
+				}
+				
+				cardPrices.add(new CardPrice(priceSite.getRetrieved(), cardPriceInfo));
+				cardPrices.sort(priceComparator);
+				
+				// we know that we only want a specific amount of history entries so remove any
+				// that are not necessary
+				if (cardPrices.size() > params.getLimit()) {
+					cardPrices.removeLast();
+				}
+			}
+		}
+
+		final Map<Card, List<CardPrice>> priceHistories = new HashMap<Card, List<CardPrice>>();
+		for (final Card card : cardSet.getCards()) {
+			final List<CardPrice> history;
+			if (card.getMultiverseId() == null || !multiverseIdToCardPrices.containsKey(card.getMultiverseId())) {
+				history = Collections.emptyList();
+			} else {
+				history = new ArrayList<>(multiverseIdToCardPrices.get(card.getMultiverseId()));
+			}
+			priceHistories.put(card, history);
+		}
+		
 		return priceHistories;
 	}
 	

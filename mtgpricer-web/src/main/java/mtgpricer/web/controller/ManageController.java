@@ -4,14 +4,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.TimeZone;
 import java.util.stream.Collectors;
 
-import mtgpricer.rip.CardPriceInfo;
-import mtgpricer.rip.CardSetPriceInfo;
 import mtgpricer.rip.PriceDataLoader;
 import mtgpricer.rip.PriceSiteInfo;
 import mtgpricer.rip.RipRequest;
@@ -56,7 +52,9 @@ public class ManageController {
 		return this.priceDataLoader.loadPriceData().stream()
 				.filter(p -> p.getRetrieved() != null)
 				.sorted((p1, p2) -> p1.getRetrieved().compareTo(p2.getRetrieved()))
-				.map(PriceSiteInfoIndexEntry::new)
+				.map(priceSiteInfo -> {
+					return new PriceSiteInfoIndexEntry(priceSiteInfo);
+				})
 				.collect(Collectors.toList());
 	}
 	
@@ -91,23 +89,9 @@ public class ManageController {
 	
 	public static class PriceSiteInfoIndexEntry {
 		private final PriceSiteInfo priceSiteInfo;
-		private final int numberOfCards;
 
 		public PriceSiteInfoIndexEntry(PriceSiteInfo priceSiteInfo) {
 			this.priceSiteInfo = priceSiteInfo;
-
-			Set<String> cards = new HashSet<>();
-			for (final CardSetPriceInfo cardSetPriceInfo : priceSiteInfo.getCardSets()) {
-				for (final CardPriceInfo cardPriceInfo : cardSetPriceInfo.getCards()) {
-					if (cardPriceInfo.getName() != null) {
-						cards.add(cardPriceInfo.getName());
-					} else {
-						cards.add(cardPriceInfo.getRawName());
-					}
-				}
-			}
-
-			this.numberOfCards = cards.size();
 		}
 
 		public Long getId() {
@@ -120,10 +104,6 @@ public class ManageController {
 
 		public int getNumberOfCardSets() {
 			return this.priceSiteInfo.getCardSets().size();
-		}
-		
-		public int getNumberOfCards() {
-			return numberOfCards;
 		}
 	}
 }

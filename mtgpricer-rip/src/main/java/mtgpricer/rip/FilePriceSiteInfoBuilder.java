@@ -5,52 +5,52 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Builder for {@link PriceSiteInfo} instances
+ * Builder for {@link FilePriceSiteInfo} instances
  * @author jared.pearson
  */
-public class PriceSiteInfoBuilder {
+public class FilePriceSiteInfoBuilder {
 	private Long id;
 	private Date retrieved;
 	private String url;
-	private List<CardSetPriceInfo> cardSets = new ArrayList<>();
+	private List<FileCardSetPriceInfo> cardSets = new ArrayList<>();
 	
-	public PriceSiteInfoBuilder() {
+	public FilePriceSiteInfoBuilder() {
 	}
 	
 	/**
 	 * Creates a builder that is a copy of the fields in the given instance.
 	 */
-	public PriceSiteInfoBuilder(PriceSiteInfo priceSiteInfo) {
+	public FilePriceSiteInfoBuilder(FilePriceSiteInfo priceSiteInfo) {
 		this.id = priceSiteInfo.getId();
 		this.retrieved = priceSiteInfo.getRetrieved();
 		this.url = priceSiteInfo.getUrl();
 		this.cardSets = new ArrayList<>(priceSiteInfo.getCardSets());
 	}
 	
-	public PriceSiteInfo build() {
-		return new PriceSiteInfo(
+	public FilePriceSiteInfo build() {
+		return new FilePriceSiteInfo(
 				this.id,
 				this.url,
 				this.retrieved,
 				this.cardSets);
 	}
 	
-	public PriceSiteInfoBuilder setId(Long id) {
+	public FilePriceSiteInfoBuilder setId(Long id) {
 		this.id = id;
 		return this;
 	}
 	
-	public PriceSiteInfoBuilder setRetrieved(Date retrieved) {
+	public FilePriceSiteInfoBuilder setRetrieved(Date retrieved) {
 		this.retrieved = retrieved;
 		return this;
 	}
 	
-	public PriceSiteInfoBuilder setUrl(String url) {
+	public FilePriceSiteInfoBuilder setUrl(String url) {
 		this.url = url;
 		return this;
 	}
 	
-	public PriceSiteInfoBuilder setCardSets(List<CardSetPriceInfo> cardSets) {
+	public FilePriceSiteInfoBuilder setCardSets(List<FileCardSetPriceInfo> cardSets) {
 		this.cardSets = cardSets;
 		return this;
 	}

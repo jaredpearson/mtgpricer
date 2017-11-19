@@ -19,14 +19,12 @@
 	        <tr>
 	            <th>Retrieved</th>
 	            <th>Sets</th>
-	            <th>Cards</th>
 	        </tr>
 	    </thead>
 	    <#list priceSites as priceSite>
 	    <tr>
 	        <td><a href="/settings/priceDataExplorer/${priceSite.id?c}">${priceSite.retrieved?datetime}</a></td>
 	        <td>${priceSite.numberOfCardSets}</td>
-	        <td>${priceSite.numberOfCards}</td>
 	    </tr>
 	    </#list>
 	</table>

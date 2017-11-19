@@ -12,12 +12,6 @@ import mtgpricer.catalog.CardSet;
 public interface PriceService {
 
 	/**
-	 * Gets the latest price information for the given card within the given card set.
-	 * @returns the latest price for the card or null if one is not found
-	 */
-	CardPrice getCurrentPriceForCard(Card card);
-
-	/**
 	 * Gets the price history for specified card within the card set
 	 * @param card the card to which the card belongs
 	 * @return the list of price history for the specified card.

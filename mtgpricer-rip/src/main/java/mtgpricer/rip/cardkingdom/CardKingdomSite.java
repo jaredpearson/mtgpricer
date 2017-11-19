@@ -27,9 +27,9 @@ import com.google.common.util.concurrent.MoreExecutors;
 import mtgpricer.catalog.CardCatalog;
 import mtgpricer.catalog.CardSet;
 import mtgpricer.rip.CardPriceInfo;
-import mtgpricer.rip.CardSetPriceInfo;
+import mtgpricer.rip.FileCardSetPriceInfo;
 import mtgpricer.rip.PriceSiteInfo;
-import mtgpricer.rip.PriceSiteInfoBuilder;
+import mtgpricer.rip.FilePriceSiteInfoBuilder;
 import mtgpricer.rip.RequestSiteListener;
 import mtgpricer.rip.RequestSiteListenerBase;
 import mtgpricer.rip.http.PageRequester;
@@ -93,12 +93,12 @@ public class CardKingdomSite {
 			executorService.shutdown();
 			
 			// convert all of the request models to the real models
-			final List<CardSetPriceInfo> cardSetPriceInfos = new ArrayList<>();
+			final List<FileCardSetPriceInfo> cardSetPriceInfos = new ArrayList<>();
 			for (final ListenableFuture<RequestCardSetResult> cardSetResultFuture : cardSetResultFutures) {
-				final CardSetPriceInfo cardSetPriceInfo = createCardSetPriceInfoFromRequest(cardSetResultFuture);
+				final FileCardSetPriceInfo cardSetPriceInfo = createCardSetPriceInfoFromRequest(cardSetResultFuture);
 				cardSetPriceInfos.add(cardSetPriceInfo);
 			}
-			return new PriceSiteInfoBuilder()
+			return new FilePriceSiteInfoBuilder()
 					.setUrl(cardKingdomUrl)
 					.setRetrieved(new Date())
 					.setCardSets(cardSetPriceInfos)
@@ -119,12 +119,12 @@ public class CardKingdomSite {
 		return siteIndexParser.parseHtml(html);
 	}
 
-	private CardSetPriceInfo createCardSetPriceInfoFromRequest(
+	private FileCardSetPriceInfo createCardSetPriceInfoFromRequest(
 			final ListenableFuture<RequestCardSetResult> cardSetResultFuture) throws InterruptedException, ExecutionException {
 		final RequestCardSetResult cardSetResult = cardSetResultFuture.get();
 		final SiteIndexCardSet cardSetIndex1 = cardSetResult.getCardSetIndex();
 		final List<CardPriceInfo> allCards = getCardsFromSetPages(cardSetResult.getPages());
-		return new CardSetPriceInfo(
+		return new FileCardSetPriceInfo(
 				cardSetIndex1.getName(),
 				cardSetIndex1.getRawName(),
 				cardSetIndex1.getSetCode(),

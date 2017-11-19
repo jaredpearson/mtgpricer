@@ -12,40 +12,34 @@ import mtgpricer.rip.PriceSiteInfo;
  * @author jared.pearson
  */
 class PriceSite {
+	private final Long id;
 	private final Date retrieved;
-	private final Map<String, CardSetPrice> codeToCardSet;
+	private final Map<String, CardSetPriceInfo> codeToCardSet;
 	
 	public PriceSite(final PriceSiteInfo priceSiteInfo) {
+		this.id = priceSiteInfo.getId();
 		this.retrieved = priceSiteInfo.getRetrieved();
-		this.codeToCardSet = new HashMap<String, CardSetPrice>();
+		this.codeToCardSet = new HashMap<String, CardSetPriceInfo>();
 		for (final CardSetPriceInfo cardSetPriceInfo : priceSiteInfo.getCardSets()) {
-			final CardSetPrice cardSetPrice = new CardSetPrice(cardSetPriceInfo);
-			if (cardSetPrice.getCode() != null) {
-				this.codeToCardSet.put(cardSetPrice.getCode(), cardSetPrice);
+			if (cardSetPriceInfo.getCode() != null) {
+				this.codeToCardSet.put(cardSetPriceInfo.getCode(), cardSetPriceInfo);
 			}
 		}
+	}
+	
+	/**
+	 * Gets the ID of the price site.
+	 */
+	public Long getId() {
+		return id;
 	}
 	
 	/**
 	 * Gets the card set price instance for the set with the given set code. If the 
 	 * set code is unknown, then a null reference is returned.
 	 */
-	public CardSetPrice getCardSetPriceByCode(String code) {
+	public CardSetPriceInfo getCardSetPriceByCode(String code) {
 		return this.codeToCardSet.get(code);
-	}
-	
-	/**
-	 * Gets the price of a card with the given multiverse ID. If the card price is not
-	 * found for the multiverse ID, then a null reference is returned.
-	 */
-	public CardPrice getCardPriceByMultiverseId(int multiverseId) {
-		for (CardSetPrice cardSetPrice : codeToCardSet.values()) {
-			final CardPrice cardPrice = cardSetPrice.getCardPriceByMultiverseId(multiverseId);
-			if (cardPrice != null) {
-				return cardPrice;
-			}
-		}
-		return null;
 	}
 
 	/**

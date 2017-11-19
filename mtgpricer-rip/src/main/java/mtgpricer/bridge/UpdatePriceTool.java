@@ -5,12 +5,13 @@ import static mtgpricer.bridge.RedisKeyFactory.cardList;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import mtgpricer.Display;
 import mtgpricer.redis.RedisConnectionProvider;
 import mtgpricer.rip.CardPriceInfo;
-import mtgpricer.rip.CardSetPriceInfo;
 import mtgpricer.rip.PriceDataLoader;
 import mtgpricer.rip.PriceSiteInfo;
 
@@ -47,10 +48,11 @@ public class UpdatePriceTool implements BridgeOperation {
 			for (final PriceSiteInfo priceSite : priceData) {
 				final Transaction t = jedis.multi();
 
+				final Map<String, List<CardPriceInfo>> setCodeToCardPriceInfos = priceDataLoader.loadCardPriceInfos(priceSite);
 				final Set<String> multiverseIdsToAdd = new HashSet<String>();
 				final Date retrieved = priceSite.getRetrieved();
-				for (final CardSetPriceInfo cardSetPriceInfo : priceSite.getCardSets()) {
-					for (final CardPriceInfo cardPrice : cardSetPriceInfo.getCards()) {
+				for (final List<CardPriceInfo> cardSetPriceInfos : setCodeToCardPriceInfos.values()) {
+					for (final CardPriceInfo cardPrice : cardSetPriceInfos) {
 						final Integer multiverseId = cardPrice.getMultiverseId();
 						if (multiverseId == null) {
 							display.writeln("Skipping card with no multiverse ID: " + (cardPrice.getName() != null ? cardPrice.getName() : cardPrice.getRawName()));

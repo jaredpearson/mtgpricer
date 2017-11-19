@@ -19,6 +19,7 @@ import mtgpricer.catalog.Card;
 import mtgpricer.catalog.CardCatalog;
 import mtgpricer.catalog.CardSet;
 import mtgpricer.rip.CardSetPriceInfo;
+import mtgpricer.rip.FileCardSetPriceInfo;
 import mtgpricer.rip.PriceSiteInfo;
 import mtgpricer.rip.http.PageRequester;
 
@@ -97,12 +98,12 @@ public class CardKingdomSiteTest {
 		CardSetPriceInfo cardSetPriceInfo1 = codeToCardSetPriceInfos.get("set1");
 		assertNotNull("Expected set1 to be returned", cardSetPriceInfo1);
 		assertEquals("Unexpected name returned by rawName", "Set 1", cardSetPriceInfo1.getRawName());
-		assertEquals("Unexpected number of cards within set", 4, cardSetPriceInfo1.getCards().size());
+		assertEquals("Unexpected number of cards within set", 4, ((FileCardSetPriceInfo)cardSetPriceInfo1).getCards().size());
 
 		CardSetPriceInfo cardSetPriceInfo2 = codeToCardSetPriceInfos.get("set2");
 		assertNotNull("Expected set2 to be returned", cardSetPriceInfo2);
 		assertEquals("Unexpected name returned by rawName", "Set 2", cardSetPriceInfo2.getRawName());
-		assertEquals("Unexpected number of cards within set", 5, cardSetPriceInfo2.getCards().size());
+		assertEquals("Unexpected number of cards within set", 5, ((FileCardSetPriceInfo)cardSetPriceInfo2).getCards().size());
 	}
 	
 	private static String createSiteIndexHtml() {
