@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import mtgpricer.CardPrice;
+import mtgpricer.Money;
 import mtgpricer.PriceService;
 import mtgpricer.PriceServiceProvider;
 import mtgpricer.catalog.Card;
@@ -76,8 +77,10 @@ public class SetViewController {
 			this.name = card.getName();
 			this.multiverseId = card.getMultiverseId();
 			if (cardPrices != null && !cardPrices.isEmpty()) {
-				// assume that card prices are ordered by retrieved in descending
-				this.latestPrice = cardPrices.get(0).getPrice().doubleValue();
+				// TODO selecting the first variant in the list may not always be the correct variant. change this
+				// to be more deterministic.
+				final Money price = CardPrice.selectFirstPrice(cardPrices);
+				this.latestPrice = price == null ? null : price.doubleValue();
 			} else {
 				this.latestPrice = null;
 			}

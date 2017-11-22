@@ -86,7 +86,7 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 	}
 	
 	@Override
-	public CardPriceInfo loadCardPriceInfoByMultiverseId(long priceSiteId, int multiverseId) {
+	public List<CardPriceInfo> loadCardPriceInfosByMultiverseId(long priceSiteId, int multiverseId) {
 		final FilePriceSiteInfo fullPriceSiteInfo = loadFilePriceSiteInfoWithCards(priceSiteId);
 		final List<CardPriceInfo> cardPriceInfos = new ArrayList<>();
 		for (final FileCardSetPriceInfo cardSetPriceInfo : fullPriceSiteInfo.getCardSets()) {
@@ -111,8 +111,7 @@ public class FilePriceDataStore implements PriceDataLoader, PriceDataStore {
 			}
 		}
 		
-		// TODO: change the UI to show the different variants. return the first and ignore all of the others... :(
-		return cardPriceInfos.isEmpty() ? null : cardPriceInfos.get(0);
+		return cardPriceInfos;
 	}
 
 	/**

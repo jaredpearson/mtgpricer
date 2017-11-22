@@ -2,9 +2,9 @@ package mtgpricer;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -37,71 +37,80 @@ public class PriceServiceImpl implements PriceService {
 	public List<CardPrice> getPriceHistoryForCard(final Card card, final CardPriceQueryParams params) {
 		assert card != null;
 		assert params != null;
-		
+
+		// date should be in newest to oldest order
 		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
 		if (dateRetrievedByPriceSite.isEmpty()) {
 			return Collections.emptyList();
 		}
-		final CardPriceComparator priceComparator = new CardPriceComparator(params.getOrder(), params.getOrderDirection());
-		
-		final ArrayList<CardPrice> history = new ArrayList<CardPrice>();
+
+		Integer count = 0;
+		final ArrayList<CardPrice> history = new ArrayList<>();
 		for (final PriceSite priceSite : dateRetrievedByPriceSite.values()) {
-			final CardPriceInfo cardPriceInfo = priceDataLoader.loadCardPriceInfoByMultiverseId(priceSite.getId(), card.getMultiverseId());
-			if (cardPriceInfo != null) {
-				final CardPrice cardPrice = new CardPrice(priceSite.getRetrieved(), cardPriceInfo);
+			final List<CardPriceInfo> cardPriceInfos = priceDataLoader.loadCardPriceInfosByMultiverseId(priceSite.getId(), card.getMultiverseId());
+			if (!cardPriceInfos.isEmpty()) {
+				final CardPrice cardPrice = new CardPrice(priceSite.getRetrieved(), cardPriceInfos);
 				history.add(cardPrice);
+			}
+
+			// stop looking at histories if we have looked over the limit
+			count++;
+			if (count == params.getLimit()) {
+				break;
 			}
 		}
 		history.trimToSize();
-		if (history.isEmpty()) {
-			return Collections.emptyList();
-		}
-		
-		Collections.sort(history, priceComparator);
-		
-		return Collections.unmodifiableList(history.subList(0, Math.min(params.getLimit(), history.size())));
+		return history;
 	}
 	
 	@Override
 	public Map<Card, List<CardPrice>> getPriceHistoryForCards(CardSet cardSet) {
 		assert cardSet != null;
 		
+		// date should be in newest to oldest order
 		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = createDateRetrievedMap(priceDataLoader.loadPriceData());
 		if (dateRetrievedByPriceSite.isEmpty()) {
 			return Collections.emptyMap();
 		}
 		final CardPriceQueryParams params = new CardPriceQueryParams();
-		final CardPriceComparator priceComparator = new CardPriceComparator(params.getOrder(), params.getOrderDirection());
-
-		final Map<Integer, LinkedList<CardPrice>> multiverseIdToCardPrices = new HashMap<>();
+		
+		Integer count = 0;
+		final TreeMap<Integer, List<CardPrice>> multiverseIdToCardPrices = new TreeMap<>();
 		for (final PriceSite priceSite : dateRetrievedByPriceSite.values()) {
-			final List<CardPriceInfo> cardPriceInfos = priceDataLoader.loadCardPriceInfos(priceSite.getId(), cardSet.getCode());
-			
-			for (final CardPriceInfo cardPriceInfo : cardPriceInfos) {
+			final List<CardPriceInfo> allCardPriceInfos = priceDataLoader.loadCardPriceInfos(priceSite.getId(), cardSet.getCode());
+
+			// group each of the price entry (due to having multiple conditions) by the multiverse ID of the card associated to the variant
+			final Map<Integer, List<CardPriceInfo>> multiverseIdToCardPriceInfos = new HashMap<>();
+			for (final CardPriceInfo cardPriceInfo : allCardPriceInfos) {
 				if (cardPriceInfo.getMultiverseId() == null) {
 					continue;
 				}
 				
-				final LinkedList<CardPrice> cardPrices;
-				if (!multiverseIdToCardPrices.containsKey(cardPriceInfo.getMultiverseId())) {
-					cardPrices = new LinkedList<>();
-					multiverseIdToCardPrices.put(cardPriceInfo.getMultiverseId(), cardPrices);
-				} else {
-					cardPrices = multiverseIdToCardPrices.get(cardPriceInfo.getMultiverseId());
+				if (!multiverseIdToCardPriceInfos.containsKey(cardPriceInfo.getMultiverseId())) {
+					multiverseIdToCardPriceInfos.put(cardPriceInfo.getMultiverseId(), new ArrayList<>());
 				}
 				
-				cardPrices.add(new CardPrice(priceSite.getRetrieved(), cardPriceInfo));
-				cardPrices.sort(priceComparator);
+				multiverseIdToCardPriceInfos.get(cardPriceInfo.getMultiverseId()).add(cardPriceInfo);
+			}
+			
+			// convert each of the groupings into CardPrice entities
+			for (Map.Entry<Integer, List<CardPriceInfo>> multiverseIdToCardPriceInfosEntry : multiverseIdToCardPriceInfos.entrySet()) {
+				CardPrice cardPrice = new CardPrice(priceSite.getRetrieved(), multiverseIdToCardPriceInfosEntry.getValue());
 				
-				// we know that we only want a specific amount of history entries so remove any
-				// that are not necessary
-				if (cardPrices.size() > params.getLimit()) {
-					cardPrices.removeLast();
+				if (!multiverseIdToCardPrices.containsKey(multiverseIdToCardPriceInfosEntry.getKey())) {
+					multiverseIdToCardPrices.put(multiverseIdToCardPriceInfosEntry.getKey(), new ArrayList<>());
 				}
+				multiverseIdToCardPrices.get(multiverseIdToCardPriceInfosEntry.getKey()).add(cardPrice);
+			}
+			
+			// stop looking at histories if we have looked over the limit
+			count++;
+			if (count == params.getLimit()) {
+				break;
 			}
 		}
 
-		final Map<Card, List<CardPrice>> priceHistories = new HashMap<Card, List<CardPrice>>();
+		final Map<Card, List<CardPrice>> priceHistories = new HashMap<>();
 		for (final Card card : cardSet.getCards()) {
 			final List<CardPrice> history;
 			if (card.getMultiverseId() == null || !multiverseIdToCardPrices.containsKey(card.getMultiverseId())) {
@@ -134,7 +143,12 @@ public class PriceServiceImpl implements PriceService {
 	}
 
 	private static TreeMap<Date, PriceSite> createDateRetrievedMap(final Set<? extends PriceSiteInfo> priceSiteInfos) {
-		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = new TreeMap<Date, PriceSite>();
+		final TreeMap<Date, PriceSite> dateRetrievedByPriceSite = new TreeMap<Date, PriceSite>(new Comparator<Date>() {
+			@Override
+			public int compare(Date date1, Date date2) {
+				return -date1.compareTo(date2);
+			}
+		});
 		if (priceSiteInfos != null) {
 			for (final PriceSiteInfo priceSiteInfo : priceSiteInfos) {
 				if (priceSiteInfo.getRetrieved() != null) {

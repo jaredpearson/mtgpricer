@@ -1,7 +1,5 @@
 package mtgpricer;
 
-import mtgpricer.catalog.CardCatalogProvider;
-import mtgpricer.redis.RedisConfig;
 import mtgpricer.rip.PriceDataLoader;
 
 import org.springframework.context.annotation.Bean;
@@ -16,20 +14,18 @@ import org.springframework.context.annotation.Lazy;
 @Configuration
 @ComponentScan
 public class PriceConfig {
-	
 	@Bean
 	@Lazy
-	public RedisPriceService redisPriceService(RedisConfig redisConfig, CardCatalogProvider cardCatalogProvider) {
-		return new RedisPriceService(redisConfig.redisConnectionProvider(), cardCatalogProvider);
+	public PriceService priceService(PriceDataLoader priceDataLoader) {
+		return new PriceServiceImpl(priceDataLoader);
 	}
 	
 	@Bean
 	@Lazy
-	public PriceServiceProvider priceServiceProvider(PriceDataLoader priceDataLoader) {
-		final PriceServiceImpl priceServiceImpl = new PriceServiceImpl(priceDataLoader);
+	public PriceServiceProvider priceServiceProvider(final PriceService priceService) {
 		return new PriceServiceProvider() {
 			public PriceService getPriceService() {
-				return priceServiceImpl;
+				return priceService;
 			}
 		};
 	}

@@ -22,8 +22,8 @@
 						<tr>
 							<td>${priceHistoryEntry.retrieved?string["yyyy-MM-dd hh:mm:ss a"]}</td>
 							<td>
-								<#if priceHistoryEntry.price??>
-									${priceHistoryEntry.price.doubleValue()?string.currency}
+								<#if priceHistoryEntry.maxPriceVariant??>
+									${priceHistoryEntry.maxPriceVariant.price.doubleValue()?string.currency}
 								</#if>
 							</td>
 						</tr>
@@ -44,7 +44,7 @@
 			x: 'x',
 			columns: [
 				['x', <#list priceHistory as priceHistoryEntry>'${priceHistoryEntry.retrieved?string["yyyy-MM-dd"]}'<#if priceHistoryEntry_has_next>,</#if></#list>],
-		        ['Price', <#list priceHistory as priceHistoryEntry>${priceHistoryEntry.price.doubleValue()?c}<#if priceHistoryEntry_has_next>,</#if></#list>]
+		        ['Price', <#list priceHistory as priceHistoryEntry>${priceHistoryEntry.maxPriceVariant.price.doubleValue()?c}<#if priceHistoryEntry_has_next>,</#if></#list>]
 			]
 		},
 		axis: {

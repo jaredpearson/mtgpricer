@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import mtgpricer.CardPrice;
+import mtgpricer.CardPriceVariant;
 import mtgpricer.CommandLineTool;
 import mtgpricer.CommandLineTools;
+import mtgpricer.Money;
 import mtgpricer.PriceService;
 import mtgpricer.PriceServiceProvider;
 
@@ -70,16 +72,10 @@ public class Main implements CommandLineTool {
 				final String number = card.getNumber() == null ? "-" : card.getNumber();
 				final String multiverseId = card.getMultiverseId() == null ? "-" : card.getMultiverseId().toString();
 
-				final List<CardPrice> cardPrices = cardToCardPrices.get(card);
-				final CardPrice cardPrice;
-				if (cardPrices == null || cardPrices.isEmpty()) {
-					cardPrice = null;
-				} else {
-					cardPrice = cardPrices.get(cardPrices.size() - 1);
-				}
-				final String price = cardPrice == null ? "-" : String.format("%.2f", cardPrice.getPrice().doubleValue());
+				final Money price = CardPrice.selectFirstPrice(cardToCardPrices.get(card));
+				final String priceAsString = price == null ? "-" : String.format("%.2f", price.doubleValue());
 				
-				System.out.println(String.format("%4s %6s %-50s %5s", number, multiverseId, card.getName(), price));
+				System.out.println(String.format("%4s %6s %-50s %5s", number, multiverseId, card.getName(), priceAsString));
 			}
 		} else if ("card".equals(command)) {
 			if (commandArgs.length < 2) {
@@ -106,9 +102,10 @@ public class Main implements CommandLineTool {
 			
 			final List<CardPrice> history = priceService.getPriceHistoryForCard(card);
 			for (final CardPrice priceInfo : history) {
-				final String price = priceInfo == null ? "-" : String.format("%.2f", priceInfo.getPrice());
+				final CardPriceVariant variant = CardPriceVariant.selectFirstWithPrice(priceInfo.getVariants());
+				final String priceAsString = variant == null ? "-" : String.format("%.2f", variant.getPrice());
 				
-				System.out.println(String.format("%tD %5s", priceInfo.getRetrieved(), price));
+				System.out.println(String.format("%tD %5s", priceInfo.getRetrieved(), priceAsString));
 			}
 		}
 	}

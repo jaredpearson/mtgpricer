@@ -12,8 +12,11 @@ import java.util.TimeZone;
 import javax.servlet.http.HttpServletResponse;
 
 import mtgpricer.CardPrice;
+import mtgpricer.CardPriceComparator;
+import mtgpricer.CardPriceOrder;
 import mtgpricer.CardPriceQueryParams;
 import mtgpricer.Money;
+import mtgpricer.OrderDirection;
 import mtgpricer.PriceService;
 import mtgpricer.PriceServiceProvider;
 import mtgpricer.catalog.Card;
@@ -66,12 +69,11 @@ public class CardViewController {
 		final CardPriceQueryParams queryParams = new CardPriceQueryParams().limit(90);
 		final List<CardPrice> priceHistory = priceService.getPriceHistoryForCard(card, queryParams);
 		
-		final Money latestPrice;
-		if (priceHistory.isEmpty()) {
-			latestPrice = null;
-		} else {
-			latestPrice = priceHistory.get(0).getPrice();
-		}
+		priceHistory.sort(new CardPriceComparator(CardPriceOrder.RETRIEVED, OrderDirection.DESC));
+		
+		// TODO selecting the first variant in the list may not always be the correct variant. change this
+		// to be more deterministic.
+		final Money latestPrice = CardPrice.selectFirstPrice(priceHistory);
 		
 		final CardSet cardSet;
 		if (card.getSetCode() != null) {

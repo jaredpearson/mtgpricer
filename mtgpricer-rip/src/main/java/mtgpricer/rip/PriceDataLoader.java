@@ -38,5 +38,5 @@ public interface PriceDataLoader {
 	 * Gets the price of a card with the given multiverse ID. If the card price is not
 	 * found for the multiverse ID, then a null reference is returned.
 	 */
-	CardPriceInfo loadCardPriceInfoByMultiverseId(long priceSiteId, int multiverseId);
+	List<CardPriceInfo> loadCardPriceInfosByMultiverseId(long priceSiteId, int multiverseId);
 }

@@ -6,7 +6,7 @@ import java.util.Comparator;
  * Comparator for the {@link CardPrice} based on the order and order direction.
  * @author jared.pearson
  */
-class CardPriceComparator implements Comparator<CardPrice> {
+public class CardPriceComparator implements Comparator<CardPrice> {
 	private final CardPriceOrder order;
 	private final OrderDirection orderDirection;
 	
