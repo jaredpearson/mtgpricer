@@ -78,15 +78,18 @@ public class CardKingdomSite {
 
 			final Phaser phaser = new Phaser(1);
 			final ListeningExecutorService executorService = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(10));
+			final ProgressTrackingExecutorService progressTrackingExecutorService = new ProgressTrackingExecutorService(executorService, listener);
 			
 			// request each of the sets and their pages
 			final List<ListenableFuture<RequestCardSetResult>> cardSetResultFutures = new ArrayList<>();
 			final int numberOfCardSets = siteIndex.getCardSets().size();
-			final CardSetCompletionCallback updateListener = new CardSetCompletionCallback(listener, numberOfCardSets);
 			for (int index = 0; index < numberOfCardSets; index++) {
 				final SiteIndexCardSet cardSetIndex = siteIndex.getCardSets().get(index);
-				final ListenableFuture<RequestCardSetResult> cardSetResultFuture = executorService.submit(new RequestCardSetTask(phaser, executorService, cardCatalog, cardSetIndex));
-				Futures.addCallback(cardSetResultFuture, updateListener);
+				final ListenableFuture<RequestCardSetResult> cardSetResultFuture = progressTrackingExecutorService.submit(new RequestCardSetTask(
+						phaser,
+						progressTrackingExecutorService,
+						cardCatalog,
+						cardSetIndex));
 				cardSetResultFutures.add(cardSetResultFuture);
 			}
 			phaser.arriveAndAwaitAdvance();
@@ -156,49 +159,21 @@ public class CardKingdomSite {
 		return cardPriceInfos;
 	}
 	
-	private static final class CardSetCompletionCallback implements FutureCallback<RequestCardSetResult> {
-		private final RequestSiteListener listener;
-		private final AtomicInteger progress = new AtomicInteger();
-		private final int numberOfCardSets;
-
-		private CardSetCompletionCallback(RequestSiteListener listener, int numberOfCardSets) {
-			this.listener = listener;
-			this.numberOfCardSets = numberOfCardSets;
-		}
-
-		@Override
-		public void onFailure(Throwable t) {
-			this.incrementAndUpdate();
-		}
-
-		@Override
-		public void onSuccess(RequestCardSetResult result) {
-			this.incrementAndUpdate();
-		}
-		
-		private void incrementAndUpdate() {
-			// after completion of the card set, increment the completion counter and then
-			// tell the listener that we completed another task
-			listener.onProgressUpdate(progress.incrementAndGet(), numberOfCardSets);
-		}
-	}
-
 	private class RequestCardSetTask implements Callable<RequestCardSetResult> {
 		final Phaser phaser;
-		final ListeningExecutorService executorService;
+		final ProgressTrackingExecutorService executorService;
 		final CardCatalog cardCatalog;
 		final SiteIndexCardSet cardSetIndex;
 		
 		public RequestCardSetTask(
 				final Phaser phaser,
-				final ListeningExecutorService executorService,
+				final ProgressTrackingExecutorService executorService,
 				final CardCatalog cardCatalog,
 				final SiteIndexCardSet cardSetIndex) {
 			this.phaser = phaser;
 			this.cardCatalog = cardCatalog;
 			this.executorService = executorService;
 			this.cardSetIndex = cardSetIndex;
-			
 			phaser.register();
 		}
 		
@@ -229,7 +204,7 @@ public class CardKingdomSite {
 				final String cardSetIndexHtml = pageRequester.getHtml(cardSetIndex.getUrl());
 				final CardKingdomCardSetPage indexPage = cardSetParser.parseHtml(cardSetIndex.getUrl(), cardSetIndexHtml, cardSetInfo, cardSetParserRules);
 				
-				final PageExecutorService<RequestCardSetPageResult> pageExecutorService = new PageExecutorService<>(executorService, phaser);
+				final PageExecutorService pageExecutorService = new PageExecutorService(executorService, phaser);
 				
 				// create a task for retrieving  all of the pages retrieved from the card set index page
 				final List<ListenableFuture<RequestCardSetPageResult>> cardSetPageResultFutures = new ArrayList<>();
@@ -267,13 +242,13 @@ public class CardKingdomSite {
 	}
 	
 	private class RequestCardSetPageTask implements Callable<RequestCardSetPageResult> {
-		private final PageExecutorService<RequestCardSetPageResult> pageExecutorService;
+		private final PageExecutorService pageExecutorService;
 		private final String url;
 		private final CardSet cardSetInfo;
 		private final CardParserRules cardSetParserRules;
 		
 		public RequestCardSetPageTask(
-				final PageExecutorService<RequestCardSetPageResult> pageExecutorService,
+				final PageExecutorService pageExecutorService,
 				final String url,
 				final CardSet cardSetInfo,
 				final CardParserRules cardSetParserRules) {
@@ -289,9 +264,9 @@ public class CardKingdomSite {
 			final CardKingdomCardSetPage page = cardSetParser.parseHtml(url, cardSetHtml, cardSetInfo, cardSetParserRules);
 			
 			final List<ListenableFuture<RequestCardSetPageResult>> referencedPages = new ArrayList<>(page.getReferencedSetPageUrls().size());
-			for (final String referencedSetPageUrls : page.getReferencedSetPageUrls()) {
-				final RequestCardSetPageTask referencedSetPageTask = new RequestCardSetPageTask(pageExecutorService, referencedSetPageUrls, cardSetInfo, cardSetParserRules);
-				final ListenableFuture<RequestCardSetPageResult> pageFuture = pageExecutorService.submit(referencedSetPageUrls, referencedSetPageTask);
+			for (final String referencedSetPageUrl : page.getReferencedSetPageUrls()) {
+				final RequestCardSetPageTask referencedSetPageTask = new RequestCardSetPageTask(pageExecutorService, referencedSetPageUrl, cardSetInfo, cardSetParserRules);
+				final ListenableFuture<RequestCardSetPageResult> pageFuture = pageExecutorService.submit(referencedSetPageUrl, referencedSetPageTask);
 				referencedPages.add(pageFuture);
 			}
 			
@@ -299,21 +274,78 @@ public class CardKingdomSite {
 		}
 	}
 	
-	private class PageExecutorService<T> {
+	/**
+	 * ExecutorService wrapper that keeps track of the number of submits and the number of completed submits. Whenever
+	 * a new task is submitted or a task completes, the listener is updated with the number of finished task and
+	 * the total number of submits.
+	 *
+	 * @author jared.pearson
+	 */
+	private class ProgressTrackingExecutorService {
 		private final ListeningExecutorService executorService;
+		private final RequestSiteListener requestSiteListener;
+		private final AtomicInteger finishedCount = new AtomicInteger();
+		private final AtomicInteger totalCount = new AtomicInteger();
+		
+		public ProgressTrackingExecutorService(
+				final ListeningExecutorService executorService,
+				final RequestSiteListener requestSiteListener) {
+			this.executorService = executorService;
+			this.requestSiteListener = requestSiteListener;
+		}
+		
+		public <T> ListenableFuture<T> submit(Callable<T> callable) {
+			requestSiteListener.onProgressUpdate(finishedCount.get(), totalCount.incrementAndGet());
+			final ListenableFuture<T> future = executorService.submit(callable);
+			Futures.addCallback(future, new ProgressUpdateFutureCallback<T>(requestSiteListener, finishedCount, totalCount));
+			return future;
+		}
+	}
+
+	private static final class ProgressUpdateFutureCallback<T> implements FutureCallback<T> {
+		private final RequestSiteListener listener;
+		private final AtomicInteger finishedCount;
+		private final AtomicInteger totalCount;
+
+		private ProgressUpdateFutureCallback(RequestSiteListener listener, AtomicInteger finishedCount, AtomicInteger totalCount) {
+			this.listener = listener;
+			this.finishedCount = finishedCount;
+			this.totalCount = totalCount;
+		}
+
+		@Override
+		public void onFailure(Throwable t) {
+			this.incrementAndUpdate();
+		}
+
+		@Override
+		public void onSuccess(T result) {
+			this.incrementAndUpdate();
+		}
+		
+		private void incrementAndUpdate() {
+			// after completion of the card set, increment the completion counter and then
+			// tell the listener that we completed another task
+			listener.onProgressUpdate(finishedCount.incrementAndGet(), totalCount.get());
+		}
+	}
+
+	private class PageExecutorService {
+		private final ProgressTrackingExecutorService executorService;
 		private final Phaser phaser;
-		private final Map<String, ListenableFuture<T>> submittedUrls = Collections.synchronizedMap(new HashMap<>());
+		private final Map<String, ListenableFuture<?>> submittedUrls = Collections.synchronizedMap(new HashMap<>());
 		
 		public PageExecutorService(
-				final ListeningExecutorService executorService,
+				final ProgressTrackingExecutorService executorService,
 				final Phaser phaser) {
 			this.executorService = executorService;
 			this.phaser = phaser;
 		}
 		
-		public ListenableFuture<T> submit(final String url, final Callable<T> callable) {
+		@SuppressWarnings("unchecked")
+		public <T> ListenableFuture<T> submit(final String url, final Callable<T> callable) {
 			if (submittedUrls.containsKey(url)) {
-				return submittedUrls.get(url);
+				return (ListenableFuture<T>)submittedUrls.get(url);
 			}
 			
 			final ListenableFuture<T> future = executorService.submit(new Callable<T>() {
