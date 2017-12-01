@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import mtgpricer.rip.CardPriceInfo;
+import mtgpricer.rip.CardPriceVariantInfo;
 
 /**
  * Represents the price information for one individual card 
@@ -21,12 +22,17 @@ public class CardPrice {
 		CardPriceVariant maxPriceVariant = null;
 		final List<CardPriceVariant> variants = new ArrayList<>(cardPriceInfos.size());
 		for (final CardPriceInfo cardPriceInfo : cardPriceInfos) {
-			final Money price = cardPriceInfo.getPrice() == null ? null : new Money(Double.toString(cardPriceInfo.getPrice()));
-			final CardPriceVariant variant = new CardPriceVariant(price, cardPriceInfo.getConditionRaw());
-			variants.add(variant);
-			
-			if (price != null && (maxPriceVariant == null || price.doubleValue() > maxPriceVariant.getPrice().doubleValue())) {
-				maxPriceVariant = variant;
+			if (cardPriceInfo.getVariants() == null) {
+				throw new IllegalStateException(cardPriceInfo.getRawName());
+			}
+			for (CardPriceVariantInfo cardPriceVariantInfo : cardPriceInfo.getVariants()) {
+				final Money price = cardPriceVariantInfo.getPrice() == null ? null : new Money(Double.toString(cardPriceVariantInfo.getPrice()));
+				final CardPriceVariant variant = new CardPriceVariant(price, cardPriceVariantInfo.getConditionRaw());
+				variants.add(variant);
+				
+				if (price != null && (maxPriceVariant == null || price.doubleValue() > maxPriceVariant.getPrice().doubleValue())) {
+					maxPriceVariant = variant;
+				}
 			}
 		}
 		

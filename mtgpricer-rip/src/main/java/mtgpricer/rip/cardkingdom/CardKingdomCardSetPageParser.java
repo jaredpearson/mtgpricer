@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import mtgpricer.catalog.Card;
 import mtgpricer.catalog.CardSet;
 import mtgpricer.rip.CardPriceInfo;
+import mtgpricer.rip.CardPriceVariantInfo;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -67,6 +68,7 @@ class CardKingdomCardSetPageParser {
 				}
 				
 				// for each card, there is a list containing condition and price
+				final List<CardPriceVariantInfo> variants = new ArrayList<>();
 				for (final Element conditionEl : itemElement.getElementsByClass("itemAddToCart")) {
 					
 					final String conditionValue;
@@ -89,13 +91,14 @@ class CardKingdomCardSetPageParser {
 					if (price == null && rawPrice != null) {
 						logger.warning("Unable to parse price for " + rawCardName + ": " + rawPrice);
 					}
-	
-					final String cardNumber = card != null ? card.getNumber() : null;
-					final String cardName = card != null ? card.getName() : null;
-					final Integer multiverseId = card != null ? card.getMultiverseId() : null;
 					
-					cards.add(new CardPriceInfo(cardName, rawCardName, cardNumber, multiverseId, url, price, rawPrice, conditionValue));
+					variants.add(new CardPriceVariantInfo(price, rawPrice, conditionValue));
 				}
+	
+				final String cardNumber = card != null ? card.getNumber() : null;
+				final String cardName = card != null ? card.getName() : null;
+				final Integer multiverseId = card != null ? card.getMultiverseId() : null;
+				cards.add(new CardPriceInfo(cardName, rawCardName, cardNumber, multiverseId, url, variants));
 			}
 			
 			logUnknownCards(url, cardSet, unknownCardNames);

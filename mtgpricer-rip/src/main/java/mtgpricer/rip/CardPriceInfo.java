@@ -1,5 +1,7 @@
 package mtgpricer.rip;
 
+import java.util.List;
+
 /**
  * Represents the information about the card
  * <p>
@@ -13,19 +15,15 @@ public class CardPriceInfo {
 	private final String number;
 	private final Integer multiverseId;
 	private final String url;
-	private final Double price;
-	private final String priceRaw;
-	private final String conditionRaw;
+	private final List<CardPriceVariantInfo> variants;
 	
-	public CardPriceInfo(String name, String rawName, String number, Integer multiverseId, String url, Double price, String priceRaw, String conditionRaw) {
+	public CardPriceInfo(String name, String rawName, String number, Integer multiverseId, String url, List<CardPriceVariantInfo> variants) {
 		this.name = name;
 		this.rawName = rawName;
 		this.number = number;
 		this.multiverseId = multiverseId;
 		this.url = url;
-		this.price = price;
-		this.priceRaw = priceRaw;
-		this.conditionRaw = conditionRaw;
+		this.variants = variants;
 	}
 	
 	/**
@@ -72,24 +70,9 @@ public class CardPriceInfo {
 	}
 	
 	/**
-	 * Gets the price value as a double. This will return null if the price provided was null or the price could not be converted
-	 * to a double.
+	 * Gets the variant associated to the card.
 	 */
-	public Double getPrice() {
-		return price;
-	}
-	
-	/**
-	 * Gets the price value as it was provided.
-	 */
-	public String getPriceRaw() {
-		return priceRaw;
-	}
-	
-	/**
-	 * Gets the condition as it was provided.
-	 */
-	public String getConditionRaw() {
-		return conditionRaw;
+	public List<CardPriceVariantInfo> getVariants() {
+		return variants;
 	}
 }

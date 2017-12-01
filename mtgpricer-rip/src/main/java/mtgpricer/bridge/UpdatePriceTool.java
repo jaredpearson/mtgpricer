@@ -58,12 +58,15 @@ public class UpdatePriceTool implements BridgeOperation {
 							display.writeln("Skipping card with no multiverse ID: " + (cardPrice.getName() != null ? cardPrice.getName() : cardPrice.getRawName()));
 							continue;
 						}
+						if (cardPrice.getVariants() == null || cardPrice.getVariants().isEmpty()) {
+							continue;
+						}
 						
 						multiverseIdsToAdd.add(multiverseId.toString());
 						
 						final long time = retrieved.getTime();
 						final String timeAsString = Long.toString(retrieved.getTime());
-						final String priceAsString = Double.toString(cardPrice.getPrice());
+						final String priceAsString = Double.toString(cardPrice.getVariants().get(0).getPrice());
 						t.set(cardKingdomCardPrice(multiverseId, time), priceAsString);
 						
 						t.zadd(cardKingdomCardPrice(multiverseId), time, timeAsString);
